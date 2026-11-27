@@ -50,7 +50,7 @@ jobs:
       - name: Extract Android project
         run: |
           mkdir -p android-project
-          unzip -q ARDYIL_English_Dictionary_Android_Project.zip -d android-project
+          unzip -q ARDYIL_English_Dictionary_Android_Mic_Recording_Fix.zip -d android-project.zip -d android-project
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
