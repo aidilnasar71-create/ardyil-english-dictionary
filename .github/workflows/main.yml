@@ -60,18 +60,28 @@ jobs:
 
           echo "Proyek ditemukan di: $PROJECT_DIR"
 
+      
       - name: Build APK
         run: |
           PROJECT_DIR="${{ steps.locate.outputs.project_dir }}"
           cd "$PROJECT_DIR"
 
           if [ -f "./gradlew" ]; then
+            echo "Menggunakan Gradle Wrapper."
             chmod +x ./gradlew
             ./gradlew --no-daemon assembleDebug
+          elif command -v gradle >/dev/null 2>&1; then
+            echo "Gradle Wrapper tidak tersedia."
+            echo "Menggunakan Gradle yang terpasang."
+            gradle assembleDebug
           else
-            echo "Gradle Wrapper tidak ditemukan."
+            echo "ERROR: Gradle tidak tersedia."
             exit 1
           fi
+
+          echo "Mencari hasil APK..."
+          find . -type f -name "*.apk"
+          
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
