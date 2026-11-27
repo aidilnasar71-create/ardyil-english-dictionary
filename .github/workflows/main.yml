@@ -1,4 +1,5 @@
 
+
 name: Build ARDYIL Android APK
 
 on:
@@ -25,8 +26,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses
 
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
@@ -58,4 +59,3 @@ jobs:
         with:
           name: ARDYIL-English-Dictionary-APK
           path: apk-output/ARDYIL-English-Dictionary-debug.apk
-          
