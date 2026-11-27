@@ -1,0 +1,60 @@
+
+name: Build ARDYIL English Dictionary APK
+
+on:
+  push:
+    branches:
+      - utama
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Check project files
+        run: |
+          echo "Checking Android project..."
+          ls -la
+          if [ ! -d "app" ]; then
+            echo "ERROR: Folder app tidak ditemukan."
+            exit 1
+          fi
+          if [ ! -f "settings.gradle" ] && [ ! -f "settings.gradle.kts" ]; then
+            echo "ERROR: File settings.gradle tidak ditemukan."
+            exit 1
+          fi
+
+      - name: Build debug APK
+        run: |
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew
+            ./gradlew assembleDebug
+          else
+            echo "ERROR: File gradlew tidak ditemukan."
+            exit 1
+          fi
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ARDYIL-English-Dictionary-APK
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          
