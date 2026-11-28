@@ -1302,5 +1302,114 @@ function init(){addCampus();addProfileSettings();document.title='ARDYIL English 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+
+<style id="ardyil79-command-style">
+#ardyil79-launch{position:fixed;right:14px;bottom:86px;z-index:9998;border:0;border-radius:22px;padding:13px 16px;background:linear-gradient(135deg,#7358d9,#27a88a);color:#fff;font-weight:900;box-shadow:0 7px 22px #39306455}
+#ardyil79-overlay{display:none;position:fixed;inset:0;z-index:9999;background:#f7f5ff;color:#28243b;overflow:auto;font-family:inherit}
+#ardyil79-overlay.open{display:block;animation:a79fade .25s ease}
+@keyframes a79fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.a79-head{position:sticky;top:0;background:#282343;color:white;padding:14px;z-index:2;display:flex;align-items:center;gap:12px}
+.a79-head button,.a79-tab{border:0;border-radius:13px;padding:10px 13px;font-weight:850}
+.a79-head button{background:#ffffff20;color:white}.a79-main{padding:14px;max-width:760px;margin:auto}
+.a79-hero{border-radius:24px;padding:20px;color:white;background:linear-gradient(130deg,#765de0,#29a98e);margin-bottom:14px}
+.a79-hero h2{margin:0 0 7px}.a79-tabs{display:flex;gap:7px;overflow:auto;padding:5px 0 12px;position:sticky;top:57px;background:#f7f5ff;z-index:1}
+.a79-tab{white-space:nowrap;background:#e9e4fa;color:#594a9e}.a79-tab.active{background:#5e4bb3;color:white}
+.a79-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.a79-card{background:white;border:1px solid #e8e4f2;border-radius:18px;padding:14px;box-shadow:0 4px 0 #e8e5f0;min-width:0}
+.a79-card button,.a79-action{border:0;border-radius:12px;padding:10px 12px;background:#6855c5;color:white;font-weight:800;margin-top:8px}
+.a79-muted{font-size:12px;color:#77718a}.a79-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0}
+.a79-row select,.a79-row input{max-width:55%;padding:9px;border:1px solid #dcd5ef;border-radius:10px;background:white}
+.a79-comic{max-width:470px;margin:12px auto;background:#fff;border-radius:18px;overflow:hidden}
+.a79-panel{min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:linear-gradient(160deg,#d8edff,#fff0d9);border-bottom:5px solid #25213c}
+.a79-panel:nth-child(even){background:linear-gradient(160deg,#eadfff,#dcfff0)}
+.a79-art{font-size:70px;animation:a79float 2.8s ease-in-out infinite}
+@keyframes a79float{50%{transform:translateY(-9px) rotate(2deg)}}
+.a79-bubble{background:white;border:2px solid #27223c;border-radius:18px;padding:12px;margin-top:14px;font-weight:800;max-width:95%}
+.a79-scene{height:230px;border-radius:20px;overflow:hidden;position:relative;background:linear-gradient(#8bd6ff 0 58%,#f7d88a 58%);margin:12px 0}
+.a79-sun{position:absolute;right:35px;top:22px;width:54px;height:54px;border-radius:50%;background:#ffe477;box-shadow:0 0 35px #fff5a6}
+.a79-cloud{position:absolute;font-size:48px;animation:a79cloud 12s linear infinite}
+@keyframes a79cloud{from{left:-70px}to{left:110%}}
+.a79-hill{position:absolute;bottom:-40px;left:-10%;width:120%;height:120px;border-radius:50% 50% 0 0;background:#4bb68d}
+.a79-person{position:absolute;bottom:36px;left:48%;font-size:55px;animation:a79float 2s infinite}
+.a79-word{padding:11px;background:#fff;border-radius:12px;margin:7px 0}
+.a79-word strong{color:#5945ac}
+.a79-hidden{display:none!important}
+@media(prefers-reduced-motion:reduce){#ardyil79-overlay *,#ardyil79-launch{animation:none!important;transition:none!important}}
+</style>
+<button id="ardyil79-launch" aria-label="Buka ARDYIL Studio">✨ ARDYIL 7.9</button>
+<div id="ardyil79-overlay" role="dialog" aria-modal="true" aria-label="ARDYIL Learning Studio">
+ <header class="a79-head"><button id="a79-close">← Kembali</button><strong>ARDYIL · LEARNING STUDIO</strong><span style="margin-left:auto">7.9</span></header>
+ <main class="a79-main">
+  <section class="a79-hero"><div style="font-size:32px">🌈📚✨</div><h2>Belajar, Berkarya, Bertualang!</h2><p>Setiap langkah kecil membawamu lebih dekat ke impian.</p><div id="a79-progress">Level 1 · Penjelajah Kata</div></section>
+  <nav class="a79-tabs" aria-label="Menu studio">
+   <button class="a79-tab active" data-tab="learn">Belajar</button><button class="a79-tab" data-tab="comic">Komik</button><button class="a79-tab" data-tab="story">Animasi</button><button class="a79-tab" data-tab="quiz">Tantangan</button><button class="a79-tab" data-tab="settings">Pengaturan</button>
+  </nav>
+  <section id="a79-learn">
+   <h3>🎓 Learning Path · Semua usia</h3><p class="a79-muted">Pilih jalur yang sesuai dengan tahap belajarmu.</p>
+   <div class="a79-row"><label>Jenjang belajar</label><select id="a79-age"><option>SD</option><option>SMP</option><option>SMA</option><option>Kuliah</option><option>Dewasa</option></select></div>
+   <div class="a79-grid" id="a79-units"></div><div id="a79-lesson"></div>
+  </section>
+  <section id="a79-comic" class="a79-hidden"><h3>📖 Original ARDYIL Comics</h3><div class="a79-row"><label>Pilih serial</label><select id="a79-series"></select></div><div class="a79-row"><label>Pilih episode</label><select id="a79-episode"></select></div><label><input type="checkbox" id="a79-translation" checked> Tampilkan terjemahan</label><div id="a79-panels" class="a79-comic"></div><div class="a79-row"><button class="a79-action" id="a79-prev">← Sebelumnya</button><button class="a79-action" id="a79-next">Selanjutnya →</button></div><button class="a79-action" id="a79-share-comic">↗ Bagikan cerita</button></section>
+  <section id="a79-story" class="a79-hidden"><h3>🎬 Mini Animated Story</h3><div class="a79-scene"><div class="a79-sun"></div><div class="a79-cloud">☁️</div><div class="a79-hill"></div><div class="a79-person" id="a79-character">🧑‍🚀</div></div><h3 id="a79-story-title">The Little Explorer</h3><p id="a79-story-line">A curious explorer starts a wonderful journey.</p><p id="a79-story-id">Penjelajah yang ingin tahu memulai perjalanan yang luar biasa.</p><div class="a79-row"><button class="a79-action" id="a79-story-prev">← Kembali</button><button class="a79-action" id="a79-story-next">Adegan berikutnya →</button></div><p class="a79-muted">Ini adegan ilustrasi bergerak di aplikasi, bukan video film MP4.</p></section>
+  <section id="a79-quiz" class="a79-hidden"><h3>🧩 Daily Brain Challenge</h3><div class="a79-card"><div id="a79-question">Apa arti kata “brave”?</div><div id="a79-answers"></div><div id="a79-feedback" aria-live="polite"></div><button class="a79-action" id="a79-new-question">Soal berikutnya</button></div></section>
+  <section id="a79-settings" class="a79-hidden"><h3>⚙️ Kenyamanan belajar</h3><div class="a79-card">
+   <div class="a79-row"><label>Ukuran teks</label><select id="a79-font"><option value="16">Normal</option><option value="18">Besar</option><option value="20">Sangat besar</option></select></div>
+   <div class="a79-row"><label>Kurangi animasi</label><input type="checkbox" id="a79-reduce"></div>
+   <div class="a79-row"><label>Terjemahan otomatis komik</label><input type="checkbox" id="a79-auto" checked></div>
+   <div class="a79-row"><label>Efek suara jawaban</label><input type="checkbox" id="a79-sound" checked></div>
+   <div class="a79-row"><label>Mode gelap</label><input type="checkbox" id="a79-dark"></div>
+   <button class="a79-action" id="a79-save">Simpan pengaturan</button><p id="a79-saved" class="a79-muted"></p>
+  </div><div class="a79-card"><h3>🔐 Akun Google</h3><p>Login Google sungguhan memerlukan Firebase project, OAuth Client ID, dan SHA-1/SHA-256 aplikasi. Belum diaktifkan agar tidak memberi login palsu atau meminta sandi Google secara tidak aman.</p><p class="a79-muted">Progress versi ini tersimpan di perangkat. Konfigurasi server dan kredensial resmi diperlukan untuk sinkronisasi akun.</p></div>
+  <div class="a79-card"><h3>📲 Bagikan ARDYIL</h3><p>Bagikan kabar belajar ke aplikasi yang tersedia di perangkat.</p><button class="a79-action" id="a79-share-app">Bagikan aplikasi</button></div></section>
+ </main>
+</div>
+<script id="ardyil79-command-center">
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const ages={
+'SD':[['My Family','School Things','Colors & Shapes','Food and Drinks','Animals','Numbers','My Daily Routine','Weather'],[['family','keluarga'],['school','sekolah'],['color','warna'],['apple','apel'],['animal','hewan'],['happy','senang']]],
+'SMP':[['Friendship','Hobbies','Healthy Habits','Around Town','Technology','Environment','Simple Stories','Everyday English'],[['friendship','persahabatan'],['hobby','hobi'],['healthy','sehat'],['neighborhood','lingkungan'],['device','perangkat'],['recycle','mendaur ulang']]],
+'SMA':[['Academic Words','Critical Thinking','Public Speaking','Science','Digital Citizenship','Culture','Essay Writing','Career Plans'],[['analyze','menganalisis'],['evidence','bukti'],['argument','argumen'],['experiment','percobaan'],['culture','budaya'],['conclusion','kesimpulan']]],
+'Kuliah':[['Campus Life','Research Skills','Presentation','Discussion','Scholarships','Internships','Academic Writing','Project Management'],[['lecture','kuliah'],['thesis','tesis'],['citation','sitasi'],['scholarship','beasiswa'],['internship','magang'],['deadline','tenggat']]],
+'Dewasa':[['Workplace English','Meetings','Customer Service','Negotiation','Travel','Finance','Leadership','Career Growth'],[['workplace','tempat kerja'],['agenda','agenda'],['customer','pelanggan'],['negotiate','bernegosiasi'],['budget','anggaran'],['leadership','kepemimpinan']]]
+};
+const serials=[
+['The Secret Garden','🪴','The garden is quiet. A tiny door waits behind the leaves.','Tamannya sunyi. Sebuah pintu kecil menunggu di balik dedaunan.'],
+['Skybound Academy','🏫','A new student discovers a school above the clouds.','Murid baru menemukan sekolah di atas awan.'],
+['Mystery of the Blue Moon','🌙','A blue light appears near the old lighthouse.','Cahaya biru muncul di dekat mercusuar tua.'],
+['Campus Chronicles','🎓','A group of students prepares for their biggest project.','Sekelompok mahasiswa bersiap untuk proyek terbesar mereka.'],
+['Everyday Heroes','🦸','Small acts of kindness can change an entire day.','Tindakan kebaikan kecil dapat mengubah seluruh hari.'],
+['The Last Compass','🧭','An old compass points toward an unexpected adventure.','Kompas tua menunjuk ke arah petualangan tak terduga.']
+];
+const scenes=[
+['🧑‍🚀','A curious explorer starts a wonderful journey.','Penjelajah yang ingin tahu memulai perjalanan yang luar biasa.'],
+['🦋','A colorful butterfly shows the way through the garden.','Kupu-kupu berwarna-warni menunjukkan jalan melewati taman.'],
+['🛶','A little boat crosses the sparkling blue river.','Perahu kecil menyeberangi sungai biru yang berkilau.'],
+['🏰','A friendly castle welcomes every new visitor.','Kastel yang ramah menyambut setiap pengunjung.'],
+['🌈','The journey ends with a bright rainbow and new friends.','Perjalanan berakhir dengan pelangi cerah dan teman-teman baru.']
+];
+const questions=[['brave','berani',['takut','malas','lelah']],['curious','penasaran',['marah','lapar','dingin']],['improve','meningkatkan',['menghapus','menunggu','melupakan']],['journey','perjalanan',['jendela','pelajaran','makanan']],['kindness','kebaikan',['kecepatan','kesulitan','kebisingan']]];
+let qi=0,si=0,story=0,episode=0;
+function share(title,text){if(navigator.share){navigator.share({title,text}).catch(()=>{});}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Teks tersalin. Silakan tempel ke aplikasi pilihanmu.')).catch(()=>alert(text));}else alert(text);}
+function open(){ $('ardyil79-overlay').classList.add('open');}
+$('ardyil79-launch').onclick=open;$('a79-close').onclick=()=>$('ardyil79-overlay').classList.remove('open');
+document.querySelectorAll('.a79-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.a79-tab').forEach(x=>x.classList.toggle('active',x===b));['learn','comic','story','quiz','settings'].forEach(t=>$('a79-'+t).classList.toggle('a79-hidden',t!==b.dataset.tab));});
+function showUnits(){const age=$('a79-age').value,data=ages[age];$('a79-units').innerHTML=data[0].map((u,i)=>'<article class="a79-card"><b>🗺️ Level '+(i+1)+'</b><p>'+u+'</p><small>Vocabulary · Speaking · Practice</small><br><button data-unit="'+i+'">Mulai unit</button></article>').join('');document.querySelectorAll('[data-unit]').forEach(b=>b.onclick=()=>{const words=data[1];$('a79-lesson').innerHTML='<div class="a79-card"><h3>'+data[0][+b.dataset.unit]+'</h3>'+words.map(w=>'<div class="a79-word"><strong>'+w[0]+'</strong> — '+w[1]+'</div>').join('')+'<p>Ucapkan kata-kata ini dengan lantang, lalu lanjutkan latihan di menu Tantangan.</p></div>';});}
+$('a79-age').onchange=showUnits;showUnits();
+$('a79-series').innerHTML=serials.map((s,i)=>'<option value="'+i+'">'+s[0]+'</option>').join('');
+function renderComic(){const s=serials[si],panels=Array.from({length:6},(_,i)=>({art:['🌿','🚪','🗝️','✨','🦉','🌈'][i],en:[s[2],'A soft sound comes from the other side.','Our friends decide to explore together.','Every clue brings a new question.','They discover something wonderful.','A new chapter is waiting tomorrow.'][i],id:[s[3],'Terdengar suara lembut dari sisi lainnya.','Teman-teman memutuskan untuk menjelajah bersama.','Setiap petunjuk membawa pertanyaan baru.','Mereka menemukan sesuatu yang menakjubkan.','Bab baru menunggu esok hari.'][i]}));$('a79-panels').innerHTML='<div style="padding:14px;text-align:center"><h3>'+s[0]+'</h3><small>Episode '+(episode+1)+' · ARDYIL ORIGINAL</small></div>'+panels.map(p=>'<article class="a79-panel"><div class="a79-art">'+p.art+'</div><div class="a79-bubble">'+p.en+'</div>'+($('a79-translation').checked?'<p>'+p.id+'</p>':'')+'</article>').join('');$('a79-prev').disabled=episode===0;$('a79-next').disabled=episode>=19;}
+$('a79-series').onchange=()=>{si=+$('a79-series').value;episode=0;renderComic();};$('a79-episode').innerHTML=Array.from({length:20},(_,i)=>'<option value="'+i+'">Episode '+(i+1)+'</option>').join('');$('a79-episode').onchange=()=>{episode=+$('a79-episode').value;renderComic();};$('a79-translation').onchange=renderComic;$('a79-prev').onclick=()=>{$('a79-episode').value=String(--episode);renderComic();};$('a79-next').onclick=()=>{$('a79-episode').value=String(++episode);renderComic();};renderComic();
+$('a79-share-comic').onclick=()=>share('ARDYIL Comic · '+serials[si][0],serials[si][2]+'\n'+serials[si][3]+'\nRead and learn with ARDYIL!');
+function renderScene(){$('a79-character').textContent=scenes[story][0];$('a79-story-line').textContent=scenes[story][1];$('a79-story-id').textContent=scenes[story][2];$('a79-story-title').textContent='The Little Explorer · Scene '+(story+1);}
+$('a79-story-next').onclick=()=>{story=(story+1)%scenes.length;renderScene();};$('a79-story-prev').onclick=()=>{story=(story+scenes.length-1)%scenes.length;renderScene();};renderScene();
+function question(){const q=questions[qi%questions.length];$('a79-question').textContent='Apa arti kata “'+q[0]+'”?';const choices=[q[1],...q[2]].sort(()=>Math.random()-.5);$('a79-answers').innerHTML=choices.map(c=>'<button class="a79-action" data-answer="'+c+'">'+c+'</button>').join('');$('a79-feedback').textContent='';document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{$('a79-feedback').textContent=b.dataset.answer===q[1]?'Benar! Hebat, teruskan! ⭐':'Belum tepat. Jawaban: '+q[1];});}
+$('a79-new-question').onclick=()=>{qi++;question();};question();
+function loadPrefs(){try{const p=JSON.parse(localStorage.getItem('ardyil79-settings')||'{}');$('a79-font').value=p.font||'16';$('a79-reduce').checked=!!p.reduce;$('a79-auto').checked=p.auto!==false;$('a79-sound').checked=p.sound!==false;$('a79-dark').checked=!!p.dark;}catch(e){}}
+$('a79-save').onclick=()=>{const p={font:$('a79-font').value,reduce:$('a79-reduce').checked,auto:$('a79-auto').checked,sound:$('a79-sound').checked,dark:$('a79-dark').checked};localStorage.setItem('ardyil79-settings',JSON.stringify(p));document.documentElement.style.fontSize=p.font+'px';$('ardyil79-overlay').style.background=p.dark?'#211e32':'#f7f5ff';$('ardyil79-overlay').style.color=p.dark?'#fff':'#28243b';$('a79-saved').textContent='Pengaturan berhasil disimpan di perangkat ✓';};
+$('a79-share-app').onclick=()=>share('ARDYIL · Belajar Lebih Seru','Ayo belajar bahasa Inggris lewat kamus, komik, cerita animasi, dan tantangan di ARDYIL!');
+loadPrefs();
+})();
+</script>
 </body>
 </html>
