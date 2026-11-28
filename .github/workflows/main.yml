@@ -39,13 +39,13 @@ jobs:
       - name: Install Android SDK packages
         run: |
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
-            "platforms;android-35" \
-            "build-tools;35.0.0"
+            "platforms;android-36" \
+            "build-tools;36.0.0"
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: '8.11.1'
 
       - name: Extract Android project
         run: |
@@ -53,6 +53,9 @@ jobs:
           unzip -q ARDYIL_English_Dictionary_Android_Mic_Recording_Fix.zip -d android-project
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+
+      - name: Prepare Android 16 / Play Store version 7.9
+        run: bash scripts/prepare-playstore-build.sh "$PROJECT_DIR"
 
       - name: Protect the microphone and speech audio core
         run: bash scripts/check-audio-core.sh .
@@ -70,7 +73,7 @@ jobs:
           ASSET_HTML="$PROJECT_DIR/app/src/main/assets/index.html"
           test -f "$ASSET_HTML"
           cp index.html "$ASSET_HTML"
-          echo "Applied latest ARDYIL 3.0 interface to Android assets."
+          echo "Applied latest ARDYIL 7.9 learning and media modules to Android assets."
 
       - name: Build APK
         run: gradle --no-daemon -p "$PROJECT_DIR" assembleDebug
@@ -80,10 +83,10 @@ jobs:
           mkdir -p apk-output
           APK=$(find "$PROJECT_DIR" -path "*/build/outputs/apk/debug/*.apk" -type f | head -n 1)
           test -n "$APK"
-          cp "$APK" apk-output/ARDYIL-English-Dictionary-debug.apk
+          cp "$APK" apk-output/ARDYIL-English-Dictionary-7.9.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: ARDYIL-English-Dictionary-APK
-          path: apk-output/ARDYIL-English-Dictionary-debug.apk
+          name: ARDYIL-7.9-APK
+          path: apk-output/ARDYIL-English-Dictionary-7.9.apk
