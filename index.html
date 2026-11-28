@@ -192,7 +192,7 @@ else if(name==='speak'){const x=$('panel-practice');x.style.display='block';x.cl
 else if(name==='academy'){academy.style.display='block';navActive('academy');}
 else if(name==='profile'){profile.style.display='block';navActive('profile');refreshStats();}
 else if(name==='game'){const x=$('panel-quiz');x.style.display='block';x.classList.add('v20-show');navActive('academy');}
-else if(name==='stories'){navActive('stories');const launch=$('ardyil79-launch');if(launch)launch.click();else{home.style.display='block';}}
+else if(name==='stories'){home.style.display='block';navActive('stories');const launch=$('ardyil79-launch');if(launch)launch.click();}
 }
 function module(name){hideAll();stage.style.display='block';stage.classList.add('active');$('v20-module-back').style.display='inline-block';$('v20-module-title').textContent=({placement:'Tes kemampuan awal',vocab:'Smart Vocabulary',grammar:'Grammar Academy',listen:'Listening Lab',write:'Writing Workshop',tutor:'Tutor Practice',progress:'Learning Progress'})[name]||'Materi belajar';$('v20-module-sub').textContent='ARDYIL 20.0 · Belajar dalam satu pengalaman terpadu';const panel=$('a12-'+name);if(panel)panel.classList.add('active');$('ardyil12-universe').style.display='block';navActive('academy');refreshStats();}
 function refreshStats(){let s={};try{s=JSON.parse(localStorage.getItem('ardyil12-progress-v1')||'{}');}catch(e){};const xp=s.xp||0;['v20-home-xp','v20-profile-xp'].forEach(id=>$(id).textContent=id==='v20-home-xp'?xp+' XP':xp);$('v20-home-words').textContent=s.reviewed||0;$('v20-profile-correct').textContent=s.correct||0;$('v20-profile-reviewed').textContent=s.reviewed||0;$('v20-profile-lessons').textContent=s.lessons||0;}
