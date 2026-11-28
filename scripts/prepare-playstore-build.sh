@@ -42,8 +42,8 @@ for path in gradle_files:
 missing=[]
 if not compile_changed: missing.append("compileSdk 35 -> 36")
 if not target_changed: missing.append("targetSdk 35 -> 36")
-if not version_code_changed: missing.append("versionCode -> 790")
-if not version_name_changed: missing.append("versionName -> 7.9")
+if not version_code_changed: missing.append("versionCode -> 1200")
+if not version_name_changed: missing.append("versionName -> 12.0")
 if not agp_changed:
     # Some project templates may already be using a newer AGP. Verify rather than silently downgrading.
     combined = "\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in gradle_files)
