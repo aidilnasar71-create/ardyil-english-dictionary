@@ -18,9 +18,9 @@ This repository build is a development/debug build, not yet a Play Store release
 New Google Play apps and app updates must target Android 16 (API 36) or higher from 31 August 2026. The pipeline therefore attempts to build the 7.9 package with API 36. Android 13 devices remain supported by the project's minimum SDK; target API level does not mean Android 16-only.
 
 ## Current 7.9 content
-- Five curriculum tracks: SD, SMP, SMA, university and professional/adult.
+- Five curriculum tracks: SD, SMP, SMA, university and professional/adult; eight units per track and 160 starter vocabulary prompts.
 - Eight learning units per track, each with four offline vocabulary prompts and short quizzes.
-- Six original comic series with five episode titles each, vertical scroll panels and Indonesian translations.
-- Six illustrated animated story experiences with 3- or 5-minute playback timelines, scene motion, bilingual captions and TTS narration.
+- Eight original comic series with eight episode titles each (64 episodes total), four illustrated panels per episode (256 panels), vertical scrolling and Indonesian translations.
+- Eight illustrated animated story experiences with 3- or 5-minute timelines, moving vector scenes, bilingual captions and TTS narration.
 - Local XP/progress storage and Android native share chooser.
 - Existing dictionary, puzzle, daily challenge, adventure, novel, media, settings and protected audio/microphone modules remain in the app.
