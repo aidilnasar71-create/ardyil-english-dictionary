@@ -54,6 +54,13 @@ jobs:
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
+      - name: Apply latest ARDYIL interface and learning modules
+        run: |
+          ASSET_HTML="$PROJECT_DIR/app/src/main/assets/index.html"
+          test -f "$ASSET_HTML"
+          cp index.html "$ASSET_HTML"
+          echo "Applied latest ARDYIL 3.0 interface to Android assets."
+
       - name: Build APK
         run: gradle --no-daemon -p "$PROJECT_DIR" assembleDebug
 
