@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17152b">
 <meta name="description" content="Kamus Inggris-Indonesia offline dengan pencarian pintar, audio, izin mikrofon, terjemahan lokal, kuis, favorit, dan pola kalimat.">
-<title>ARDYIL English Dictionary 4.1 — Learn, Play, Explore</title>
+<title>ARDYIL English Dictionary 20.0 — Learn, Play, Explore</title>
 <style>
 :root{--ink:#201d35;--muted:#77748a;--paper:#f7f6fb;--card:#fff;--line:#e9e6f1;--violet:#6f5be8;--violet2:#927cff;--mint:#49b99b;--rose:#ef8ca6;--navy:#17152b;--soft:#f0edff;--shadow:0 14px 40px rgba(39,31,79,.08);--radius:22px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(111,91,232,.25);outline-offset:2px}.shell{max-width:1100px;margin:0 auto;padding:0 18px 48px}.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0 15px;gap:12px}.brand{display:flex;align-items:center;gap:11px;min-width:0}.brandmark{width:42px;height:42px;border-radius:15px;background:linear-gradient(145deg,#8d7aff,#5b48d2);color:#fff;display:grid;place-items:center;font-size:21px;font-weight:900;box-shadow:0 8px 20px rgba(111,91,232,.26)}.brandname{font-weight:850;letter-spacing:.02em;font-size:15px}.brandtag{color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.top-actions{display:flex;align-items:center;gap:8px}.offline-pill{display:flex;align-items:center;gap:7px;border:1px solid #cdebe2;background:#effbf7;color:#287b65;border-radius:99px;padding:7px 10px;font-size:11px;font-weight:750;white-space:nowrap}.dot{width:7px;height:7px;border-radius:50%;background:#43b991;box-shadow:0 0 0 3px rgba(67,185,145,.12)}.iconbtn{width:39px;height:39px;border:1px solid var(--line);background:#fff;border-radius:13px;color:var(--ink);font-size:18px}
@@ -641,7 +641,7 @@ renderStats();renderMissions();renderAdventure();renderMath();renderNovel();togg
 $x('ardyilPuzzleSolved').textContent=state.puzzleSolved;
 const exp=document.getElementById('ardyil-expansion');if(exp)exp.hidden=false;
 const oldHero=document.querySelector('.hero-kicker');if(oldHero)oldHero.textContent='✦ LEARN · PLAY · EXPLORE · ARDYIL 4.1';
-const title=document.querySelector('title');if(title)title.textContent='ARDYIL English Dictionary 4.1 — Learn, Play, Explore';
+const title=document.querySelector('title');if(title)title.textContent='ARDYIL English Dictionary 20.0 — Learn, Play, Explore';
 openSplash();
 })();
 </script>
@@ -735,7 +735,7 @@ body.ardyil-dark .ardyil-bottom-nav{background:rgba(35,33,54,.97);border-color:#
 'use strict';
 const byId=id=>document.getElementById(id),main=document.querySelector('main');
 if(!main||document.getElementById('panel-home'))return;
-document.title='ARDYIL English Dictionary 4.1 — Learn, Play, Explore';
+document.title='ARDYIL English Dictionary 20.0 — Learn, Play, Explore';
 const brandTag=document.querySelector('.brandtag');if(brandTag)brandTag.textContent='LEARN • PLAY • EXPLORE';
 const home=[
 '<section class="panel" id="panel-home"><div class="ardyil-duo-home">',
@@ -1130,7 +1130,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </script>
 
 
-<!-- ARDYIL 7.9: expanded learning paths, original story library, sharing and account foundation -->
+<!-- ARDYIL 20.0: expanded learning paths, original story library, sharing and account foundation -->
 <style id="ardyil-79-style">
 :root{--a79:#1db58c;--a79dark:#16816b;--a79violet:#7967df;--a79gold:#f3b33d}
 .ardyil79-block{margin:14px 0;padding:16px;border-radius:22px;background:#fff;box-shadow:0 5px 0 #e5e9ef;border:1px solid #edf0f4}
@@ -1250,7 +1250,7 @@ function renderAcademy(){
 var root=$('ardyil79AcademyRoot');if(!root)return;
 var age=progress.age||'smp',track=tracks[age]||tracks.smp;
 var done=progress.done[age]||[];
-root.innerHTML='<div class="ardyil79-block"><div class="ardyil79-heading"><div><h3>ARDYIL Learning Universe</h3><p>Pilih jenjang dan belajar sesuai tahapmu.</p></div><span class="ardyil79-pill">VERSION 7.9</span></div><div class="ardyil79-age-grid">'+Object.keys(tracks).map(function(k){var t=tracks[k];return '<button class="ardyil79-age '+(age===k?'active':'')+'" data-age79="'+k+'"><span class="emoji">'+t.icon+'</span><b>'+t.title+'</b><small>'+t.sub.split('.')[0]+'</small></button>';}).join('')+'</div><div class="ardyil79-heading" style="margin-top:17px"><div><h3>'+track.title+'</h3><p>'+track.sub+'</p></div><span class="ardyil79-pill">'+done.length+'/'+track.units.length+' SELESAI</span></div><div class="ardyil79-progress"><span style="width:'+(done.length/track.units.length*100)+'%"></span></div><div class="ardyil79-units">'+track.units.map(function(u,i){return '<button class="ardyil79-unit '+(done.indexOf(i)>=0?'done':'')+'" data-unit79="'+i+'"><span class="emoji">'+u[1]+'</span><b>'+(done.indexOf(i)>=0?'✓ ':'')+u[0]+'</b><small>4 kosakata · latihan singkat</small></button>';}).join('')+'</div><div class="ardyil79-lesson" id="ardyil79Lesson" hidden></div><div class="ardyil79-row" style="margin-top:13px"><span class="ardyil79-pill">⭐ '+progress.xp+' XP</span><span class="ardyil79-pill">📖 '+progress.lessons+' pelajaran selesai</span></div></div>';
+root.innerHTML='<div class="ardyil79-block"><div class="ardyil79-heading"><div><h3>ARDYIL Learning Universe</h3><p>Pilih jenjang dan belajar sesuai tahapmu.</p></div><span class="ardyil79-pill">VERSION 20.0</span></div><div class="ardyil79-age-grid">'+Object.keys(tracks).map(function(k){var t=tracks[k];return '<button class="ardyil79-age '+(age===k?'active':'')+'" data-age79="'+k+'"><span class="emoji">'+t.icon+'</span><b>'+t.title+'</b><small>'+t.sub.split('.')[0]+'</small></button>';}).join('')+'</div><div class="ardyil79-heading" style="margin-top:17px"><div><h3>'+track.title+'</h3><p>'+track.sub+'</p></div><span class="ardyil79-pill">'+done.length+'/'+track.units.length+' SELESAI</span></div><div class="ardyil79-progress"><span style="width:'+(done.length/track.units.length*100)+'%"></span></div><div class="ardyil79-units">'+track.units.map(function(u,i){return '<button class="ardyil79-unit '+(done.indexOf(i)>=0?'done':'')+'" data-unit79="'+i+'"><span class="emoji">'+u[1]+'</span><b>'+(done.indexOf(i)>=0?'✓ ':'')+u[0]+'</b><small>4 kosakata · latihan singkat</small></button>';}).join('')+'</div><div class="ardyil79-lesson" id="ardyil79Lesson" hidden></div><div class="ardyil79-row" style="margin-top:13px"><span class="ardyil79-pill">⭐ '+progress.xp+' XP</span><span class="ardyil79-pill">📖 '+progress.lessons+' pelajaran selesai</span></div></div>';
 root.querySelectorAll('[data-age79]').forEach(function(b){b.addEventListener('click',function(){progress.age=b.dataset.age79;save();renderAcademy();});});
 root.querySelectorAll('[data-unit79]').forEach(function(b){b.addEventListener('click',function(){startLesson(Number(b.dataset.unit79));});});
 }
@@ -1380,7 +1380,7 @@ p.insertBefore(card,p.firstChild);
 $('ardyil79Google').addEventListener('click',function(){showAccountModal();});
 $('ardyil79Share').addEventListener('click',function(){if(progress.age==='sd'){alert('Mode SD: bagikan progres hanya dengan bantuan orang tua atau wali.');return;}var total=Object.values(progress.done||{}).reduce(function(n,a){return n+(a||[]).length;},0);shareText('Progres belajar ARDYIL','Aku sedang belajar bersama ARDYIL! ⭐ '+progress.xp+' XP · '+total+' unit selesai. Yuk belajar bahasa bersama!');});
 $('ardyil79AppShare').addEventListener('click',function(){shareText('ARDYIL — Learn, Play, Explore','Kenalan dengan ARDYIL, teman belajar bahasa, membaca cerita, bermain teka-teki, dan menjelajah pengetahuan.');});
-$('ardyil79Clear').addEventListener('click',function(){if(!confirm('Hapus progres belajar ARDYIL 7.9 di perangkat ini? Data kamus lama dan rekaman mikrofon tidak ikut dihapus.'))return;try{localStorage.removeItem(STORE);}catch(e){}progress={age:'smp',xp:0,done:{},lessons:0};save();renderAcademy();alert('Progres ARDYIL 7.9 berhasil direset.');});
+$('ardyil79Clear').addEventListener('click',function(){if(!confirm('Hapus progres belajar ARDYIL 20.0 di perangkat ini? Data kamus lama dan rekaman mikrofon tidak ikut dihapus.'))return;try{localStorage.removeItem(STORE);}catch(e){}progress={age:'smp',xp:0,done:{},lessons:0};save();renderAcademy();alert('Progres ARDYIL 20.0 berhasil direset.');});
 }
 function showAccountModal(){
 var modal=$('ardyil79Modal');if(!modal){modal=document.createElement('div');modal.id='ardyil79Modal';modal.className='ardyil79-modal';modal.innerHTML='<div class="ardyil79-modal-card"><h3>Masuk dengan Google</h3><p>Integrasi Google memakai Android Credential Manager. Agar benar-benar aktif, pemilik aplikasi perlu membuat Google Cloud OAuth project, mendaftarkan package <b>com.ardyil.dictionary</b>, menambahkan SHA-1/SHA-256 sertifikat, dan menyediakan Web Client ID. Token harus diverifikasi melalui backend atau Firebase Authentication. Karena materi ARDYIL mencakup jenjang SD, alur usia, izin orang tua, dan kelayakan SDK untuk pengguna anak perlu ditinjau sebelum login dibuka.</p><ul><li>Jangan memasukkan password Google langsung ke ARDYIL.</li><li>Mode belajar offline tetap bisa digunakan tanpa login.</li><li>Setelah pembuatan akun diaktifkan, ARDYIL harus menyediakan penghapusan akun dan data.</li></ul><p><b>Status:</b> Menunggu konfigurasi OAuth pemilik aplikasi. Tombol ini belum melakukan autentikasi.</p><button class="ardyil79-action" id="ardyil79CloseModal">Mengerti</button></div>';document.body.appendChild(modal);$('ardyil79CloseModal').addEventListener('click',function(){modal.classList.remove('show');});modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('show');});}
@@ -1390,7 +1390,7 @@ function addHomeShortcuts(){
 var list=document.querySelector('#panel-home .ardyil-path-list');if(list&&!list.querySelector('[data-open-tab="academy"]')){var b=document.createElement('button');b.className='ardyil-path-row';b.dataset.openTab='academy';b.innerHTML='<span class="ardyil-path-icon">🌈</span><span class="ardyil-path-content"><b>Learning for Every Stage</b><small>SD · SMP · SMA · Kuliah · Profesional</small></span><span class="ardyil-path-arrow">›</span>';list.appendChild(b);}
 var shortcuts=document.querySelector('#panel-home .ardyil-shortcuts');if(shortcuts&&!shortcuts.querySelector('[data-open-tab="media"]')){var b2=document.createElement('button');b2.className='ardyil-shortcut';b2.dataset.openTab='media';b2.innerHTML='<span>🎞️</span><b>Comic & Cinema</b><small>Komik scroll dan cerita animasi</small>';shortcuts.appendChild(b2);}
 }
-function init(){document.title='ARDYIL English Dictionary 7.9 — Learn, Play, Explore';var brand=document.querySelector('.brandtag');if(brand)brand.textContent='LEARN • PLAY • EXPLORE · 7.9';installAcademy();installComic79();installCinema();installAccount();addHomeShortcuts();}
+function init(){document.title='ARDYIL English Dictionary 20.0 — Learn, Play, Explore';var brand=document.querySelector('.brandtag');if(brand)brand.textContent='LEARN • PLAY • EXPLORE · 20.0';installAcademy();installComic79();installCinema();installAccount();addHomeShortcuts();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(init,100);});else setTimeout(init,100);
 })();
 </script>
@@ -1448,7 +1448,7 @@ function addProfileSettings(){
  $('ardyil79Save').onclick=()=>{const p=prefs();localStorage.setItem('ardyil79Settings',JSON.stringify(p));apply(p);$('ardyil79Saved').textContent='Preferensi tersimpan ✓';};
  $('ardyil79ShareApp').onclick=()=>ardyil79Share('ARDYIL English Dictionary','Belajar English dengan kamus, kuis, misi, cerita, komik dan jalur SD hingga dewasa. Yuk coba ARDYIL!');
 }
-function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 12.0';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 20.0';}
+function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 20.0';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 20.0';}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
@@ -1488,7 +1488,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </style>
 <button id="ardyil79-launch" aria-label="Buka ARDYIL Studio">🚀 ARDYIL 20.0</button>
 <div id="ardyil79-overlay" role="dialog" aria-modal="true" aria-label="ARDYIL Learning Studio">
- <header class="a79-head"><button id="a79-close">← Kembali</button><strong>ARDYIL · ULTIMATE LEARNING UNIVERSE</strong><span style="margin-left:auto">12.0</span></header>
+ <header class="a79-head"><button id="a79-close">← Kembali</button><strong>ARDYIL · ULTIMATE LEARNING UNIVERSE</strong><span style="margin-left:auto">20.0</span></header>
  <main class="a79-main">
   <section class="a79-hero"><div style="font-size:32px">🌈📚✨</div><h2>Belajar, Berkarya, Bertualang!</h2><p>Setiap langkah kecil membawamu lebih dekat ke impian.</p><div id="a79-progress">Level 1 · Penjelajah Kata</div></section>
   <nav class="a79-tabs" aria-label="Menu studio">
@@ -1560,7 +1560,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  </section>
  <section class="a12-panel" id="a12-progress">
   <h3>🏆 My Learning Progress</h3>
-  <div class="a12-card"><div class="a12-big" id="a12-xp">0 XP</div><p class="a12-muted">Poin belajar dari latihan versi 12.0 di perangkat ini.</p><div class="a12-meter"><span id="a12-xp-meter"></span></div><div class="a12-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px"><div class="a12-card"><b id="a12-correct">0</b><p class="a12-muted">Jawaban benar</p></div><div class="a12-card"><b id="a12-reviewed">0</b><p class="a12-muted">Kata ditinjau</p></div><div class="a12-card"><b id="a12-lessons">0</b><p class="a12-muted">Latihan selesai</p></div><div class="a12-card"><b id="a12-badges">0</b><p class="a12-muted">Lencana</p></div></div><h3>Lencana</h3><div id="a12-badge-list"></div><button id="a12-progress-reset">Reset progres versi 12.0</button></div>
+  <div class="a12-card"><div class="a12-big" id="a12-xp">0 XP</div><p class="a12-muted">Poin belajar dari latihan versi 20.0 di perangkat ini.</p><div class="a12-meter"><span id="a12-xp-meter"></span></div><div class="a12-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px"><div class="a12-card"><b id="a12-correct">0</b><p class="a12-muted">Jawaban benar</p></div><div class="a12-card"><b id="a12-reviewed">0</b><p class="a12-muted">Kata ditinjau</p></div><div class="a12-card"><b id="a12-lessons">0</b><p class="a12-muted">Latihan selesai</p></div><div class="a12-card"><b id="a12-badges">0</b><p class="a12-muted">Lencana</p></div></div><h3>Lencana</h3><div id="a12-badge-list"></div><button id="a12-progress-reset">Reset progres versi 20.0</button></div>
  </section>
 </section>
 <script id="ardyil12-engine">
@@ -1627,7 +1627,7 @@ $('a12-tutor-options').innerHTML=tutor.map((x,i)=>'<button class="a12-choice" da
 root.querySelectorAll('[data-tutor]').forEach(b=>b.onclick=()=>{ti=+b.dataset.tutor;$('a12-tutor-feedback').textContent=tutor[ti][1];$('a12-tutor-speak').dataset.line=tutor[ti][0];addXP(2);});
 $('a12-tutor-speak').onclick=()=>speak($('a12-tutor-speak').dataset.line||tutor[0][0]);
 function renderProgress(){if(!$('a12-xp'))return;$('a12-xp').textContent=state.xp+' XP';$('a12-xp-meter').style.width=(state.xp%100)+'%';$('a12-correct').textContent=state.correct;$('a12-reviewed').textContent=state.reviewed;$('a12-lessons').textContent=state.lessons;$('a12-badges').textContent=[state.xp>=20,state.correct>=5,state.reviewed>=5,!!state.placement].filter(Boolean).length;const badges=[['🌱','Langkah Pertama',state.xp>=10],['🎯','Penentu Level',!!state.placement],['🧠','Pembelajar Cermat',state.reviewed>=5],['⭐','Konsisten Berlatih',state.correct>=5],['🏅','100 XP Club',state.xp>=100]];$('a12-badge-list').innerHTML=badges.map(b=>'<span class="a12-pill" style="opacity:'+(b[2]?'1':'.4')+'">'+b[0]+' '+b[1]+'</span>').join('');}
-$('a12-progress-reset').onclick=()=>{if(confirm('Hapus progres ARDYIL 20.0 di perangkat ini?')){state={...defaults};save();renderWord();alert('Progres versi 12.0 direset.');}};
+$('a12-progress-reset').onclick=()=>{if(confirm('Hapus progres ARDYIL 20.0 di perangkat ini?')){state={...defaults};save();renderWord();alert('Progres versi 20.0 direset.');}};
 renderProgress();
 root.querySelectorAll('[data-a12]').forEach(b=>b.onclick=()=>{root.querySelectorAll('[data-a12]').forEach(x=>x.classList.toggle('active',x===b));root.querySelectorAll('.a12-panel').forEach(x=>x.classList.toggle('active',x.id==='a12-'+b.dataset.a12));});
 const oldTabs=document.querySelectorAll('.a79-tab');
