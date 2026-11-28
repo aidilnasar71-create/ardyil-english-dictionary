@@ -1137,14 +1137,14 @@ function installComic79(){
 var c=$('ardyilComicSelect'),e=$('ardyilComicEpisode'),prev=$('ardyilComicPrev'),next=$('ardyilComicNext'),host=$('ardyilComicPanels');
 if(!c||!e||!host)return;
 function replace(id){var old=$(id);if(!old)return null;var fresh=old.cloneNode(true);old.parentNode.replaceChild(fresh,old);return fresh;}
-c=replace('ardyilComicSelect');e=replace('ardyilComicEpisode');prev=replace('ardyilComicPrev');next=replace('ardyilComicNext');
+c=replace('ardyilComicSelect');e=replace('ardyilComicEpisode');prev=replace('ardyilComicPrev');next=replace('ardyilComicNext');var translation=replace('ardyilComicTranslation');
 c.innerHTML=comics79.map(function(s,i){return '<option value="'+i+'">'+s.title+'</option>';}).join('');
 e.innerHTML=comics79[0].episodes.map(function(s,i){return '<option value="'+i+'">Episode '+(i+1)+' · '+s+'</option>';}).join('');
 c.addEventListener('change',function(){comicIndex=Number(c.value)||0;episodeIndex=0;e.innerHTML=comics79[comicIndex].episodes.map(function(s,i){return '<option value="'+i+'">Episode '+(i+1)+' · '+s+'</option>';}).join('');renderComic79();});
 e.addEventListener('change',function(){episodeIndex=Number(e.value)||0;renderComic79();});
 if(prev)prev.addEventListener('click',function(){episodeIndex=Math.max(0,episodeIndex-1);e.value=String(episodeIndex);renderComic79();});
 if(next)next.addEventListener('click',function(){episodeIndex=Math.min(4,episodeIndex+1);e.value=String(episodeIndex);renderComic79();});
-if(prev)prev.textContent='← Episode sebelumnya';if(next)next.textContent='Episode berikutnya →';
+if(prev)prev.textContent='← Episode sebelumnya';if(next)next.textContent='Episode berikutnya →';if(translation)translation.addEventListener('change',renderComic79);
 renderComic79();
 }
 var cinema=[
@@ -1212,7 +1212,7 @@ function addHomeShortcuts(){
 var list=document.querySelector('#panel-home .ardyil-path-list');if(list&&!list.querySelector('[data-open-tab="academy"]')){var b=document.createElement('button');b.className='ardyil-path-row';b.dataset.openTab='academy';b.innerHTML='<span class="ardyil-path-icon">🌈</span><span class="ardyil-path-content"><b>Learning for Every Stage</b><small>SD · SMP · SMA · Kuliah · Profesional</small></span><span class="ardyil-path-arrow">›</span>';list.appendChild(b);}
 var shortcuts=document.querySelector('#panel-home .ardyil-shortcuts');if(shortcuts&&!shortcuts.querySelector('[data-open-tab="media"]')){var b2=document.createElement('button');b2.className='ardyil-shortcut';b2.dataset.openTab='media';b2.innerHTML='<span>🎞️</span><b>Comic & Cinema</b><small>Komik scroll dan cerita animasi</small>';shortcuts.appendChild(b2);}
 }
-function init(){installAcademy();installComic79();installCinema();installAccount();addHomeShortcuts();}
+function init(){document.title='ARDYIL English Dictionary 7.9 — Learn, Play, Explore';var brand=document.querySelector('.brandtag');if(brand)brand.textContent='LEARN • PLAY • EXPLORE · 7.9';installAcademy();installComic79();installCinema();installAccount();addHomeShortcuts();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(init,100);});else setTimeout(init,100);
 })();
 </script>
