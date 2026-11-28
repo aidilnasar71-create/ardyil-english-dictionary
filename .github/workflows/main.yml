@@ -54,6 +54,9 @@ jobs:
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
+      - name: Protect the microphone and speech audio core
+        run: bash scripts/check-audio-core.sh .
+
       - name: Install native Android microphone and speech bridge
         run: |
           ACTIVITY_PATH=$(find "$PROJECT_DIR/app/src/main/java" -name MainActivity.java -print -quit)
