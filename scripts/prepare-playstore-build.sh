@@ -32,9 +32,9 @@ for path in gradle_files:
     text, n = re.subn(r"(?m)(\btargetSdk(?:Version)?\s*(?:=\s*)?)35\b", r"\g<1>36", text)
     target_changed = target_changed or n > 0
     text, n = re.subn(r"(?m)(\bbuildToolsVersion\s*(?:=\s*)?['\"])35\.0\.0(['\"])", r"\g<1>36.0.0\2", text)
-    text, n = re.subn(r"(?m)(\bversionCode\s*(?:=\s*)?)\d+", r"\g<1>790", text)
+    text, n = re.subn(r"(?m)(\bversionCode\s*(?:=\s*)?)\d+", r"\g<1>1200", text)
     version_code_changed = version_code_changed or n > 0
-    text, n = re.subn(r"(?m)(\bversionName\s*(?:=\s*)?['\"])[^'\"]+(['\"])", r"\g<1>7.9\2", text)
+    text, n = re.subn(r"(?m)(\bversionName\s*(?:=\s*)?['\"])[^'\"]+(['\"])", r"\g<1>12.0\2", text)
     version_name_changed = version_name_changed or n > 0
     if text != original:
         path.write_text(text, encoding="utf-8")
@@ -51,5 +51,5 @@ if not agp_changed:
         missing.append("Android Gradle Plugin 8.9.1+")
 if missing:
     raise SystemExit("Play Store preparation could not safely patch: " + ", ".join(missing))
-print("ARDYIL Play Store build configured: AGP >= 8.9.1, compileSdk 36, targetSdk 36, versionCode 790, versionName 7.9.")
+print("ARDYIL Play Store build configured: AGP >= 8.9.1, compileSdk 36, targetSdk 36, versionCode 1200, versionName 12.0.")
 PY
