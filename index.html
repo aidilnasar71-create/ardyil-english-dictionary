@@ -567,6 +567,8 @@ body.ardyil-dark .ardyil-bottom-nav{background:rgba(35,33,54,.97);border-color:#
 'use strict';
 const byId=id=>document.getElementById(id),main=document.querySelector('main');
 if(!main||document.getElementById('panel-home'))return;
+document.title='ARDYIL English Dictionary 4.0 — Learn, Play, Explore';
+const brandTag=document.querySelector('.brandtag');if(brandTag)brandTag.textContent='LEARN • PLAY • EXPLORE';
 const home=[
 '<section class="panel" id="panel-home"><div class="ardyil-duo-home">',
 '<div class="ardyil-welcome-row"><div><div class="ardyil-greeting" id="ardyilGreetingTime">HALO, PEMBELAJAR!</div><h1>Siap belajar hari ini?</h1><p>Ambil satu langkah kecil, jadi lebih hebat setiap hari.</p></div><div class="ardyil-streak-bubble"><b>🔥 <span id="ardyilStreak">1</span></b><span>HARI RAJIN</span></div></div>',
