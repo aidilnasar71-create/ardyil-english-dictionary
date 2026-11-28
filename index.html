@@ -746,47 +746,25 @@ $('ardyilStoryNext').addEventListener('click',()=>{const story=storyData();showS
 $('ardyilStoryPrev').addEventListener('click',()=>showStoryScene(Math.max(0,videoScene-1)));
 $('ardyilStorySpeak').addEventListener('click',()=>{const scene=storyData().scenes[Math.max(0,videoScene)];const t=scene.en;if(window.ArdyilNative&&window.ArdyilNative.speak)window.ArdyilNative.speak(t,'en-US',0.88,1);else if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(t);u.lang='en-US';window.speechSynthesis.speak(u);}});
 $('ardyilStoryTime').textContent='03:00';showStoryScene(0);
-const comics=[
-{title:'The Lost Key',episodes:[
-[{art:'🔑',en:'I found a strange key near the old library.',id:'Aku menemukan kunci aneh di dekat perpustakaan lama.'},{art:'📚',en:'Maybe it opens a secret room.',id:'Mungkin kunci ini membuka ruangan rahasia.'},{art:'🚪',en:'Let us look for the matching door.',id:'Ayo cari pintu yang cocok.'}],
-[{art:'🗝️',en:'The key opened a small wooden box.',id:'Kunci itu membuka kotak kayu kecil.'},{art:'🗺️',en:'Inside, we found a map and a friendly note.',id:'Di dalamnya, kami menemukan peta dan pesan ramah.'},{art:'⭐',en:'The next adventure begins tomorrow.',id:'Petualangan berikutnya dimulai besok.'}]
-]},
-{title:'A Day in Cloud City',episodes:[
-[{art:'☁️',en:'Welcome to Cloud City, where the streets float above the sea.',id:'Selamat datang di Kota Awan, tempat jalanan melayang di atas laut.'},{art:'🪁',en:'Hold your kite tightly. The wind is playful today.',id:'Pegang layang-layangmu erat-erat. Angin sedang sangat aktif hari ini.'},{art:'🏙️',en:'The city looks different from the sky.',id:'Kota ini terlihat berbeda dari atas langit.'}],
-[{art:'🌈',en:'A rainbow bridge appeared after the rain.',id:'Jembatan pelangi muncul setelah hujan.'},{art:'🤝',en:'The neighbors helped one another cross it.',id:'Para tetangga saling membantu untuk menyeberang.'},{art:'💜',en:'Cloud City felt like home to everyone.',id:'Kota Awan terasa seperti rumah bagi semua orang.'}]
-]}
-];
-
 const ardyil79Series=[
 {title:'School Days · SD',topics:['A New Friend','My Colorful Classroom','Helpful Teacher','Lunchbox Surprise','Rainy Recess','School Garden','Library Treasure','Sports Day'],words:[['friend','teman'],['classroom','kelas'],['kind','baik'],['share','berbagi'],['read','membaca'],['play','bermain']]},
-{title:'Teen Dreams · SMP',topics:['Secret Club','Team Project','Kind Message','Science Fair','Lost Phone','Music Practice','Brave Choice','Dreams on Stage'],words:[['team','tim'],['message','pesan'],['challenge','tantangan'],['practice','latihan'],['brave','berefreshComicEpisodeOptions();
-$('ardyilComicSelect').addEventListener('change',()=>{$('ardyilComicEpisode').value='0';refreshComicEpisodeOptions();renderComic();});
-$('ardyilComicEpisode').addEventListener('change',renderComic);
-$('ardyilComicTranslation').addEventListener('change',renderComic);
-$('ardyilComicPrev').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.max(0,Number($('ardyilComicEpisode').value)-1));renderComic();});
-$('ardyilComicNext').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.min(comics[Number($('ardyilComicSelect').value)||0].episodes.length-1,Number($('ardyilComicEpisode').value)+1));renderComic();});
-renderComic();
-itian'],['citation','sitasi'],['presentation','presentasi'],['scholarship','beasiswa'],['deadline','tenggat']]},
+{title:'Teen Dreams · SMP',topics:['Secret Club','Team Project','Kind Message','Science Fair','Lost Phone','Music Practice','Brave Choice','Dreams on Stage'],words:[['team','tim'],['message','pesan'],['challenge','tantangan'],['practice','latihan'],['brave','berani'],['choice','pilihan']]},
+{title:'High School Horizons · SMA',topics:['Exam Week','Debate Team','Volunteer Day','Future Plans','Art Festival','Study Partners','New Challenge','Graduation'],words:[['analyze','menganalisis'],['evidence','bukti'],['argument','argumen'],['experiment','percobaan'],['culture','budaya'],['goal','tujuan']]},
+{title:'University Life',topics:['First Lecture','Research Partners','Campus Cafe','Scholarship Letter','Internship Interview','Group Presentation','Late Night Ideas','Final Project'],words:[['lecture','kuliah'],['research','penelitian'],['citation','sitasi'],['presentation','presentasi'],['scholarship','beasiswa'],['deadline','tenggat']]},
 {title:'Work & Adult Life',topics:['Better Meeting','Customer Care','Work Balance','Career Change','Business Trip','Smart Budget','Leadership','New Opportunity'],words:[['meeting','rapat'],['schedule','jadwal'],['customer','pelanggan'],['negotiate','negosiasi'],['budget','anggaran'],['feedback','umpan balik']]},
 {title:'Mystery Adventures',topics:['Midnight Map','Park Footprints','Hidden Passage','Bottle Message','Mountain Trail','Lighthouse Signal','Museum Mystery','Final Clue'],words:[['clue','petunjuk'],['map','peta'],['secret','rahasia'],['explore','menjelajah'],['safe','aman'],['solve','memecahkan']]},
 {title:'Heart & Friendship',topics:['Honest Apology','New Neighbor','Helping Hands','Picnic Plan','Small Surprise','Rainy Afternoon','Trust Again','Warm Goodbye'],words:[['honest','jujur'],['apologize','meminta maaf'],['neighbor','tetangga'],['support','mendukung'],['trust','percaya'],['gratitude','rasa syukur']]},
 {title:'Science & Future',topics:['Robot Helper','Ocean Cleanup','Space Station','Green Energy','Smart City','Tiny Discovery','Future Farm','Tomorrow Begins'],words:[['robot','robot'],['ocean','samudra'],['orbit','orbit'],['energy','energi'],['innovation','inovasi'],['discover','menemukan']]}
 ];
-ardyil79Series.forEach((s,si)=>{
- const original=comics[si];
- const words=s.words;
- const epData=s.topics.map((title,ei)=>[
- {art:['✨','📚','🧭','🌈','💡','🎒','🤝','🌱'][ei%8],en:'Today, our story begins with '+title.toLowerCase()+'.',id:'Hari ini, cerita kami dimulai dengan '+title.toLowerCase()+'.'},
- {art:['🧩','🔎','💬','🗺️','🎯','📝'][ei%6],en:'We discovered a new word: '+words[ei%6][0]+'.',id:'Kami menemukan kosakata baru: '+words[ei%6][1]+'.'},
- {art:'⭐',en:'We listened, tried again, and learned together.',id:'Kami mendengarkan, mencoba lagi, dan belajar bersama.'},
+const comics=ardyil79Series.map((series,si)=>({title:series.title,episodes:series.topics.map((topic,ei)=>{
+ const w=series.words;
+ return [
+ {art:['✨','📚','🧭','🌈','💡','🎒','🤝','🌱'][ei%8],en:'Today, our story begins with '+topic.toLowerCase()+'.',id:'Hari ini, cerita kami dimulai dengan '+topic.toLowerCase()+'.'},
+ {art:['🧩','🔎','💬','🗺️','🎯','📝'][ei%6],en:'We discovered a new word: '+w[ei%6][0]+'.',id:'Kami menemukan kosakata baru: '+w[ei%6][1]+'.'},
+ {art:'🌟',en:'We listened, tried again, and learned together.',id:'Kami mendengarkan, mencoba lagi, dan belajar bersama.'},
  {art:'💜',en:'Every small step brings us closer to our dreams.',id:'Setiap langkah kecil membawa kami lebih dekat ke impian.'}
- ]);
- if(original){
-  original.title=s.title;
-  while(original.episodes.length<8)original.episodes.push(epData[original.episodes.length]);
-  original.episodes=original.episodes.slice(0,8);
- }else comics.push({title:s.title,episodes:epData});
-});
+ ];
+})}));
 function refreshComicEpisodeOptions(){
  const seriesSelect=$('ardyilComicSelect'),episodeSelect=$('ardyilComicEpisode');
  if(!seriesSelect||!episodeSelect)return;
@@ -794,17 +772,19 @@ function refreshComicEpisodeOptions(){
  episodeSelect.innerHTML=series.episodes.map((ep,i)=>'<option value="'+i+'">Episode '+(i+1)+'</option>').join('');
 }
 function renderComic(){
-const ci=Number($('ardyilComicSelect').value)||0,ei=Number($('ardyilComicEpisode').value)||0;
-const ep=comics[ci].episodes[ei],show=$('ardyilComicTranslation').checked;
-$('ardyilComicPanels').innerHTML='<div class="ardyil79-comic-title"><b>'+safe(comics[ci].title)+'</b><small>Episode '+(ei+1)+' · ARDYIL ORIGINAL</small></div>'+ep.map(p=>'<article class="ardyil-comic-panel"><div class="ardyil-comic-art">'+p.art+'</div><div class="ardyil-comic-dialogue">'+safe(p.en)+'</div>'+(show?'<div class="ardyil-comic-translation">'+safe(p.id)+'</div>':'')+'</article>').join()+'<button class="ardyil79-share-comic" id="ardyil79ShareComic">↗ Bagikan cerita</button>';
-$('ardyilComicPrev').disabled=ei===0;$('ardyilComicNext').disabled=ei===comics[ci].episodes.length-1;
-const sb=$('ardyil79ShareComic');if(sb)sb.onclick=()=>ardyil79Share('ARDYIL Comic · '+comics[ci].title+' Episode '+(ei+1),ep.map(p=>p.en+'\n'+p.id).join('\n\n')+'\nBelajar bersama ARDYIL!');
+ const ci=Number($('ardyilComicSelect').value)||0,ei=Number($('ardyilComicEpisode').value)||0;
+ const ep=comics[ci].episodes[ei],show=$('ardyilComicTranslation').checked;
+ $('ardyilComicPanels').innerHTML='<div class="ardyil79-comic-title"><b>'+safe(comics[ci].title)+'</b><small>Episode '+(ei+1)+' · ARDYIL ORIGINAL</small></div>'+ep.map(p=>'<article class="ardyil-comic-panel"><div class="ardyil-comic-art">'+p.art+'</div><div class="ardyil-comic-dialogue">'+safe(p.en)+'</div>'+(show?'<div class="ardyil-comic-translation">'+safe(p.id)+'</div>':'')+'</article>').join()+'<button class="ardyil79-share-comic" id="ardyil79ShareComic">↗ Bagikan cerita</button>';
+ $('ardyilComicPrev').disabled=ei===0;$('ardyilComicNext').disabled=ei===comics[ci].episodes.length-1;
+ const share=$('ardyil79ShareComic');if(share)share.onclick=()=>ardyil79Share('ARDYIL Comic · '+comics[ci].title+' Episode '+(ei+1),ep.map(p=>p.en+'\n'+p.id).join('\n\n')+'\nBelajar bersama ARDYIL!');
 }
-$('ardyilComicSelect').addEventListener('change',()=>{$('ardyilComicEpisode').value='0';renderComic();});
+refreshComicEpisodeOptions();
+$('ardyilComicSelect').innerHTML=comics.map((c,i)=>'<option value="'+i+'">'+safe(c.title)+'</option>').join();
+$('ardyilComicSelect').addEventListener('change',()=>{$('ardyilComicEpisode').value='0';refreshComicEpisodeOptions();renderComic();});
 $('ardyilComicEpisode').addEventListener('change',renderComic);
 $('ardyilComicTranslation').addEventListener('change',renderComic);
 $('ardyilComicPrev').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.max(0,Number($('ardyilComicEpisode').value)-1));renderComic();});
-$('ardyilComicNext').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.min(1,Number($('ardyilComicEpisode').value)+1));renderComic();});
+$('ardyilComicNext').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.min(comics[Number($('ardyilComicSelect').value)||0].episodes.length-1,Number($('ardyilComicEpisode').value)+1));renderComic();});
 renderComic();
 const books={
 en:{locale:'en-US',rows:[['Hello','Hello','Halo','heh-loh'],['Thank you','Thank you','Terima kasih','thank-yoo'],['How are you?','How are you?','Apa kabar?','how-ar-yoo'],['Good morning','Good morning','Selamat pagi','good-mor-ning'],['I am learning','I am learning','Saya sedang belajar','ai-am-ler-ning'],['See you again','See you again','Sampai jumpa lagi','see-yoo-uh-gen']]},
