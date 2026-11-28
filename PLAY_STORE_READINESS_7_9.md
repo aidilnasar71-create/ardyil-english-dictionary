@@ -1,26 +1,30 @@
 # ARDYIL 7.9 — Play Store readiness checklist
 
-This repository build is a development/debug build, not yet a Play Store release.
+This is a development/debug build, not yet a Play Store release.
 
-## Required before submission
-- [ ] Finalize Google OAuth/Firebase authentication, or remove sign-in UI and ship without accounts.
-- [ ] If accounts are enabled, provide in-app account deletion and a public external deletion URL; delete associated account data.
-- [ ] Publish a globally accessible, accurate privacy policy and complete the Play Console Data safety form.
-- [ ] Confirm the declared age groups. Elementary-school users make this a mixed-audience/child-safety project; review Families policy, neutral age screening, APIs/SDKs, sharing controls and parent controls.
-- [ ] Verify all book, comic, illustration, audio, music and video assets are original, public domain, or properly licensed.
-- [ ] Test microphone, recording playback, TTS, share chooser, offline mode and data reset on physical Android devices.
+## Required before publishing
+- [ ] Configure Google OAuth / Firebase Authentication securely or remove account UI; never represent a placeholder as real login.
+- [ ] Add cloud sync only with security rules and verified authentication.
+- [ ] If accounts are enabled, provide in-app account deletion and a public account deletion URL.
+- [ ] Publish an accurate privacy policy and complete Data safety disclosures.
+- [ ] Confirm target age groups. SD content means a mixed/child audience review is required; evaluate Families policies, age screening, parental/privacy safeguards and sharing controls.
+- [ ] Ensure all books, comic art, illustrations, video, music and sound assets are original, public domain or properly licensed.
+- [ ] Test microphone, recording playback, TTS, Android share chooser, offline mode and local data on real devices.
 - [ ] Complete accessibility, crash, performance, security and content review.
-- [ ] Create and safely store a release signing key; never commit it.
-- [ ] Build a signed Android App Bundle (AAB) with the release key, not a debug APK.
-- [ ] Complete store listing, screenshots, content rating, app access instructions, privacy policy URL and declarations.
+- [ ] Create and securely store a release signing key; never commit it.
+- [ ] Build a signed release Android App Bundle (AAB), not a debug APK.
+- [ ] Finish Play listing, screenshots, content rating, privacy and policy declarations.
 
-## Build compatibility
-New Google Play apps and app updates must target Android 16 (API 36) or higher from 31 August 2026. The pipeline therefore attempts to build the 7.9 package with API 36. Android 13 devices remain supported by the project's minimum SDK; target API level does not mean Android 16-only.
+## Build target
+Build workflow targets API 36 and keeps Android 13 compatibility at the minimum SDK. Target API does not mean Android 16-only.
 
-## Current 7.9 content
-- Five curriculum tracks: SD, SMP, SMA, university and professional/adult; eight units per track and 160 starter vocabulary prompts.
-- Eight learning units per track, each with four offline vocabulary prompts and short quizzes.
-- Eight original comic series with eight episode titles each (64 episodes total), four illustrated panels per episode (256 panels), vertical scrolling and Indonesian translations.
-- Eight illustrated animated story experiences with 3- or 5-minute timelines, moving vector scenes, bilingual captions and TTS narration.
-- Local XP/progress storage and Android native share chooser.
-- Existing dictionary, puzzle, daily challenge, adventure, novel, media, settings and protected audio/microphone modules remain in the app.
+## Current 7.9 content (implemented in source)
+- Five learning tracks (SD, SMP, SMA, university, adult), eight unit topics each (40 units), with offline vocabulary cards and mini quizzes.
+- Eight comic series with eight episodes each (64 episode entries); four bilingual text panels each (256 panel entries). The panels currently use emoji/illustrative cards and dialogue, not commissioned Webtoon-grade drawn art.
+- Existing story studio, dictionary, puzzle, daily mission, adventure, math-in-English, novel reader, audio/microphone and settings remain.
+- Android native Share chooser for sharing text invitations, stories, comic dialogue and progress; destinations depend on installed apps.
+- Local preferences and learning progress.
+
+## Not activated
+- Google sign-in / cloud sync: requires owner OAuth client and Firebase project configuration, secure implementation, account deletion, age-appropriate review and privacy disclosures.
+- Full illustrated comics and larger downloadable video/audio media packs are roadmap content.
