@@ -66,6 +66,25 @@ jobs:
           cp v30-quest.css "$ASSET_DIR/v30-quest.css"
           cp v30-quest.js "$ASSET_DIR/v30-quest.js"
           echo "Applied ARDYIL 30.0 interface, quest engine and new offline media presets."
+      - name: Install MP4 media build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core python3-venv
+          python3 -m venv .venv-cinema
+          . .venv-cinema/bin/activate
+          python -m pip install --disable-pip-version-check Pillow numpy
+      - name: Generate original five-minute offline MP4 films
+        run: |
+          ASSET_DIR="$PROJECT_DIR/app/src/main/assets"
+          mkdir -p "$ASSET_DIR/media"
+          . .venv-cinema/bin/activate
+          python scripts/generate-cinema-mp4.py "$ASSET_DIR/media"
+          for film in the-paper-bridge little-music-makers the-cloud-library a-map-of-kindness; do
+            test -s "$ASSET_DIR/media/$film.mp4"
+            test -s "$ASSET_DIR/media/$film-poster.jpg"
+            DURATION=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$ASSET_DIR/media/$film.mp4")
+            test "$DURATION" = "300.000000"
+          done
       - name: Build APK
         run: gradle --no-daemon -p "$PROJECT_DIR" assembleDebug
       - name: Prepare APK

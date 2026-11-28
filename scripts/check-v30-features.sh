@@ -39,7 +39,8 @@ end = html.index('];\nvar cinemaState', start)
 cinema = html[start:end]
 assert len(re.findall(r"\{title:'", cinema)) == 12, 'expected 12 original animated stories'
 assert len(re.findall(r'duration:300', cinema)) >= 8, 'expected eight 5-minute animation entries'
-print('ARDYIL 30.0 feature data OK: 30 levels; 12 original animation stories; 8 five-minute animations.')
+assert 'id=\"ardyil30Mp4Player\"' in html, 'missing MP4 player'
+print('ARDYIL 30.0 feature data OK: 30 levels; 12 vector animation stories; 8 animation entries; 4 five-minute offline MP4s.')
 PY
 python3 - "$HTML" "$QUEST" <<'PY'
 from pathlib import Path
@@ -61,3 +62,10 @@ with tempfile.TemporaryDirectory() as tmp:
     subprocess.run(['node', '--check', str(file)], check=True)
 print(f'JavaScript syntax OK: {checked} inline scripts + external quest engine.')
 PY
+require_text "$HTML" 'id="ardyil30Mp4Player"'
+require_text "$HTML" 'the-paper-bridge.mp4'
+require_text "$HTML" 'little-music-makers.mp4'
+require_text "$HTML" 'the-cloud-library.mp4'
+require_text "$HTML" 'a-map-of-kindness.mp4'
+require_text "$CSS" '.ardyil30-mp4-panel'
+require_text "$ROOT/scripts/generate-cinema-mp4.py" 'DURATION=300'

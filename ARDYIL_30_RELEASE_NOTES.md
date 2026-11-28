@@ -6,7 +6,8 @@
 - Tiga misi harian: kuis tiga soal, review lima kosakata, dan cerita bilingual tiga adegan.
 - Koin virtual dan XP dari misi serta penyelesaian level; pembukaan level berurutan memakai 20 koin.
 - Progres, saldo koin, level terbuka, dan hadiah harian disimpan lokal di perangkat.
-- Empat cerita animasi orisinal baru: The Paper Bridge, Little Music Makers, The Cloud Library, dan A Map of Kindness. Total 12 cerita tersedia dalam pemutar animasi vektor.
+- Empat film MP4 offline orisinal berdurasi tepat 5 menit: The Paper Bridge, Little Music Makers, The Cloud Library, dan A Map of Kindness. Video 640×360 H.264 dengan audio AAC, subtitle bilingual, dan instrumental piano-gitar sintetis; ukuran paket media sekitar 9 MB.
+- Dua belas cerita animasi vektor interaktif tetap tersedia sebagai format terpisah.
 - Delapan preset tambahan untuk variasi piano, gitar, dan ukulele sintetis yang dihasilkan secara offline.
 - Pemeriksaan otomatis konten 30 level, jumlah cerita, dan sintaks JavaScript pada workflow.
 
@@ -17,9 +18,9 @@
 ## Belum diaktifkan
 - Google Play Billing dan pembelian koin belum aktif. Belum ada product ID Play Console, integrasi BillingClient, verifikasi pembelian, maupun konfigurasi backend resmi. Koin saat ini hanya poin virtual lokal, tidak dapat diuangkan atau dipindahkan.
 - Google Sign-In dan cloud sync masih menunggu konfigurasi OAuth/Firebase resmi.
-- Cerita lima menit yang tersedia adalah animasi vektor interaktif, bukan berkas video MP4. Berkas MP4/music pack berukuran besar perlu sumber media orisinal atau lisensi dan sebaiknya menjadi unduhan opsional.
+- Empat film MP4 ditanam dalam APK agar dapat diputar offline; ekspansi katalog berikutnya sebaiknya memakai paket unduhan opsional agar APK utama tetap ringan.
 
 ## Status QA
-- HTML dan seluruh JavaScript diperiksa sintaksnya sebelum build.
+- HTML, JavaScript, konten level, dan durasi MP4 diperiksa otomatis sebelum dan selama build.
 - Audio-core regression guard tetap wajib dijalankan.
 - Build APK yang sukses tidak menggantikan uji fisik perangkat. Mikrofon, playback rekaman, TTS, penyimpanan progres, navigasi, serta responsivitas masih harus diverifikasi di HP Android 13.

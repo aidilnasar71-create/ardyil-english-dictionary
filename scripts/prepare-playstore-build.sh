@@ -32,7 +32,7 @@ for path in gradle_files:
     text, n = re.subn(r"(?m)(\btargetSdk(?:Version)?\s*(?:=\s*)?)35\b", r"\g<1>36", text)
     target_changed = target_changed or n > 0
     text, n = re.subn(r"(?m)(\bbuildToolsVersion\s*(?:=\s*)?['\"])35\.0\.0(['\"])", r"\g<1>36.0.0\2", text)
-    text, n = re.subn(r"(?m)(\bversionCode\s*(?:=\s*)?)\d+", r"\g<1>3000", text)
+    text, n = re.subn(r"(?m)(\bversionCode\s*(?:=\s*)?)\d+", r"\g<1>3001", text)
     version_code_changed = version_code_changed or n > 0
     text, n = re.subn(r"(?m)(\bversionName\s*(?:=\s*)?['\"])[^'\"]+(['\"])", r"\g<1>30.0\2", text)
     version_name_changed = version_name_changed or n > 0
@@ -42,7 +42,7 @@ for path in gradle_files:
 missing=[]
 if not compile_changed: missing.append("compileSdk 35 -> 36")
 if not target_changed: missing.append("targetSdk 35 -> 36")
-if not version_code_changed: missing.append("versionCode -> 3000")
+if not version_code_changed: missing.append("versionCode -> 3001")
 if not version_name_changed: missing.append("versionName -> 30.0")
 if not agp_changed:
     # Some project templates may already be using a newer AGP. Verify rather than silently downgrading.
@@ -51,5 +51,5 @@ if not agp_changed:
         missing.append("Android Gradle Plugin 8.9.1+")
 if missing:
     raise SystemExit("Play Store preparation could not safely patch: " + ", ".join(missing))
-print("ARDYIL 30.0 Android build configured: AGP >= 8.9.1, compileSdk 36, targetSdk 36, versionCode 3000, versionName 30.0.")
+print("ARDYIL 30.0 Android build configured: AGP >= 8.9.1, compileSdk 36, targetSdk 36, versionCode 3001, versionName 30.0.")
 PY
