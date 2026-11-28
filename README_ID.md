@@ -59,3 +59,24 @@ Audio pelafalan dan rekaman mikrofon adalah fitur inti ARDYIL. Jangan menghapus 
 Sebelum build, jalankan pemeriksaan: `bash scripts/check-audio-core.sh .`. Pemeriksaan ini juga dijalankan otomatis oleh GitHub Actions dan akan menggagalkan build bila komponen audio inti hilang.
 
 Setiap perubahan kode audio tetap perlu dites pada perangkat Android sungguhan: izinkan mikrofon, rekam minimal 3 detik, hentikan, putar hasil rekaman, dengarkan contoh TTS English, dan uji tombol berhenti. Jangan mengklaim pengujian perangkat berhasil sebelum benar-benar dilakukan.
+
+
+
+## ARDYIL 7.9 — Learning Universe
+
+- Jalur belajar berdasarkan jenjang SD, SMP, SMA, kuliah, dan profesional/dewasa.
+- Delapan unit per jenjang dengan kosakata offline, latihan pilihan ganda, XP, dan progres lokal.
+- Delapan seri komik orisinal; masing-masing delapan episode dengan empat panel ilustrasi per episode, scroll vertikal, dan terjemahan Indonesia.
+- Delapan cerita animasi bergambar vektor bergerak dengan lima adegan, subtitle bilingual, narasi TTS, dan timeline 3 atau 5 menit. Ini animasi vektor ringan, bukan film MP4 streaming.
+- Berbagi progres melalui Android Sharesheet; pengguna dapat memilih aplikasi yang terpasang seperti WhatsApp, Telegram, email, dan lainnya.
+- Profil serta progres 7.9 tersimpan secara lokal. Ada kontrol reset progres lokal.
+
+## Google Sign-In status
+
+Tombol konfigurasi Google tersedia, tetapi autentikasi Google belum aktif. Pemilik proyek perlu mengonfigurasi Google Cloud OAuth, package ID, SHA-1/SHA-256 certificate fingerprints, Web Client ID, dan Firebase Authentication/backend. Jangan mengumpulkan password Google di aplikasi. Lihat GOOGLE_SIGN_IN_SETUP.md.
+
+## Play Store status
+
+Workflow build 7.9 menargetkan Android 16 / API 36. APK yang dihasilkan masih debug build untuk pengujian, belum signed release/AAB. Sebelum pengiriman Play Store, lengkapi checklist pada PLAY_STORE_READINESS_7_9.md, termasuk signing key, privasi, target audience, rating, penghapusan akun (apabila login diaktifkan), dan peninjauan konten. Mode SD mengharuskan peninjauan kebijakan keluarga/anak sebelum login atau fitur berbagi sosial yang mengumpulkan data diaktifkan.
+
+Audio pengucapan dan rekaman mikrofon tetap merupakan komponen inti yang dilindungi oleh scripts/check-audio-core.sh.
