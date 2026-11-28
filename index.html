@@ -176,6 +176,7 @@ body{padding-bottom:86px!important}
  <button class="v20-nav-btn" data-v20-nav="profile"><span>◉</span>Profil</button>
 </nav>
 <script id="ardyil20-unified-engine">
+document.addEventListener("DOMContentLoaded",()=>{
 (()=>{
 'use strict';
 const $=id=>document.getElementById(id);
@@ -205,6 +206,7 @@ oldTabs.forEach(b=>b.addEventListener('click',()=>{const map={dictionary:'dictio
 const observer=new MutationObserver(refreshStats);const xpEl=$('a12-xp');if(xpEl)observer.observe(xpEl,{childList:true,subtree:true,characterData:true});
 show('home');
 })();
+}, {once:true});
 </script>
 
 
