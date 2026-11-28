@@ -42,8 +42,8 @@ for path in gradle_files:
 missing=[]
 if not compile_changed: missing.append("compileSdk 35 -> 36")
 if not target_changed: missing.append("targetSdk 35 -> 36")
-if not version_code_changed: missing.append("versionCode -> 2000")
-if not version_name_changed: missing.append("versionName -> 20.0")
+if not version_code_changed: missing.append("versionCode -> 3000")
+if not version_name_changed: missing.append("versionName -> 30.0")
 if not agp_changed:
     # Some project templates may already be using a newer AGP. Verify rather than silently downgrading.
     combined = "\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in gradle_files)
@@ -51,5 +51,5 @@ if not agp_changed:
         missing.append("Android Gradle Plugin 8.9.1+")
 if missing:
     raise SystemExit("Play Store preparation could not safely patch: " + ", ".join(missing))
-print("ARDYIL 20.0 Android build configured: AGP >= 8.9.1, compileSdk 36, targetSdk 36, versionCode 2000, versionName 20.0.")
+print("ARDYIL 20.0 Android build configured: AGP >= 8.9.1, compileSdk 36, targetSdk 36, versionCode 3000, versionName 30.0.")
 PY

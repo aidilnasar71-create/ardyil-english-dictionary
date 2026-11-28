@@ -1,6 +1,4 @@
-
-
-name: Build ARDYIL Android APK
+name: Build ARDYIL Android APK 30.0
 
 on:
   workflow_dispatch:
@@ -15,51 +13,43 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-
       - name: Configure Android SDK
         run: |
           echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
           echo "$ANDROID_HOME/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
-
       - name: Accept Android SDK licenses
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
-
       - name: Install Android SDK packages
         run: |
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
             "platforms;android-36" \
             "build-tools;36.0.0"
-
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
-
       - name: Extract Android project
         run: |
           mkdir -p android-project
           unzip -q ARDYIL_English_Dictionary_Android_Mic_Recording_Fix.zip -d android-project
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
-
-      - name: Prepare Android 16 / ARDYIL version 20.0
+      - name: Prepare Android 16 / ARDYIL version 30.0
         run: bash scripts/prepare-playstore-build.sh "$PROJECT_DIR"
-
       - name: Protect the microphone and speech audio core
         run: bash scripts/check-audio-core.sh .
-
+      - name: Verify ARDYIL 30.0 features and JavaScript syntax
+        run: bash scripts/check-v30-features.sh .
       - name: Install native Android microphone and speech bridge
         run: |
           ACTIVITY_PATH=$(find "$PROJECT_DIR/app/src/main/java" -name MainActivity.java -print -quit)
@@ -67,26 +57,25 @@ jobs:
           cp native-android/MainActivity.java "$ACTIVITY_PATH"
           grep -q 'android.permission.RECORD_AUDIO' "$PROJECT_DIR/app/src/main/AndroidManifest.xml"
           echo "Native Android MediaRecorder and TextToSpeech bridge installed."
-
-      - name: Apply latest ARDYIL interface and learning modules
+      - name: Apply ARDYIL interface, learning modules and quest engine
         run: |
-          ASSET_HTML="$PROJECT_DIR/app/src/main/assets/index.html"
+          ASSET_DIR="$PROJECT_DIR/app/src/main/assets"
+          ASSET_HTML="$ASSET_DIR/index.html"
           test -f "$ASSET_HTML"
           cp index.html "$ASSET_HTML"
-          echo "Applied latest ARDYIL 20.0 learning universe modules to Android assets."
-
+          cp v30-quest.css "$ASSET_DIR/v30-quest.css"
+          cp v30-quest.js "$ASSET_DIR/v30-quest.js"
+          echo "Applied ARDYIL 30.0 interface, quest engine and new offline media presets."
       - name: Build APK
         run: gradle --no-daemon -p "$PROJECT_DIR" assembleDebug
-
       - name: Prepare APK
         run: |
           mkdir -p apk-output
           APK=$(find "$PROJECT_DIR" -path "*/build/outputs/apk/debug/*.apk" -type f | head -n 1)
           test -n "$APK"
-          cp "$APK" apk-output/ARDYIL-English-Dictionary-20.0.apk
-
+          cp "$APK" apk-output/ARDYIL-English-Dictionary-30.0.apk
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: ARDYIL-20.0-APK
-          path: apk-output/ARDYIL-English-Dictionary-20.0.apk
+          name: ARDYIL-30.0-APK
+          path: apk-output/ARDYIL-English-Dictionary-30.0.apk
