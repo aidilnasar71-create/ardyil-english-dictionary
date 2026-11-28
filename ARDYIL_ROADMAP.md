@@ -1,24 +1,33 @@
-# ARDYIL Roadmap (4.2 and beyond)
+# ARDYIL 7.9 Roadmap & protected features
 
-## Core safety rule
-Audio pronunciation and native microphone recording are protected core features. Every release must run `bash scripts/check-audio-core.sh .`; never remove Android MediaRecorder, TextToSpeech, playback, callbacks, or the RECORD_AUDIO permission.
+## Release 7.9 additions
+- Eight age/learning-oriented comic series: SD, SMP, SMA, university, adult/work, mystery, friendship, science/future.
+- Eight episode slots per series (64 episode screens), four bilingual dialogue panels per episode (256 panel entries); text is currently template-generated, not finished illustrated Webtoon art.
+- Learning Campus with five learner tracks and eight unit topics each (40 unit buttons); vocabulary cards and mini-quiz are offline starter practice.
+- Android native Share chooser for story, comic, progress, and app invitation text. Actual destination platforms depend on apps installed on the device.
+- Local preferences for font size, reduced motion, effects toggle and learner track.
+- Google login is shown as not configured; never fake authentication. OAuth/Firebase and child/mixed-audience policy setup are required before activating it.
 
-## 4.2 current polish
-- Animated splash and rotating motivational greetings.
-- Extended offline synthesizer instrumental preset menu (25+ sound profiles; synthetic tones, not licensed recorded tracks).
-- Existing learning navigation, puzzles, daily challenges, adventure path, math-in-English, novel reader, animated story, vertical comic reader, starter multilingual phrase library, and settings remain in place.
+## Protected core
+Audio pronunciation and native microphone recording are protected features. Every release must run \`bash scripts/check-audio-core.sh .\`; never remove Android MediaRecorder, TextToSpeech, playback, callbacks, or the RECORD_AUDIO permission.
 
-## Planned expansions
-- Expand vocabulary, phrase, slang and idiom packs; smart free-form sentence search/translation.
-- Daily and weekly mission variety, speaking recording quests, listening quizzes and sound feedback.
-- Larger bilingual novel catalog with chapters, saved progress, font/theme controls, and more mood-based instrumental presets.
-- Comic episodes with translation controls and original/licensed panels.
-- Short educational animation/story library, 3–5 minutes; downloadable optional media packs.
-- More language starter content and translation languages.
-- Broad accessibility/preferences: themes, accent colors, font size, animation reduction, sound/music volume, reminders, battery/data/storage controls.
+## Existing learning modules retained
+- Dictionary, offline search, quiz, favorite words, sentence patterns.
+- Speaking, pronunciation and native Android mic recorder.
+- Puzzles, daily challenges, adventure path, math-in-English.
+- Novel reader, mood instrument presets, story studio, language phrase library.
+- Settings, themes and local progress.
 
-## Media and licensing
-Use original, public-domain or properly licensed text, illustrations, audio, comics and videos. Large media should be optional downloads to avoid unnecessarily inflating base APK.
+## Content and media roadmap
+- Expand vocab, idioms, slang, phrases, and free-form sentence search.
+- More mission sets, speaking/listening quizzes and review of mistakes.
+- Bilingual novels with chapter packs and optional instrumental audio.
+- Original/licensed Webtoon-like comic artwork, long-form episodes, and optional download packs.
+- Short visual animation packs with captioning, narration and offline controls.
+- Further language packs and accessibility settings.
 
-## Compatibility and QA
-Target Android 13 devices including Infinix Smart 8. Do not claim physical-device tests unless performed. Test audio speak/stop, record >=3 sec, stop and playback on physical Android after every audio-affecting release.
+## Licensing and size strategy
+Use original, public-domain or properly licensed text, art, audio and videos. Keep the base app lightweight; large story/comic/music packs should be optional downloads. A large APK by itself does not make the product richer; install size, memory, storage, battery, accessibility and performance matter.
+
+## Android compatibility & QA
+Target Android 13 devices including Infinix Smart 8; Android target SDK does not mean older phones become unsupported. Do not claim physical device tests unless performed. After each release, test TTS speak/stop, record at least three seconds, stop/playback, sharing chooser, offline modules and saved preferences on physical Android.
