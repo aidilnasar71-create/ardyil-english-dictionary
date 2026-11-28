@@ -180,11 +180,11 @@ document.addEventListener("DOMContentLoaded",()=>{
 (()=>{
 'use strict';
 const $=id=>document.getElementById(id);
-const home=$('v20-home'),academy=$('v20-academy'),profile=$('v20-profile'),stage=$('v20-module-stage');
+const home=$('v20-home'),academy=$('v20-academy'),profile=$('v20-profile'),stage=$('v20-module-stage'),explore=$('ardyil79-overlay');
 const legacy=['panel-dictionary','panel-practice','panel-favorites','panel-quiz','panel-patterns'].map($);
 const a12=['placement','vocab','grammar','listen','write','tutor','progress'];
 $('v20-module-stage').appendChild($('ardyil12-universe'));
-function hideAll(){[home,academy,profile,stage,...legacy].forEach(x=>{if(x)x.style.display='none';});document.querySelectorAll('.a12-panel').forEach(x=>x.classList.remove('active'));document.querySelectorAll('[data-v20-nav]').forEach(x=>x.classList.remove('active'));$('ardyil12-universe').style.display='none';}
+function hideAll(){[home,academy,profile,stage,explore,...legacy].forEach(x=>{if(x)x.style.display='none';});if(explore)explore.classList.remove('open');document.querySelectorAll('.a12-panel').forEach(x=>x.classList.remove('active'));document.querySelectorAll('[data-v20-nav]').forEach(x=>x.classList.remove('active'));$('ardyil12-universe').style.display='none';}
 function navActive(name){const b=document.querySelector('[data-v20-nav="'+name+'"]');if(b)b.classList.add('active');}
 function show(name){hideAll();if(name==='home'){home.style.display='block';navActive('home');}
 else if(name==='dictionary'){const x=$('panel-dictionary');x.style.display='block';x.classList.add('v20-show');navActive('dictionary');}
@@ -204,6 +204,7 @@ $('v20-settings').onclick=()=>{const x=$('openSettings');if(x)x.click();};
 const oldTabs=document.querySelectorAll('[data-tab]');
 oldTabs.forEach(b=>b.addEventListener('click',()=>{const map={dictionary:'dictionary',practice:'speak',favorites:'dictionary',quiz:'game',patterns:'game'};show(map[b.dataset.tab]||'home');}));
 const observer=new MutationObserver(refreshStats);const xpEl=$('a12-xp');if(xpEl)observer.observe(xpEl,{childList:true,subtree:true,characterData:true});
+const closeExplore=$('a79-close');if(closeExplore)closeExplore.addEventListener('click',()=>{setTimeout(()=>{if(explore&&!explore.classList.contains('open'))explore.style.display='none';show('home');},0);});
 show('home');
 })();
 }, {once:true});
@@ -1688,5 +1689,13 @@ loadPrefs();
 })();
 </script>
 
+
+<style id="ardyil20-explore-integration">
+#ardyil79-launch{display:none!important}
+#ardyil79-overlay.open{display:block!important;position:relative!important;inset:auto!important;z-index:1!important;min-height:50vh;overflow:visible!important;background:transparent!important;color:var(--v20-ink)!important;border:1px solid var(--v20-line);border-radius:20px;margin:8px 0 20px}
+#ardyil79-overlay.open .a79-head{position:sticky;top:66px;border-radius:18px 18px 0 0}
+#ardyil79-overlay.open .a79-main{padding:12px}
+#ardyil79-overlay.open .a79-tabs{top:119px}
+</style>
 </body>
 </html>
