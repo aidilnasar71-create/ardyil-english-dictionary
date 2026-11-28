@@ -834,5 +834,25 @@ if(oldSpeechError)window.ardyilNativeSpeechError=function(){oldSpeechError.apply
 const startRecord=$('startRecord');if(startRecord)startRecord.addEventListener('click',()=>micMood('pending','Menyiapkan mikrofon...','Mohon izinkan akses mikrofon jika diminta.','🎙️'));
 })();
 </script>
+
+<!-- ARDYIL 4.2: richer instrumental presets + welcome motion polish -->
+<style id="ardyil-42-polish">
+.ardyil-splash-box{animation:ardyilWelcomeFloat 3.6s ease-in-out infinite alternate}
+.ardyil-splash-logo{animation:ardyilLogoGlow 2.6s ease-in-out infinite alternate}
+@keyframes ardyilWelcomeFloat{to{transform:translateY(-5px)}}
+@keyframes ardyilLogoGlow{to{filter:drop-shadow(0 0 16px rgba(140,115,238,.55));transform:scale(1.035)}}
+.ardyil-media-card select,.ardyil-setting-row select{max-width:100%}
+@media(prefers-reduced-motion:reduce){.ardyil-splash-box,.ardyil-splash-logo{animation:none!important}}
+</style>
+<script id="ardyil-42-polish-script">
+(function(){'use strict';
+const select=document.getElementById('ardyilInstrumentSelect');
+if(select){const more=[['soft-piano','Soft Piano'],['grand-piano','Grand Piano'],['electric-piano','Electric Piano'],['acoustic-guitar','Acoustic Guitar'],['nylon-guitar','Nylon Guitar'],['ukulele','Ukulele'],['mandolin','Mandolin'],['warm-strings','Warm Strings'],['viola','Viola'],['double-bass','Double Bass'],['soft-flute','Soft Flute'],['pan-flute','Pan Flute'],['clarinet','Clarinet'],['trumpet','Trumpet'],['saxophone','Saxophone'],['trombone','Trombone'],['kalimba','Kalimba'],['steel-drum','Steel Drum'],['soft-bells','Soft Bells'],['church-organ','Church Organ'],['dream-pad','Dream Pad'],['space-ambient','Space Ambient'],['forest-ambient','Forest Ambient'],['ocean-ambient','Ocean Ambient'],['wind-chimes','Wind Chimes']];more.forEach(([v,n])=>{if(!select.querySelector('option[value="'+v+'"]')){const o=document.createElement('option');o.value=v;o.textContent=n;select.appendChild(o)}});}
+const script=[...document.scripts].find(x=>x.id==='ardyil-media-upgrade-script');
+if(script&&script.textContent&&!script.textContent.includes("'soft-piano':")){script.textContent=script.textContent.replace("const style=styles[instrument]||styles.piano;", "Object.assign(styles,{'soft-piano':styles.piano,'grand-piano':styles.piano,'electric-piano':styles.lofi,'acoustic-guitar':styles.guitar,'nylon-guitar':styles.guitar,'ukulele':styles.guitar,'mandolin':styles.guitar,'warm-strings':styles.orchestra,'viola':styles.violin,'double-bass':styles.cello,'soft-flute':styles.flute,'pan-flute':styles.flute,'clarinet':styles.flute,'trumpet':styles.orchestra,'saxophone':styles.orchestra,'trombone':styles.orchestra,'kalimba':styles.marimba,'steel-drum':styles.marimba,'soft-bells':styles.bells,'church-organ':styles.organ,'dream-pad':styles.synth,'space-ambient':styles.ambient,'forest-ambient':styles.ambient,'ocean-ambient':styles.rain,'wind-chimes':styles.bells});const style=styles[instrument]||styles.piano;")}
+const splash=document.getElementById('ardyilSplash');if(splash){const p=splash.querySelector('.ardyil-splash-box p');if(p&&!p.dataset.motivational){p.dataset.motivational='true';const messages=['Belajar sedikit demi sedikit, lama-lama semakin hebat.','Every new word opens a new world. 🌎','Kamu tidak harus sempurna, cukup terus mencoba. ✨','Small steps today, big dreams tomorrow. 💜','Kesalahan adalah bagian dari perjalanan belajar.'];let idx=0;const cycle=()=>{if(!p.isConnected)return;idx=(idx+1)%messages.length;const prefix='Semoga bahagia selalu, dan semangat belajar.<br><b>Dari ARDYIL 💜</b><br><br>';p.innerHTML=prefix+messages[idx]};setInterval(cycle,4800)}}
+})();
+</script>
+
 </body>
 </html>
