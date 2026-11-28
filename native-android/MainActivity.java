@@ -286,8 +286,15 @@ public class MainActivity extends Activity {
             long start = 0;
             long end = total - 1;
             boolean partial = false;
-            String range = request.getRequestHeaders() == null
-                    ? null : request.getRequestHeaders().get("Range");
+            String range = null;
+            if (request.getRequestHeaders() != null) {
+                for (Map.Entry<String, String> header : request.getRequestHeaders().entrySet()) {
+                    if ("Range".equalsIgnoreCase(header.getKey())) {
+                        range = header.getValue();
+                        break;
+                    }
+                }
+            }
             if (range != null && range.startsWith("bytes=")) {
                 String[] parts = range.substring(6).split("-", 2);
                 start = Long.parseLong(parts[0]);
@@ -418,7 +425,7 @@ public class MainActivity extends Activity {
                 ? e.getClass().getSimpleName() : message;
     }
 
-    private final class ArdyilNativeBridge {
+    public final class ArdyilNativeBridge {
         @JavascriptInterface
         public void testMic() {
             runOnUiThread(() -> requestNativeMic(false));
