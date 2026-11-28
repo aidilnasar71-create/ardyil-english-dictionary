@@ -756,10 +756,49 @@ const comics=[
 [{art:'🌈',en:'A rainbow bridge appeared after the rain.',id:'Jembatan pelangi muncul setelah hujan.'},{art:'🤝',en:'The neighbors helped one another cross it.',id:'Para tetangga saling membantu untuk menyeberang.'},{art:'💜',en:'Cloud City felt like home to everyone.',id:'Kota Awan terasa seperti rumah bagi semua orang.'}]
 ]}
 ];
+
+const ardyil79Series=[
+{title:'School Days · SD',topics:['A New Friend','My Colorful Classroom','Helpful Teacher','Lunchbox Surprise','Rainy Recess','School Garden','Library Treasure','Sports Day'],words:[['friend','teman'],['classroom','kelas'],['kind','baik'],['share','berbagi'],['read','membaca'],['play','bermain']]},
+{title:'Teen Dreams · SMP',topics:['Secret Club','Team Project','Kind Message','Science Fair','Lost Phone','Music Practice','Brave Choice','Dreams on Stage'],words:[['team','tim'],['message','pesan'],['challenge','tantangan'],['practice','latihan'],['brave','berefreshComicEpisodeOptions();
+$('ardyilComicSelect').addEventListener('change',()=>{$('ardyilComicEpisode').value='0';refreshComicEpisodeOptions();renderComic();});
+$('ardyilComicEpisode').addEventListener('change',renderComic);
+$('ardyilComicTranslation').addEventListener('change',renderComic);
+$('ardyilComicPrev').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.max(0,Number($('ardyilComicEpisode').value)-1));renderComic();});
+$('ardyilComicNext').addEventListener('click',()=>{$('ardyilComicEpisode').value=String(Math.min(comics[Number($('ardyilComicSelect').value)||0].episodes.length-1,Number($('ardyilComicEpisode').value)+1));renderComic();});
+renderComic();
+itian'],['citation','sitasi'],['presentation','presentasi'],['scholarship','beasiswa'],['deadline','tenggat']]},
+{title:'Work & Adult Life',topics:['Better Meeting','Customer Care','Work Balance','Career Change','Business Trip','Smart Budget','Leadership','New Opportunity'],words:[['meeting','rapat'],['schedule','jadwal'],['customer','pelanggan'],['negotiate','negosiasi'],['budget','anggaran'],['feedback','umpan balik']]},
+{title:'Mystery Adventures',topics:['Midnight Map','Park Footprints','Hidden Passage','Bottle Message','Mountain Trail','Lighthouse Signal','Museum Mystery','Final Clue'],words:[['clue','petunjuk'],['map','peta'],['secret','rahasia'],['explore','menjelajah'],['safe','aman'],['solve','memecahkan']]},
+{title:'Heart & Friendship',topics:['Honest Apology','New Neighbor','Helping Hands','Picnic Plan','Small Surprise','Rainy Afternoon','Trust Again','Warm Goodbye'],words:[['honest','jujur'],['apologize','meminta maaf'],['neighbor','tetangga'],['support','mendukung'],['trust','percaya'],['gratitude','rasa syukur']]},
+{title:'Science & Future',topics:['Robot Helper','Ocean Cleanup','Space Station','Green Energy','Smart City','Tiny Discovery','Future Farm','Tomorrow Begins'],words:[['robot','robot'],['ocean','samudra'],['orbit','orbit'],['energy','energi'],['innovation','inovasi'],['discover','menemukan']]}
+];
+ardyil79Series.forEach((s,si)=>{
+ const original=comics[si];
+ const words=s.words;
+ const epData=s.topics.map((title,ei)=>[
+ {art:['✨','📚','🧭','🌈','💡','🎒','🤝','🌱'][ei%8],en:'Today, our story begins with '+title.toLowerCase()+'.',id:'Hari ini, cerita kami dimulai dengan '+title.toLowerCase()+'.'},
+ {art:['🧩','🔎','💬','🗺️','🎯','📝'][ei%6],en:'We discovered a new word: '+words[ei%6][0]+'.',id:'Kami menemukan kosakata baru: '+words[ei%6][1]+'.'},
+ {art:'⭐',en:'We listened, tried again, and learned together.',id:'Kami mendengarkan, mencoba lagi, dan belajar bersama.'},
+ {art:'💜',en:'Every small step brings us closer to our dreams.',id:'Setiap langkah kecil membawa kami lebih dekat ke impian.'}
+ ]);
+ if(original){
+  original.title=s.title;
+  while(original.episodes.length<8)original.episodes.push(epData[original.episodes.length]);
+  original.episodes=original.episodes.slice(0,8);
+ }else comics.push({title:s.title,episodes:epData});
+});
+function refreshComicEpisodeOptions(){
+ const seriesSelect=$('ardyilComicSelect'),episodeSelect=$('ardyilComicEpisode');
+ if(!seriesSelect||!episodeSelect)return;
+ const series=comics[Number(seriesSelect.value)||0];
+ episodeSelect.innerHTML=series.episodes.map((ep,i)=>'<option value="'+i+'">Episode '+(i+1)+'</option>').join('');
+}
 function renderComic(){
-const ci=Number($('ardyilComicSelect').value)||0;const ei=Number($('ardyilComicEpisode').value)||0;const ep=comics[ci].episodes[ei];const show=$('ardyilComicTranslation').checked;
-$('ardyilComicPanels').innerHTML=ep.map(p=>'<article class="ardyil-comic-panel"><div class="ardyil-comic-art">'+p.art+'</div><div class="ardyil-comic-dialogue">'+safe(p.en)+'</div>'+(show?'<div class="ardyil-comic-translation">'+safe(p.id)+'</div>':'')+'</article>').join('');
+const ci=Number($('ardyilComicSelect').value)||0,ei=Number($('ardyilComicEpisode').value)||0;
+const ep=comics[ci].episodes[ei],show=$('ardyilComicTranslation').checked;
+$('ardyilComicPanels').innerHTML='<div class="ardyil79-comic-title"><b>'+safe(comics[ci].title)+'</b><small>Episode '+(ei+1)+' · ARDYIL ORIGINAL</small></div>'+ep.map(p=>'<article class="ardyil-comic-panel"><div class="ardyil-comic-art">'+p.art+'</div><div class="ardyil-comic-dialogue">'+safe(p.en)+'</div>'+(show?'<div class="ardyil-comic-translation">'+safe(p.id)+'</div>':'')+'</article>').join()+'<button class="ardyil79-share-comic" id="ardyil79ShareComic">↗ Bagikan cerita</button>';
 $('ardyilComicPrev').disabled=ei===0;$('ardyilComicNext').disabled=ei===comics[ci].episodes.length-1;
+const sb=$('ardyil79ShareComic');if(sb)sb.onclick=()=>ardyil79Share('ARDYIL Comic · '+comics[ci].title+' Episode '+(ei+1),ep.map(p=>p.en+'\n'+p.id).join('\n\n')+'\nBelajar bersama ARDYIL!');
 }
 $('ardyilComicSelect').addEventListener('change',()=>{$('ardyilComicEpisode').value='0';renderComic();});
 $('ardyilComicEpisode').addEventListener('change',renderComic);
@@ -1226,5 +1265,62 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
+
+<style id="ardyil79-expansion">
+.ardyil79-profile,.ardyil79-settings,.ardyil79-learning{margin:13px 0;padding:16px;border-radius:22px;background:linear-gradient(135deg,#f5f0ff,#e9faf3);box-shadow:0 5px 0 #e4e4ef}
+.ardyil79-profile h3,.ardyil79-learning h3{margin:0 0 8px;font-size:17px}.ardyil79-profile p{font-size:12px;color:#6a6381}
+.ardyil79-btn{border:0;border-radius:13px;padding:12px 15px;background:linear-gradient(110deg,#7865e6,#43b99b);color:white;font-weight:900}
+.ardyil79-btn:disabled{opacity:.55}
+.ardyil79-settings-row{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0;font-size:12px}
+.ardyil79-settings-row select{border:1px solid #ddd7ef;border-radius:10px;padding:9px;background:#fff}
+.ardyil79-unit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ardyil79-unit{background:white;border:0;border-radius:15px;padding:12px;text-align:left;min-height:80px;box-shadow:0 4px 0 #e1e4ee;animation:ardyil79in .3s both}
+.ardyil79-unit b{font-size:12px}.ardyil79-unit small{display:block;color:#77718b;font-size:10px;margin-top:5px}
+.ardyil79-comic-title{margin:0 0 12px;padding:12px;border-radius:15px;background:linear-gradient(120deg,#45316d,#246e70);color:#fff}.ardyil79-comic-title b{display:block;font-size:17px}.ardyil79-comic-title small{font-size:10px;opacity:.8}
+.ardyil79-share-comic{display:block;margin:12px auto;border:0;background:#fff;color:#6855d0;padding:12px 16px;border-radius:99px;font-weight:900;box-shadow:0 4px 0 #ddd}
+body.ardyil-dark .ardyil79-profile,body.ardyil-dark .ardyil79-settings,body.ardyil-dark .ardyil79-learning{background:#28253d}
+body.ardyil-dark .ardyil79-unit{background:#2b2940;color:#fff}
+@keyframes ardyil79in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ardyil79-unit{animation:none}}
+</style>
+<script id="ardyil79-extended-app">
+(function(){
+'use strict';
+function ardyil79Share(title,text){
+ try{if(window.ArdyilNative&&typeof window.ArdyilNative.shareText==='function'){window.ArdyilNative.shareText(title,text);return;}if(navigator.share){navigator.share({title,text}).catch(()=>{});return;}if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Teks disalin. Tempel untuk membagikan.'));return;}alert('Fitur berbagi tidak tersedia.');}catch(e){alert('Gagal membuka menu berbagi.')}
+}
+window.ardyil79Share=ardyil79Share;
+function addCampus(){
+ const section=document.querySelector('[data-media-section="languages"]');if(!section||document.getElementById('ardyil79Campus'))return;
+ const box=document.createElement('div');box.id='ardyil79Campus';box.className='ardyil79-learning';
+ box.innerHTML='<h3>🎓 ARDYIL Learning Campus</h3><p>Jalur pembelajaran sesuai tahap usia dan kebutuhan: sekolah dasar hingga dewasa.</p><div class="ardyil-media-row"><select id="ardyil79CampusTrack"><option>SD</option><option>SMP</option><option>SMA</option><option>Kuliah</option><option>Dewasa</option></select></div><div class="ardyil79-unit-grid" id="ardyil79CampusUnits"></div><div id="ardyil79CampusPractice"></div><button class="ardyil79-btn" id="ardyil79ShareLearning">↗ Bagikan progress belajar</button>';
+ section.prepend(box);
+ const content=[
+ {units:['My Family','School Things','Colors & Shapes','Food & Drinks','Animals','Daily Routine','Weather','Numbers'],vocab:[['family','keluarga'],['school','sekolah'],['color','warna'],['shape','bentuk'],['apple','apel'],['water','air'],['animal','hewan'],['happy','senang']]},
+ {units:['Friendship','Healthy Habits','Hobbies','Around Town','Technology','Environment','Story Time','Everyday English'],vocab:[['friendship','persahabatan'],['feeling','perasaan'],['healthy','sehat'],['hobby','hobi'],['neighborhood','lingkungan'],['device','perangkat'],['recycle','daur ulang'],['story','cerita']]},
+ {units:['Academic Vocabulary','Critical Thinking','Public Speaking','Science','Digital Citizenship','Culture','Essay Writing','Career Plans'],vocab:[['analyze','menganalisis'],['evidence','bukti'],['argument','argumen'],['experiment','percobaan'],['citizen','warga'],['culture','budaya'],['paragraph','paragraf'],['career','karier']]},
+ {units:['Campus Life','Research','Presentations','Discussion','Scholarships','Internships','Academic Writing','Project Planning'],vocab:[['lecture','kuliah'],['thesis','tesis'],['citation','sitasi'],['presentation','presentasi'],['discussion','diskusi'],['scholarship','beasiswa'],['internship','magang'],['proposal','proposal']]},
+ {units:['Workplace English','Meetings','Customer Care','Negotiation','Travel','Finance','Leadership','Career Growth'],vocab:[['workplace','tempat kerja'],['agenda','agenda'],['customer','pelanggan'],['negotiate','bernegosiasi'],['itinerary','rencana perjalanan'],['budget','anggaran'],['leadership','kepemimpinan'],['feedback','umpan balik']]}
+ ];
+ const sel=$('ardyil79CampusTrack'),grid=$('ardyil79CampusUnits'),practice=$('ardyil79CampusPractice');
+ function draw(){const t=content[sel.selectedIndex];grid.innerHTML=t.units.map((u,i)=>'<button class="ardyil79-unit" data-unit="'+i+'"><b>📘 Unit '+(i+1)+' · '+u+'</b><small>Vocabulary & mini quiz</small></button>').join('');grid.querySelectorAll('[data-unit]').forEach(btn=>btn.onclick=()=>{const idx=Number(btn.dataset.unit),pairs=t.vocab;practice.innerHTML='<h4>'+t.units[idx]+'</h4>'+pairs.map(w=>'<div style="background:#fff;padding:9px;border-radius:11px;margin:5px 0;font-size:12px"><b>'+w[0]+'</b> · '+w[1]+'</div>').join()+'<button class="ardyil79-btn" id="ardyil79MiniQuiz">🎯 Kuis mini</button><p id="ardyil79QuizAnswer"></p>'; $('ardyil79MiniQuiz').onclick=()=>{const w=pairs[(idx+2)%pairs.length],wrong=pairs[(idx+5)%pairs.length];const ans=prompt('Arti kata '+w[0]+'?\nA. '+w[1]+'\nB. '+wrong[1]);$('ardyil79QuizAnswer').textContent=ans&&ans.trim().toLowerCase()==='a'?'Benar! +10 XP ⭐':'Belum tepat. Jawaban: '+w[1];};});}
+ sel.onchange=draw;draw();
+ $('ardyil79ShareLearning').onclick=()=>ardyil79Share('ARDYIL Learning Campus','Aku belajar English lewat ARDYIL Learning Campus untuk SD, SMP, SMA, mahasiswa, dan dewasa. Yuk belajar bersama!');
+}
+function addProfileSettings(){
+ const home=document.getElementById('panel-home');if(!home||document.getElementById('ardyil79-profile'))return;
+ const box=document.createElement('div');box.id='ardyil79-profile';
+ box.innerHTML='<div class="ardyil79-profile"><h3>👤 Akun ARDYIL</h3><p>Login Google untuk cloud sync belum aktif. OAuth/Firebase perlu konfigurasi milik pemilik aplikasi. Tidak ada login palsu; progress tetap tersimpan lokal dan kamu bisa belajar tanpa akun.</p><button class="ardyil79-btn" disabled>Google Login · belum dikonfigurasi</button></div><div class="ardyil79-settings"><h3>⚙️ Pengaturan nyaman</h3><div class="ardyil79-settings-row"><label>Ukuran teks</label><select id="ardyil79Font"><option value="0">Normal</option><option value="1">Lebih besar</option><option value="2">Besar</option></select></div><div class="ardyil79-settings-row"><label>Kurangi animasi</label><input id="ardyil79Reduce" type="checkbox"></div><div class="ardyil79-settings-row"><label>Efek suara</label><input id="ardyil79Sound" type="checkbox" checked></div><div class="ardyil79-settings-row"><label>Track usia belajar</label><select id="ardyil79Age"><option>SD</option><option>SMP</option><option>SMA</option><option>Kuliah</option><option>Dewasa</option></select></div><button class="ardyil79-btn" id="ardyil79Save">Simpan preferensi</button><p id="ardyil79Saved"></p></div><button class="ardyil79-btn" id="ardyil79ShareApp">↗ Bagikan aplikasi ARDYIL</button>';
+ home.appendChild(box);
+ const prefs=()=>({font:$('ardyil79Font').value,reduce:$('ardyil79Reduce').checked,sound:$('ardyil79Sound').checked,age:$('ardyil79Age').value});
+ try{const p=JSON.parse(localStorage.getItem('ardyil79Settings')||'{}');if(p.font)$('ardyil79Font').value=p.font;if(p.reduce)$('ardyil79Reduce').checked=true;if(p.sound===false)$('ardyil79Sound').checked=false;if(p.age)$('ardyil79Age').value=p.age;apply(p);}catch(e){}
+ function apply(p){document.documentElement.style.fontSize=p.font==='1'?'17px':p.font==='2'?'19px':'';document.body.classList.toggle('ardyil79-reduced-motion',!!p.reduce);if(p.reduce){document.documentElement.style.setProperty('--ardyil79-motion','0s')}else document.documentElement.style.removeProperty('--ardyil79-motion');}
+ $('ardyil79Save').onclick=()=>{const p=prefs();localStorage.setItem('ardyil79Settings',JSON.stringify(p));apply(p);$('ardyil79Saved').textContent='Preferensi tersimpan ✓';};
+ $('ardyil79ShareApp').onclick=()=>ardyil79Share('ARDYIL English Dictionary','Belajar English dengan kamus, kuis, misi, cerita, komik dan jalur SD hingga dewasa. Yuk coba ARDYIL!');
+}
+function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 7.9';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 7.9';}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body>
 </html>
