@@ -27,6 +27,7 @@ require_text "$NATIVE" 'public void startRecording('
 require_text "$NATIVE" 'public void stopRecording('
 require_text "$NATIVE" 'public void speak('
 require_text "$NATIVE" 'public void stopSpeech('
+require_text "$NATIVE" 'public void shareText(String title, String text)'
 require_text "$NATIVE" 'REQUEST_NATIVE_AUDIO'
 require_text "$NATIVE" 'Manifest.permission.RECORD_AUDIO'
 
