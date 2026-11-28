@@ -2,6 +2,7 @@ package com.ardyil.dictionary;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioAttributes;
@@ -450,6 +451,23 @@ public class MainActivity extends Activity {
         public void stopSpeech() {
             runOnUiThread(() -> {
                 if (textToSpeech != null) textToSpeech.stop();
+            });
+        }
+
+        @JavascriptInterface
+        public void shareText(String title, String text) {
+            runOnUiThread(() -> {
+                try {
+                    Intent send = new Intent(Intent.ACTION_SEND);
+                    send.setType("text/plain");
+                    send.putExtra(Intent.EXTRA_SUBJECT,
+                            title == null || title.trim().isEmpty() ? "ARDYIL" : title.trim());
+                    send.putExtra(Intent.EXTRA_TEXT, text == null ? "" : text);
+                    startActivity(Intent.createChooser(send, "Bagikan ARDYIL"));
+                } catch (Exception e) {
+                    dispatchJs("ardyilNativeShareError",
+                            "Menu berbagi tidak tersedia pada perangkat ini. " + safeMessage(e));
+                }
             });
         }
     }
