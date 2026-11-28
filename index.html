@@ -267,5 +267,209 @@ function answerQuiz(id,button){if(quiz.answered||!quiz.question)return;quiz.answ
 document.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const action=b.dataset.action;if(action==='speak')speak(b.dataset.text);if(action==='favorite')toggleFavorite(b.dataset.id);if(action==='practice')sendToPractice(b.dataset.id);if(action==='pattern-practice'){const p=patterns[Number(b.dataset.index)];$('practiceInput').value=p.sample;updatePracticeTranslation();switchTab('practice')}if(action==='save-custom'){const input=$('customMeaningInput');saveCustom(b.dataset.query,input?.value||'')}if(action==='quiz-answer')answerQuiz(b.dataset.id,b);if(action==='quiz-next'&&quiz.answered){quiz.round++;nextQuizQuestion()}if(action==='quiz-restart')startQuiz();});
 init();
 </script>
+
+<style id="ardyil-expansion-style">
+:root{--ardyil-accent:#765ee8;--ardyil-accent-soft:#f0edff}
+.ardyil-extra-nav{border:1px solid #e7e2f2!important;background:#fff!important}
+.ardyil-extra-nav.active{background:var(--ardyil-accent-soft)!important;color:var(--ardyil-accent)!important;border-color:var(--ardyil-accent)!important}
+.ardyil-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:8px 0 16px}
+.ardyil-section-head h2{font-size:22px;letter-spacing:-.035em;margin:0}
+.ardyil-section-head p{color:var(--muted);font-size:12px;margin:4px 0 0}
+.ardyil-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ardyil-card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:16px;box-shadow:0 8px 24px rgba(39,31,79,.045);min-width:0}
+.ardyil-card h3{font-size:15px;margin:0 0 5px}
+.ardyil-muted{font-size:11px;color:var(--muted);line-height:1.55}
+.ardyil-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:99px;background:var(--ardyil-accent-soft);color:var(--ardyil-accent);font-size:10px;font-weight:800}
+.ardyil-btn{border:0;border-radius:12px;padding:10px 14px;background:var(--ardyil-accent);color:#fff;font-weight:800;font-size:11px}
+.ardyil-btn.secondary{background:#f0eef7;color:#5d5674}
+.ardyil-btn:disabled{opacity:.48}
+.ardyil-word{font-size:30px;font-weight:900;letter-spacing:.15em;text-align:center;margin:15px 0;color:var(--ink)}
+.ardyil-input{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);padding:12px;font-size:14px}
+.ardyil-feedback{min-height:24px;margin:9px 0;font-size:12px;font-weight:750}
+.ardyil-stat{font-size:26px;font-weight:900;letter-spacing:-.04em}
+.ardyil-progress{height:8px;border-radius:99px;background:#ece9f3;overflow:hidden;margin:9px 0}
+.ardyil-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ardyil-accent),#a99bf7);border-radius:99px;transition:width .25s ease}
+.ardyil-mission{display:flex;align-items:center;gap:11px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin:9px 0}
+.ardyil-mission-icon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--ardyil-accent-soft);font-size:16px;flex:none}
+.ardyil-mission-main{flex:1;min-width:0}
+.ardyil-mission-main b{font-size:12px;display:block}
+.ardyil-mission-main small{font-size:10px;color:var(--muted)}
+.ardyil-mission.done{border-color:#b9e5d6;background:#f2fbf7}
+.ardyil-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.ardyil-option{padding:11px;border:1px solid var(--line);background:var(--card);border-radius:12px;color:var(--ink);font-size:12px;font-weight:700;text-align:left}
+.ardyil-option:active{border-color:var(--ardyil-accent)}
+.ardyil-path{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ardyil-stage{border:1px solid var(--line);border-radius:16px;padding:13px;background:var(--card)}
+.ardyil-stage.locked{opacity:.55;filter:grayscale(.55)}
+.ardyil-stage b{font-size:12px;display:block;margin:6px 0 3px}
+.ardyil-math-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ardyil-math-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+.ardyil-math-item b{font-size:12px;display:block}
+.ardyil-math-item span{font-size:11px;color:var(--muted)}
+.ardyil-story{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}
+.ardyil-story-en{font-size:14px;line-height:1.75;color:var(--ink)}
+.ardyil-story-id{font-size:12px;line-height:1.65;color:var(--muted);border-left:3px solid var(--ardyil-accent);padding:7px 0 7px 11px;margin-top:9px}
+.ardyil-music{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:linear-gradient(130deg,#28234e,#57468f);color:#fff;border-radius:17px;padding:14px;margin:12px 0}
+.ardyil-music select{border:1px solid rgba(255,255,255,.25);background:#393260;color:#fff;border-radius:10px;padding:9px;max-width:100%}
+.ardyil-music small{display:block;color:#ddd6ff;font-size:10px}
+.ardyil-splash{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 80% 10%,#a89cf6 0,transparent 35%),linear-gradient(145deg,#17152b,#30285f 68%,#6657ac);color:white;transition:opacity .45s ease,visibility .45s ease}
+.ardyil-splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+.ardyil-splash-box{max-width:440px;text-align:center;animation:ardyilRise .8s ease both}
+.ardyil-splash-logo{width:84px;height:84px;border-radius:28px;margin:0 auto 18px;display:grid;place-items:center;font-size:34px;font-weight:950;background:linear-gradient(145deg,#b8adff,#725be3);box-shadow:0 18px 48px rgba(0,0,0,.25);animation:ardyilFloat 3s ease-in-out infinite}
+.ardyil-splash h2{font-size:31px;margin:0 0 8px;letter-spacing:-.04em}
+.ardyil-splash p{font-size:14px;color:#e1dcff;line-height:1.65}
+.ardyil-splash .ardyil-btn{background:#fff;color:#4b3b9b;padding:12px 22px;margin-top:10px}
+.ardyil-settings{border-top:1px solid var(--line);margin-top:16px;padding-top:14px}
+.ardyil-setting-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ardyil-setting-row label{font-size:12px;font-weight:750}
+.ardyil-setting-row small{display:block;color:var(--muted);font-size:10px;font-weight:400}
+.ardyil-setting-row select{max-width:160px;border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--card);color:var(--ink)}
+.ardyil-setting-row input[type=checkbox]{width:19px;height:19px;accent-color:var(--ardyil-accent)}
+.ardyil-dark{--ink:#f1effa!important;--muted:#aaa5bd!important;--paper:#171626!important;--card:#232136!important;--line:#39364e!important;--soft:#373152!important;background:#171626!important;color:#f1effa!important}
+body.ardyil-dark .tabs{background:rgba(23,22,38,.94)!important}
+body.ardyil-dark .searchbar,body.ardyil-dark .entry,body.ardyil-dark .practice-card,body.ardyil-dark .sidecard,body.ardyil-dark .pattern-card,body.ardyil-dark .search-panel,body.ardyil-dark .modal{background:#232136!important;color:#f1effa!important}
+body.ardyil-dark .field select,body.ardyil-dark .field input,body.ardyil-dark .searchbar input,body.ardyil-dark .practice-input{background:#191829!important;color:#f1effa!important;border-color:#39364e!important}
+body.ardyil-dark .ardyil-extra-nav{background:#232136!important;color:#d9d4ee!important}
+body.ardyil-dark .ardyil-option,body.ardyil-dark .ardyil-stage,body.ardyil-dark .ardyil-mission,body.ardyil-dark .ardyil-math-item,body.ardyil-dark .ardyil-story{background:#232136!important;color:#f1effa!important}
+body.ardyil-dark .ardyil-story-id{color:#c0bad4}
+body.ardyil-dark .ardyil-mission.done{background:#18342e!important}
+body.ardyil-font-small{font-size:14px}
+body.ardyil-font-large{font-size:18px}
+body.ardyil-font-large .entry-en{font-size:19px}
+body.ardyil-font-large .entry-id{font-size:15px}
+body.ardyil-font-small .entry-en{font-size:14px}
+body.ardyil-font-small .entry-id{font-size:12px}
+body.ardyil-reduced *,body.ardyil-reduced *:before,body.ardyil-reduced *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.ardyil-no-stickers .ardyil-sticker{display:none!important}
+@keyframes ardyilRise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ardyilFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(max-width:680px){.ardyil-grid,.ardyil-path{grid-template-columns:1fr}.ardyil-section-head h2{font-size:20px}.ardyil-stat{font-size:23px}.ardyil-options{grid-template-columns:1fr 1fr}.ardyil-math-list{grid-template-columns:1fr 1fr}.ardyil-story{padding:12px}}
+@media(max-width:380px){.ardyil-options,.ardyil-math-list{grid-template-columns:1fr}.ardyil-splash h2{font-size:26px}}
+</style>
+<div id="ardyil-expansion" hidden></div>
+<script id="ardyil-expansion-script">
+(function(){
+'use strict';
+const $x = id => document.getElementById(id);
+const KEY = 'ardyil_plus_v1';
+const today = new Date();
+const dayKey = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+const readState = () => {try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+let state = readState();
+if(state.day!==dayKey){state.day=dayKey;state.daily={puzzle:0,challenge:0,reading:0,claimed:[]};}
+state.daily=state.daily||{puzzle:0,challenge:0,reading:0,claimed:[]};
+state.daily.claimed=state.daily.claimed||[];
+state.xp=Number(state.xp)||0;
+state.level=Number(state.level)||1;
+state.adventure=Number(state.adventure)||0;
+state.puzzleLevel=Number(state.puzzleLevel)||1;
+state.puzzleSolved=Number(state.puzzleSolved)||0;
+state.challengeBest=Number(state.challengeBest)||0;
+state.settings=state.settings||{};
+const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+const words=[
+ {en:'brave',id:'berani'},{en:'curious',id:'ingin tahu'},{en:'journey',id:'perjalanan'},{en:'whisper',id:'berbisik'},
+ {en:'bright',id:'cerah'},{en:'gentle',id:'lembut'},{en:'discover',id:'menemukan'},{en:'achieve',id:'mencapai'},
+ {en:'honest',id:'jujur'},{en:'freedom',id:'kebebasan'},{en:'wonder',id:'keajaiban'},{en:'wisdom',id:'kebijaksanaan'},
+ {en:'courage',id:'keberanian'},{en:'improve',id:'meningkatkan'},{en:'peaceful',id:'damai'},{en:'mystery',id:'misteri'},
+ {en:'adventure',id:'petualangan'},{en:'promise',id:'janji'},{en:'success',id:'keberhasilan'},{en:'protect',id:'melindungi'}
+];
+const math=[
+ ['addition','penjumlahan'],['subtraction','pengurangan'],['multiplication','perkalian'],['division','pembagian'],
+ ['fraction','pecahan'],['decimal','desimal'],['equation','persamaan'],['remainder','sisa pembagian'],
+ ['percentage','persentase'],['numerator','pembilang'],['denominator','penyebut'],['perimeter','keliling'],
+ ['area','luas'],['volume','volume'],['average','rata-rata'],['greater than','lebih besar dari'],
+ ['less than','lebih kecil dari'],['equal to','sama dengan'],['square root','akar kuadrat'],['odd number','bilangan ganjil']
+];
+const missions=[
+ {id:'puzzle',icon:'🧩',title:'Pecahkan 3 teka-teki',desc:'Jawab tiga teka-teki dengan benar.',goal:3,reward:45},
+ {id:'challenge',icon:'⚡',title:'Jawab 5 tantangan',desc:'Dapatkan lima jawaban benar di Challenge.',goal:5,reward:65},
+ {id:'reading',icon:'📖',title:'Selesaikan 1 bab novel',desc:'Baca satu bab dan tandai selesai.',goal:1,reward:55}
+];
+const adventures=[
+ {name:'Beginner Village',desc:'Kenali kata-kata dasar dan berani memulai.',q:'What does “brave” mean?',a:['Berani','Lelah','Lapar','Sunyi'],right:0,icon:'🏡'},
+ {name:'Grammar Forest',desc:'Masuk ke hutan pola kalimat.',q:'Choose the correct sentence.',a:['She are happy.','She is happy.','She am happy.','She be happy.'],right:1,icon:'🌲'},
+ {name:'Conversation City',desc:'Gunakan ungkapan yang tepat saat berbicara.',q:'Someone says “Thank you”. You reply…',a:['You are welcome.','Good night.','I am hungry.','See you yesterday.'],right:0,icon:'🏙️'},
+ {name:'Mystery Island',desc:'Pahami petunjuk dan kosakata misteri.',q:'A “whisper” is a…',a:['Suara pelan','Lompatan','Bangunan','Perayaan'],right:0,icon:'🏝️'},
+ {name:'Knowledge Castle',desc:'Buktikan semua kemampuanmu.',q:'What does “wisdom” mean?',a:['Kebijaksanaan','Kecepatan','Kesedihan','Kebisingan'],right:0,icon:'🏰'}
+];
+const novels=[
+ {title:'The Lantern Beyond the Hill',genre:'Adventure',mood:'adventure',chapters:[
+  [['At the edge of a quiet village, Mira found a small lantern under an old tree. Its warm light seemed to point toward the hill.','Di tepi desa yang tenang, Mira menemukan lentera kecil di bawah pohon tua. Cahayanya yang hangat seolah menunjuk ke arah bukit.'],['She was afraid, but curiosity was stronger than fear. She packed a bottle of water and followed the narrow path.','Ia merasa takut, tetapi rasa ingin tahunya lebih kuat daripada ketakutan. Ia membawa sebotol air dan mengikuti jalan setapak.'],['At the top, she discovered a garden full of glowing flowers. A wooden sign said, “Every brave step reveals a new world.”','Di puncak bukit, ia menemukan taman penuh bunga bercahaya. Sebuah papan kayu bertuliskan, “Setiap langkah berani membuka dunia baru.”']]},
+ {title:'Letters in the Rain',genre:'Romance',mood:'romantic',chapters:[
+  [['Every Friday, Noah waited at the little bookshop while rain touched the windows. He hoped to see the girl who always read near the door.','Setiap Jumat, Noah menunggu di toko buku kecil saat hujan menyentuh jendela. Ia berharap melihat gadis yang selalu membaca dekat pintu.'],['One afternoon, a folded note fell from her book. It said, “Your smile makes rainy days brighter.”','Suatu sore, sebuah catatan terlipat jatuh dari bukunya. Isinya, “Senyummu membuat hari hujan terasa lebih cerah.”'],['Noah left a reply between the pages. Their quiet letters became the beginning of a beautiful friendship.','Noah meninggalkan balasan di antara halaman. Surat-surat sederhana mereka menjadi awal persahabatan yang indah.']]},
+ {title:'The Clockmaker’s Secret',genre:'Mystery',mood:'mystery',chapters:[
+  [['In a narrow street stood a clock shop that never closed. Every clock showed a different time, except one hidden behind a blue curtain.','Di sebuah jalan sempit berdiri toko jam yang tidak pernah tutup. Setiap jam menunjukkan waktu berbeda, kecuali satu jam yang tersembunyi di balik tirai biru.'],['Lena heard a soft click at midnight. The hidden clock opened, revealing a tiny map inside its wooden case.','Lena mendengar bunyi klik lembut saat tengah malam. Jam tersembunyi itu terbuka dan memperlihatkan peta kecil di dalam kotak kayunya.'],['The map led to a letter from the clockmaker: “Time is precious. Spend it solving mysteries, helping others, and enjoying today.”','Peta itu mengarah pada surat dari pembuat jam: “Waktu sangat berharga. Gunakan untuk memecahkan misteri, menolong orang lain, dan menikmati hari ini.”']]}
+];
+let puzzle=null,challengeTimer=null,challengeRemaining=60,challengeScore=0,challengeQuestion=null;
+let audioCtx=null,audioNodes=[],musicInterval=null,musicPlaying=false,musicVolume=.10;
+function persistUI(){persist();renderStats();renderMissions();}
+function addXP(n){state.xp+=n;state.level=Math.floor(state.xp/250)+1;persistUI();if(state.settings.stickers!==false)toast('✨ +'+n+' XP · Semangat terus!');}
+function toast(message){const t=$x('toast');if(!t)return;t.textContent=message;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1900);}
+function missionCount(id){return Number(state.daily[id])||0;}
+function updateMission(id,amount){state.daily[id]=Math.min(99,missionCount(id)+amount);const m=missions.find(x=>x.id===id);if(m&&missionCount(id)>=m.goal&&!state.daily.claimed.includes(id)){state.daily.claimed.push(id);state.xp+=m.reward;state.level=Math.floor(state.xp/250)+1;toast('🎉 Misi selesai! +'+m.reward+' XP');}persistUI();}
+function renderStats(){const xp=$x('ardyilXp');if(xp)xp.textContent=state.xp.toLocaleString('id-ID');const lv=$x('ardyilLevel');if(lv)lv.textContent=state.level;const pl=$x('ardyilPuzzleLevel');if(pl)pl.textContent=state.puzzleLevel;const ab=$x('ardyilAdventureLevel');if(ab)ab.textContent=state.adventure;}
+function renderMissions(){const el=$x('ardyilMissions');if(!el)return;el.innerHTML=missions.map(m=>{const v=missionCount(m.id),done=state.daily.claimed.includes(m.id);return '<div class="ardyil-mission '+(done?'done':'')+'"><div class="ardyil-mission-icon">'+m.icon+'</div><div class="ardyil-mission-main"><b>'+m.title+(done?' ✓':'')+'</b><small>'+m.desc+' · '+v+'/'+m.goal+' · hadiah '+m.reward+' XP</small><div class="ardyil-progress"><span style="width:'+Math.min(100,v/m.goal*100)+'%"></span></div></div></div>'}).join('');}
+function pickPuzzle(){let w=words[Math.floor(Math.random()*words.length)],arr=w.en.split('');if(arr.length>1){let orig=arr.join(''),tries=0;while(arr.join('')===orig&&tries++<8){arr.sort(()=>Math.random()-.5)}}puzzle=w;$x('ardyilScramble').textContent=arr.join('  ').toUpperCase();$x('ardyilPuzzleAnswer').value='';$x('ardyilPuzzleFeedback').textContent='Susun huruf menjadi kata yang benar.';$x('ardyilPuzzleHint').textContent='Petunjuk arti: '+w.id;$x('ardyilPuzzleHint').hidden=true;}
+function checkPuzzle(){if(!puzzle)return;const answer=$x('ardyilPuzzleAnswer').value.trim().toLowerCase();if(answer===puzzle.en){$x('ardyilPuzzleFeedback').textContent='Benar! '+puzzle.en+' = '+puzzle.id+' ✨';state.puzzleSolved++;state.puzzleLevel=Math.min(100,state.puzzleLevel+1);updateMission('puzzle',1);addXP(15);pickPuzzle();}else{$x('ardyilPuzzleFeedback').textContent='Belum tepat. Coba lagi, atau buka petunjuk.';}}
+function renderChallengeQuestion(){const q=words[Math.floor(Math.random()*words.length)];challengeQuestion=q;const opts=[q];while(opts.length<4){const w=words[Math.floor(Math.random()*words.length)];if(!opts.includes(w))opts.push(w)}opts.sort(()=>Math.random()-.5);$x('ardyilChallengePrompt').textContent='Apa arti “'+q.en+'” ?';$x('ardyilChallengeOptions').innerHTML=opts.map(o=>'<button class="ardyil-option" data-challenge="'+words.indexOf(o)+'">'+o.id+'</button>').join('');}
+function stopChallenge(){if(challengeTimer)clearInterval(challengeTimer);challengeTimer=null;const start=$x('ardyilChallengeStart');if(start)start.disabled=false;const msg=$x('ardyilChallengePrompt');if(msg)msg.textContent='Waktu habis! Skor kamu: '+challengeScore+' jawaban benar.';if(challengeScore>state.challengeBest)state.challengeBest=challengeScore;persistUI();if(challengeScore>0)addXP(challengeScore*4);}
+function startChallenge(){if(challengeTimer)clearInterval(challengeTimer);challengeRemaining=60;challengeScore=0;$x('ardyilChallengeStart').disabled=true;$x('ardyilChallengeScore').textContent='0';$x('ardyilChallengeTime').textContent='60';renderChallengeQuestion();challengeTimer=setInterval(()=>{challengeRemaining--;$x('ardyilChallengeTime').textContent=challengeRemaining;if(challengeRemaining<=0)stopChallenge()},1000);}
+function answerChallenge(index,button){if(!challengeTimer||!challengeQuestion)return;const chosen=words[Number(index)];if(chosen===challengeQuestion){challengeScore++;$x('ardyilChallengeScore').textContent=challengeScore;updateMission('challenge',1);button.textContent='Benar ✓';button.disabled=true;setTimeout(()=>{if(challengeTimer)renderChallengeQuestion()},220)}else{button.disabled=true;button.style.opacity='.5';}}
+function renderAdventure(){const list=$x('ardyilAdventurePath');if(!list)return;list.innerHTML=adventures.map((a,i)=>'<div class="ardyil-stage '+(i>state.adventure?'locked':'')+'"><span class="ardyil-pill">'+(i<state.adventure?'SELESAI':i===state.adventure?'TERBUKA':'TERKUNCI')+'</span><div style="font-size:24px;margin-top:8px">'+a.icon+'</div><b>'+a.name+'</b><div class="ardyil-muted">'+a.desc+'</div></div>').join('');const a=adventures[Math.min(state.adventure,adventures.length-1)];$x('ardyilAdventureQuestion').textContent=state.adventure>=adventures.length?'🎉 Semua wilayah petualangan selesai!':a.q;$x('ardyilAdventureOptions').innerHTML=state.adventure>=adventures.length?'':a.a.map((v,i)=>'<button class="ardyil-option" data-adventure="'+i+'">'+v+'</button>').join('');$x('ardyilAdventureProgress').textContent=state.adventure+' / '+adventures.length+' wilayah selesai';}
+function answerAdventure(index){const a=adventures[state.adventure];if(!a)return;if(Number(index)===a.right){state.adventure++;addXP(50);renderAdventure();toast('Misi berhasil diselesaikan!');}else toast('Belum tepat. Coba baca pertanyaannya lagi.');}
+function renderNovel(){const n=novels[Number($x('ardyilNovelSelect').value)||0];$x('ardyilNovelTitle').textContent=n.title+' · '+n.genre;$x('ardyilNovelText').innerHTML=n.chapters.map((chapter,i)=>'<article class="ardyil-story"><span class="ardyil-pill">CHAPTER '+(i+1)+'</span>'+chapter.map(p=>'<p class="ardyil-story-en">'+p[0]+'</p><p class="ardyil-story-id" data-translation>'+p[1]+'</p>').join('')+'</article>').join('');$x('ardyilNovelMood').value=n.mood;}
+function toggleTranslation(){const show=$x('ardyilTranslationToggle').checked;document.querySelectorAll('[data-translation]').forEach(el=>el.hidden=!show);}
+function speakText(text){if(typeof speak==='function')speak(text);else if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(text);u.lang='en-US';window.speechSynthesis.speak(u)}}
+function stopMusic(){if(musicInterval)clearInterval(musicInterval);musicInterval=null;musicPlaying=false;audioNodes.forEach(n=>{try{n.stop()}catch(e){}});audioNodes=[];const b=$x('ardyilMusicToggle');if(b)b.textContent='▶ Putar musik';}
+function playMusic(){const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx){toast('Audio tidak didukung pada perangkat ini.');return}if(!audioCtx)audioCtx=new Ctx();if(audioCtx.state==='suspended')audioCtx.resume();stopMusic();musicPlaying=true;$x('ardyilMusicToggle').textContent='Ⅱ Jeda musik';const mood=$x('ardyilNovelMood').value;const chords={romantic:[261.63,329.63,392],adventure:[293.66,369.99,440],mystery:[220,261.63,329.63],calm:[174.61,220,261.63]};const notes=chords[mood]||chords.calm;let step=0;const playChord=()=>{if(!musicPlaying)return;const now=audioCtx.currentTime;notes.forEach((freq,i)=>{const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type='sine';osc.frequency.value=freq;filter.type='lowpass';filter.frequency.value=850;gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(musicVolume/(i+1),now+1.1);gain.gain.linearRampToValueAtTime(0,now+3.5);osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+3.7);audioNodes.push(osc)});step++;};playChord();musicInterval=setInterval(playChord,3700);}
+function applySettings(){const s=state.settings||{};document.body.classList.toggle('ardyil-dark',s.theme==='dark'||(s.theme==='auto'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches));document.body.classList.toggle('ardyil-font-small',s.font==='small');document.body.classList.toggle('ardyil-font-large',s.font==='large');document.body.classList.toggle('ardyil-reduced',s.motion===false||s.motion==='reduced');document.body.classList.toggle('ardyil-no-stickers',s.stickers===false);const palettes={purple:['#765ee8','#f0edff'],blue:['#397dce','#eaf3ff'],rose:['#cb648e','#fff0f6'],mint:['#26977d','#e8f8f2']};const p=palettes[s.color||'purple']||palettes.purple;document.documentElement.style.setProperty('--ardyil-accent',p[0]);document.documentElement.style.setProperty('--ardyil-accent-soft',p[1]);}
+function updateSetting(k,v){state.settings[k]=v;persist();applySettings();}
+function openSplash(){const el=$x('ardyilSplash');if(!el)return;if(state.settings.splash===false){el.classList.add('hide');return}el.classList.remove('hide');}
+function buildUI(){
+const nav=document.querySelector('.tabs');const main=document.querySelector('main');
+const tabs=[['puzzle','🧩','Puzzle'],['challenge','⚡','Challenge'],['adventure','🧭','Adventure'],['academy','📐','Academy'],['novels','📖','Novel']];
+tabs.forEach(t=>{const b=document.createElement('button');b.className='tab ardyil-extra-nav';b.dataset.tab=t[0];b.innerHTML='<span class="tabico">'+t[1]+'</span>'+t[2];b.addEventListener('click',()=>switchTab(t[0]));nav.appendChild(b)});
+main.insertAdjacentHTML('beforeend',
+'<section class="panel" id="panel-puzzle"><div class="ardyil-section-head"><div><h2>Puzzle Zone</h2><p>Teka-teki kata untuk melatih ingatan dan ketelitian.</p></div><span class="ardyil-pill">LEVEL <span id="ardyilPuzzleLevel">1</span> / 100</span></div><div class="ardyil-grid"><div class="ardyil-card"><span class="ardyil-pill">WORD SCRAMBLE</span><div class="ardyil-word" id="ardyilScramble">—</div><input class="ardyil-input" id="ardyilPuzzleAnswer" placeholder="Ketik jawaban bahasa Inggris" autocomplete="off"><div class="ardyil-feedback" id="ardyilPuzzleFeedback">Susun huruf menjadi kata yang benar.</div><div class="audio-actions"><button class="ardyil-btn" id="ardyilPuzzleCheck">Periksa jawaban</button><button class="ardyil-btn secondary" id="ardyilPuzzleHintBtn">Petunjuk</button><button class="ardyil-btn secondary" id="ardyilPuzzleNew">Lewati</button></div><p class="ardyil-muted" id="ardyilPuzzleHint" hidden></p></div><div class="ardyil-card"><div class="ardyil-stat" id="ardyilPuzzleSolved">0</div><h3>Teka-teki terpecahkan</h3><p class="ardyil-muted">Setiap jawaban benar memberikan XP dan membuka level berikutnya. Level teka-teki dapat berkembang sampai 100.</p><div class="ardyil-pill ardyil-sticker">✨ Belajar sambil bermain</div></div></div></section>'+
+'<section class="panel" id="panel-challenge"><div class="ardyil-section-head"><div><h2>Challenge Zone</h2><p>Jawab sebanyak mungkin dalam waktu 60 detik.</p></div><span class="ardyil-pill">BEST <span id="ardyilChallengeBest">0</span></span></div><div class="ardyil-grid"><div class="ardyil-card"><div class="ardyil-grid"><div><div class="ardyil-muted">WAKTU TERSISA</div><div class="ardyil-stat"><span id="ardyilChallengeTime">60</span>s</div></div><div><div class="ardyil-muted">JAWABAN BENAR</div><div class="ardyil-stat" id="ardyilChallengeScore">0</div></div></div><p class="ardyil-muted" id="ardyilChallengePrompt">Tekan mulai untuk membuka tantangan.</p><div class="ardyil-options" id="ardyilChallengeOptions"></div><button class="ardyil-btn" id="ardyilChallengeStart" style="margin-top:14px">Mulai tantangan 60 detik</button></div><div class="ardyil-card"><h3>Misi harian</h3><p class="ardyil-muted">Progres tersimpan di perangkat dan diatur ulang berdasarkan tanggal lokal perangkat.</p><div id="ardyilMissions"></div></div></div></section>'+
+'<section class="panel" id="panel-adventure"><div class="ardyil-section-head"><div><h2>Adventure World</h2><p>Jelajahi dunia, selesaikan misi, dan buka wilayah baru.</p></div><span class="ardyil-pill">XP <span id="ardyilXp">0</span></span></div><div class="ardyil-card"><div class="ardyil-grid"><div><div class="ardyil-muted">LEVEL PEMBELAJAR</div><div class="ardyil-stat" id="ardyilLevel">1</div></div><div><div class="ardyil-muted">WILAYAH SELESAI</div><div class="ardyil-stat" id="ardyilAdventureLevel">0</div></div></div><div class="ardyil-progress"><span id="ardyilAdventureBar" style="width:0%"></span></div><p class="ardyil-muted" id="ardyilAdventureProgress">0 / 5 wilayah selesai</p><div class="ardyil-path" id="ardyilAdventurePath"></div></div><div class="ardyil-card" style="margin-top:12px"><span class="ardyil-pill">MISI AKTIF</span><h3 id="ardyilAdventureQuestion" style="margin-top:12px">Pilih wilayah untuk memulai.</h3><div class="ardyil-options" id="ardyilAdventureOptions"></div></div></section>'+
+'<section class="panel" id="panel-academy"><div class="ardyil-section-head"><div><h2>English Academy</h2><p>Belajar matematika dan istilah pelajaran dalam bahasa Inggris.</p></div><span class="ardyil-pill">OFFLINE</span></div><div class="ardyil-card"><h3>Mathematics in English</h3><p class="ardyil-muted">Sentuh tombol dengar untuk melatih pengucapan istilah matematika.</p><div class="ardyil-math-list" id="ardyilMathList"></div></div><div class="ardyil-card" style="margin-top:12px"><h3>Contoh kalimat matematika</h3><p class="ardyil-story-en">“Add five and three. The result is eight.”</p><p class="ardyil-story-id">“Jumlahkan lima dan tiga. Hasilnya adalah delapan.”</p><p class="ardyil-story-en">“A half is equal to one divided by two.”</p><p class="ardyil-story-id">“Setengah sama dengan satu dibagi dua.”</p><button class="ardyil-btn" id="ardyilMathQuiz">Latihan istilah matematika</button><p class="ardyil-feedback" id="ardyilMathFeedback"></p></div></section>'+
+'<section class="panel" id="panel-novels"><div class="ardyil-section-head"><div><h2>Novel Reader</h2><p>Baca cerita bahasa Inggris orisinal dengan terjemahan Indonesia.</p></div><span class="ardyil-pill">BILINGUAL</span></div><div class="ardyil-card"><label class="ardyil-muted" for="ardyilNovelSelect">Pilih cerita</label><select id="ardyilNovelSelect" class="ardyil-input"><option value="0">The Lantern Beyond the Hill · Adventure</option><option value="1">Letters in the Rain · Romance</option><option value="2">The Clockmaker’s Secret · Mystery</option></select><h3 id="ardyilNovelTitle" style="margin-top:12px"></h3><label class="ardyil-setting-row"><span><b>Tampilkan terjemahan Indonesia</b></span><input type="checkbox" id="ardyilTranslationToggle" checked></label><div id="ardyilNovelText"></div><button class="ardyil-btn" id="ardyilReadDone">Bab selesai dibaca ✓</button><div class="ardyil-music"><div style="flex:1;min-width:150px"><b>♫ Musik latar orisinal</b><small>Instrumental sintetis offline · tanpa lagu komersial</small></div><select id="ardyilNovelMood"><option value="adventure">Adventure · cinematic pad</option><option value="romantic">Romance · warm piano pad</option><option value="mystery">Mystery · ambient pad</option><option value="calm">Relax · soft ambient</option></select><button class="ardyil-btn" id="ardyilMusicToggle">▶ Putar musik</button><label style="font-size:10px;display:flex;align-items:center;gap:6px">Volume <input id="ardyilMusicVolume" type="range" min="0" max="25" value="10"></label></div><p class="ardyil-muted">Musik dibuat secara sintetis langsung di perangkat. Tekan putar untuk mulai; musik berhenti saat pengguna menekan jeda.</p></div></section>'
+);
+$x('ardyilExpansionTop')?.remove();
+const modal=document.querySelector('.modal .modal-note');
+if(modal){modal.insertAdjacentHTML('afterend','<div class="ardyil-settings"><h3>Personalisasi ARDYIL</h3><p class="ardyil-muted">Atur tampilan dan pengalaman belajar sesuai kenyamananmu.</p><div class="ardyil-setting-row"><label>Tema tampilan<small>Terang, gelap, atau mengikuti perangkat</small></label><select id="ardyilTheme"><option value="light">Terang</option><option value="dark">Gelap</option><option value="auto">Otomatis</option></select></div><div class="ardyil-setting-row"><label>Warna aksen</label><select id="ardyilColor"><option value="purple">Lavender</option><option value="blue">Ocean blue</option><option value="rose">Rose</option><option value="mint">Mint</option></select></div><div class="ardyil-setting-row"><label>Ukuran tulisan</label><select id="ardyilFont"><option value="small">Kecil</option><option value="normal">Normal</option><option value="large">Besar</option></select></div><div class="ardyil-setting-row"><label>Animasi<small>Matikan untuk mengurangi gerakan</small></label><input type="checkbox" id="ardyilMotion" checked></div><div class="ardyil-setting-row"><label>Sticker dan emotikon<small>Gaya sederhana, tidak berlebihan</small></label><input type="checkbox" id="ardyilStickers" checked></div><div class="ardyil-setting-row"><label>Sambutan saat aplikasi dibuka</label><input type="checkbox" id="ardyilSplashToggle" checked></div><div class="ardyil-setting-row"><label>Getaran ringan saat berhasil</label><input type="checkbox" id="ardyilHaptics"></div><button class="ardyil-btn secondary" id="ardyilResetSettings" style="margin-top:12px">Kembalikan pengaturan awal</button></div>');}
+document.body.insertAdjacentHTML('beforeend','<div class="ardyil-splash" id="ardyilSplash"><div class="ardyil-splash-box"><div class="ardyil-splash-logo">A</div><h2>Selamat datang di ARDYIL</h2><p>Semoga bahagia selalu, dan semangat belajar.<br><b>Dari ARDYIL 💜</b><br><br>Belajar sedikit demi sedikit, lama-lama semakin hebat.</p><button class="ardyil-btn" id="ardyilStartApp">Mulai belajar</button></div></div>');
+}
+function wireUI(){
+$x('ardyilPuzzleCheck').addEventListener('click',checkPuzzle);$x('ardyilPuzzleNew').addEventListener('click',pickPuzzle);$x('ardyilPuzzleHintBtn').addEventListener('click',()=>$x('ardyilPuzzleHint').hidden=false);$x('ardyilPuzzleAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')checkPuzzle()});
+$x('ardyilChallengeStart').addEventListener('click',startChallenge);$x('ardyilChallengeBest').textContent=state.challengeBest;
+$x('ardyilAdventureBar').style.width=(state.adventure/adventures.length*100)+'%';
+$x('ardyilNovelSelect').addEventListener('change',()=>{stopMusic();renderNovel()});$x('ardyilTranslationToggle').addEventListener('change',toggleTranslation);$x('ardyilReadDone').addEventListener('click',()=>{updateMission('reading',1);addXP(20)});
+$x('ardyilMusicToggle').addEventListener('click',()=>musicPlaying?stopMusic():playMusic());$x('ardyilMusicVolume').addEventListener('input',e=>{musicVolume=Number(e.target.value)/100});
+$x('ardyilMathQuiz').addEventListener('click',()=>{const item=math[Math.floor(Math.random()*math.length)];$x('ardyilMathFeedback').textContent=item[0]+' = '+item[1];speakText(item[0])});
+$x('ardyilStartApp').addEventListener('click',()=>$x('ardyilSplash').classList.add('hide'));
+const settingsMap={ardyilTheme:'theme',ardyilColor:'color',ardyilFont:'font'};
+Object.keys(settingsMap).forEach(id=>{$x(id).value=state.settings[settingsMap[id]]||({theme:'light',color:'purple',font:'normal'}[settingsMap[id]]);$x(id).addEventListener('change',e=>{updateSetting(settingsMap[id],e.target.value)})});
+$x('ardyilMotion').checked=state.settings.motion!==false&&state.settings.motion!=='reduced';$x('ardyilMotion').addEventListener('change',e=>updateSetting('motion',e.target.checked));
+$x('ardyilStickers').checked=state.settings.stickers!==false;$x('ardyilStickers').addEventListener('change',e=>updateSetting('stickers',e.target.checked));
+$x('ardyilSplashToggle').checked=state.settings.splash!==false;$x('ardyilSplashToggle').addEventListener('change',e=>updateSetting('splash',e.target.checked));
+$x('ardyilHaptics').checked=state.settings.haptics===true;$x('ardyilHaptics').addEventListener('change',e=>updateSetting('haptics',e.target.checked));
+$x('ardyilResetSettings').addEventListener('click',()=>{state.settings={};persist();applySettings();$x('ardyilTheme').value='light';$x('ardyilColor').value='purple';$x('ardyilFont').value='normal';$x('ardyilMotion').checked=true;$x('ardyilStickers').checked=true;$x('ardyilSplashToggle').checked=true;$x('ardyilHaptics').checked=false;toast('Pengaturan dikembalikan.')});
+document.addEventListener('click',e=>{const c=e.target.closest('[data-challenge]');if(c){answerChallenge(c.dataset.challenge,c);return}const a=e.target.closest('[data-adventure]');if(a){answerAdventure(a.dataset.adventure);return}});
+window.addEventListener('beforeunload',stopMusic);
+}
+function renderMath(){const el=$x('ardyilMathList');el.innerHTML=math.map(m=>'<div class="ardyil-math-item"><b>'+m[0]+'</b><span>'+m[1]+'</span><button class="smallbtn primary" data-speak-math="'+m[0]+'" style="margin-top:7px">▶ Dengarkan</button></div>').join('');el.addEventListener('click',e=>{const b=e.target.closest('[data-speak-math]');if(b)speakText(b.dataset.speakMath)});}
+buildUI();
+renderStats();renderMissions();renderAdventure();renderMath();renderNovel();toggleTranslation();applySettings();wireUI();pickPuzzle();
+$x('ardyilPuzzleSolved').textContent=state.puzzleSolved;
+const exp=document.getElementById('ardyil-expansion');if(exp)exp.hidden=false;
+const oldHero=document.querySelector('.hero-kicker');if(oldHero)oldHero.textContent='✦ LEARN · PLAY · EXPLORE · ARDYIL 3.0';
+const title=document.querySelector('title');if(title)title.textContent='ARDYIL English Dictionary 3.0 — Learn, Play, Explore';
+openSplash();
+})();
+</script>
+
 </body>
 </html>
