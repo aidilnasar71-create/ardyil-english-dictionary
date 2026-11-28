@@ -1298,7 +1298,7 @@ function addProfileSettings(){
  $('ardyil79Save').onclick=()=>{const p=prefs();localStorage.setItem('ardyil79Settings',JSON.stringify(p));apply(p);$('ardyil79Saved').textContent='Preferensi tersimpan ✓';};
  $('ardyil79ShareApp').onclick=()=>ardyil79Share('ARDYIL English Dictionary','Belajar English dengan kamus, kuis, misi, cerita, komik dan jalur SD hingga dewasa. Yuk coba ARDYIL!');
 }
-function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 7.9';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 7.9';}
+function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 12.0';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 12.0';}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
@@ -1336,9 +1336,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .a79-hidden{display:none!important}
 @media(prefers-reduced-motion:reduce){#ardyil79-overlay *,#ardyil79-launch{animation:none!important;transition:none!important}}
 </style>
-<button id="ardyil79-launch" aria-label="Buka ARDYIL Studio">✨ ARDYIL 7.9</button>
+<button id="ardyil79-launch" aria-label="Buka ARDYIL Studio">🚀 ARDYIL 12.0</button>
 <div id="ardyil79-overlay" role="dialog" aria-modal="true" aria-label="ARDYIL Learning Studio">
- <header class="a79-head"><button id="a79-close">← Kembali</button><strong>ARDYIL · LEARNING STUDIO</strong><span style="margin-left:auto">7.9</span></header>
+ <header class="a79-head"><button id="a79-close">← Kembali</button><strong>ARDYIL · ULTIMATE LEARNING UNIVERSE</strong><span style="margin-left:auto">12.0</span></header>
  <main class="a79-main">
   <section class="a79-hero"><div style="font-size:32px">🌈📚✨</div><h2>Belajar, Berkarya, Bertualang!</h2><p>Setiap langkah kecil membawamu lebih dekat ke impian.</p><div id="a79-progress">Level 1 · Penjelajah Kata</div></section>
   <nav class="a79-tabs" aria-label="Menu studio">
@@ -1411,5 +1411,131 @@ $('a79-share-app').onclick=()=>share('ARDYIL · Belajar Lebih Seru','Ayo belajar
 loadPrefs();
 })();
 </script>
+
+<style id="ardyil12-style">
+.a12-tabs{display:flex;gap:7px;overflow:auto;padding:8px 0 13px;position:sticky;top:57px;background:inherit;z-index:2}
+.a12-tabs button{flex:0 0 auto;border:0;border-radius:12px;padding:10px 12px;background:#e9e4fa;color:#55469c;font-weight:850}
+.a12-tabs button.active{background:#5e4bb3;color:#fff}
+.a12-panel{display:none}.a12-panel.active{display:block}
+.a12-card{background:#fff;border:1px solid #e8e4f2;border-radius:17px;padding:14px;margin:10px 0;color:#302b43}
+.a12-card button{border:0;border-radius:11px;padding:10px 13px;background:#6855c5;color:white;font-weight:800;margin:5px 5px 0 0}
+.a12-muted{font-size:12px;color:#77718a}.a12-choice{display:block;width:100%;text-align:left;background:#f2effb!important;color:#443b69!important;margin:7px 0!important}
+.a12-choice:active{transform:scale(.99)}.a12-meter{height:9px;background:#eeeaf6;border-radius:99px;overflow:hidden}.a12-meter span{display:block;height:100%;background:linear-gradient(90deg,#6c58d5,#43b99b);width:0}
+.a12-big{font-size:27px;font-weight:900;color:#5e4bb3}.a12-pill{display:inline-block;padding:5px 9px;border-radius:99px;background:#eeeafd;color:#5847a2;font-size:11px;font-weight:800;margin:3px}
+#ardyil79-overlay.a12-dark .a12-card{background:#302b45;color:#fff;border-color:#514967}
+#ardyil79-overlay.a12-dark .a12-muted{color:#d0c9e2}
+</style>
+<section id="ardyil12-universe" style="padding-top:8px">
+ <div class="a12-tabs" role="tablist" aria-label="ARDYIL 12 learning modules">
+  <button class="active" data-a12="placement">🎯 Tes Level</button>
+  <button data-a12="vocab">🧠 Smart Words</button>
+  <button data-a12="grammar">✍️ Grammar</button>
+  <button data-a12="listen">🎧 Listening</button>
+  <button data-a12="write">📝 Writing</button>
+  <button data-a12="tutor">💬 Tutor Practice</button>
+  <button data-a12="progress">🏆 Progress</button>
+ </div>
+ <section class="a12-panel active" id="a12-placement">
+  <h3>🎯 Placement Test</h3><p class="a12-muted">Tes singkat untuk memperkirakan tingkat awal bahasa Inggrismu. Hasil ini bukan sertifikasi resmi.</p>
+  <div class="a12-card"><div id="a12-place-status">5 soal · Pilih jawaban terbaik</div><div class="a12-meter"><span id="a12-place-meter"></span></div><h2 id="a12-place-question">She ___ to school every day.</h2><div id="a12-place-answers"></div><p id="a12-place-feedback" aria-live="polite"></p><button id="a12-place-next">Mulai tes</button></div>
+ </section>
+ <section class="a12-panel" id="a12-vocab">
+  <h3>🧠 Smart Vocabulary Review</h3><p class="a12-muted">Kata yang belum dikuasai masuk antrean ulang. Progres tersimpan di perangkat ini.</p>
+  <div class="a12-card"><span class="a12-pill" id="a12-vocab-count">Kartu 1</span><div class="a12-big" id="a12-vocab-word">Improve</div><p id="a12-vocab-meaning">Meningkatkan</p><p class="a12-muted" id="a12-vocab-example">I want to improve my English.</p><button id="a12-vocab-show">Lihat contoh</button><button id="a12-vocab-hard">Masih sulit</button><button id="a12-vocab-known">Sudah hafal ✓</button><p id="a12-vocab-feedback" aria-live="polite"></p></div>
+ </section>
+ <section class="a12-panel" id="a12-grammar">
+  <h3>✍️ Grammar Academy</h3><p class="a12-muted">Latihan tata bahasa dengan penjelasan singkat.</p>
+  <div class="a12-card"><span class="a12-pill" id="a12-grammar-count">Latihan 1</span><h2 id="a12-grammar-question"></h2><div id="a12-grammar-options"></div><p id="a12-grammar-feedback" aria-live="polite"></p><button id="a12-grammar-next">Soal berikutnya</button></div>
+ </section>
+ <section class="a12-panel" id="a12-listen">
+  <h3>🎧 Listening & Pronunciation</h3><p class="a12-muted">Dengarkan kalimat, lalu pilih maknanya. Audio memakai suara yang tersedia di perangkat/browser.</p>
+  <div class="a12-card"><span class="a12-pill" id="a12-listen-count">Listening 1</span><h2 id="a12-listen-line">Could you help me, please?</h2><button id="a12-listen-play">🔊 Dengarkan</button><div id="a12-listen-options"></div><p id="a12-listen-feedback" aria-live="polite"></p><button id="a12-listen-next">Kalimat berikutnya</button></div>
+ </section>
+ <section class="a12-panel" id="a12-write">
+  <h3>📝 Writing Workshop</h3><p class="a12-muted">Tulis kalimat bahasa Inggris. Pemeriksaan dasar ini memberi petunjuk sederhana, bukan koreksi AI.</p>
+  <div class="a12-card"><label for="a12-writing">Coba tulis: “Saya belajar bahasa Inggris setiap hari.”</label><textarea id="a12-writing" rows="4" style="width:100%;margin-top:10px;padding:12px;border:1px solid #ddd5ef;border-radius:12px"></textarea><button id="a12-writing-check">Periksa tulisan</button><p id="a12-writing-result" aria-live="polite"></p><p class="a12-muted">Contoh jawaban: I study English every day.</p></div>
+ </section>
+ <section class="a12-panel" id="a12-tutor">
+  <h3>💬 Tutor Practice</h3><p class="a12-muted">Latihan percakapan terpandu. Ini mode latihan offline berbasis skenario, bukan chatbot AI online.</p>
+  <div class="a12-card"><div class="a12-pill">Situasi: Bertemu teman baru</div><h3>Hi! What's your name?</h3><p>Pilih respons yang ingin kamu latih:</p><div id="a12-tutor-options"></div><p id="a12-tutor-feedback" aria-live="polite"></p><button id="a12-tutor-speak">🔊 Dengarkan respons</button></div>
+ </section>
+ <section class="a12-panel" id="a12-progress">
+  <h3>🏆 My Learning Progress</h3>
+  <div class="a12-card"><div class="a12-big" id="a12-xp">0 XP</div><p class="a12-muted">Poin belajar dari latihan versi 12.0 di perangkat ini.</p><div class="a12-meter"><span id="a12-xp-meter"></span></div><div class="a12-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px"><div class="a12-card"><b id="a12-correct">0</b><p class="a12-muted">Jawaban benar</p></div><div class="a12-card"><b id="a12-reviewed">0</b><p class="a12-muted">Kata ditinjau</p></div><div class="a12-card"><b id="a12-lessons">0</b><p class="a12-muted">Latihan selesai</p></div><div class="a12-card"><b id="a12-badges">0</b><p class="a12-muted">Lencana</p></div></div><h3>Lencana</h3><div id="a12-badge-list"></div><button id="a12-progress-reset">Reset progres versi 12.0</button></div>
+ </section>
+</section>
+<script id="ardyil12-engine">
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const root=$('ardyil12-universe');if(!root||root.dataset.ready)return;root.dataset.ready='1';
+const KEY='ardyil12-progress-v1';
+const defaults={xp:0,correct:0,reviewed:0,lessons:0,known:[],hard:[],placement:null};
+let state;try{state=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){state={...defaults};}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){};renderProgress();};
+const addXP=(n)=>{state.xp+=n;state.lessons++;save();};
+const words=[
+ {en:'Improve',id:'Meningkatkan',ex:'I want to improve my English.'},
+ {en:'Curious',id:'Penasaran',ex:'The curious child asks many questions.'},
+ {en:'Reliable',id:'Dapat dipercaya',ex:'She is a reliable teammate.'},
+ {en:'Opportunity',id:'Kesempatan',ex:'This is a great opportunity to learn.'},
+ {en:'Environment',id:'Lingkungan',ex:'We should protect the environment.'},
+ {en:'Confident',id:'Percaya diri',ex:'He feels confident when speaking.'},
+ {en:'Journey',id:'Perjalanan',ex:'Learning is a long journey.'},
+ {en:'Achievement',id:'Pencapaian',ex:'Finishing the course is an achievement.'}
+];
+let wi=0,showEx=false;
+function renderWord(){let due=words.filter(w=>!state.known.includes(w.en));if(!due.length)due=words;wi=wi%due.length;const w=due[wi];$('a12-vocab-count').textContent='Kartu '+(wi+1)+' / '+due.length;$('a12-vocab-word').textContent=w.en;$('a12-vocab-meaning').textContent=w.id;$('a12-vocab-example').textContent=showEx?w.ex:'Tekan “Lihat contoh” untuk membuka contoh kalimat.';$('a12-vocab-feedback').textContent='';}
+$('a12-vocab-show').onclick=()=>{showEx=true;const w=words.find(x=>x.en===$('a12-vocab-word').textContent);$('a12-vocab-example').textContent=w.ex;};
+function nextWord(hard){const en=$('a12-vocab-word').textContent;if(hard){if(!state.hard.includes(en))state.hard.push(en);state.known=state.known.filter(x=>x!==en);$('a12-vocab-feedback').textContent='Kata ini masuk daftar pengulangan.';}else{if(!state.known.includes(en))state.known.push(en);state.hard=state.hard.filter(x=>x!==en);state.reviewed++;addXP(5);$('a12-vocab-feedback').textContent='Bagus! Kata ditandai sudah hafal.';}wi++;showEx=false;save();renderWord();}
+$('a12-vocab-hard').onclick=()=>nextWord(true);$('a12-vocab-known').onclick=()=>nextWord(false);renderWord();
+const placement=[
+ ['She ___ to school every day.',['go','goes','going'],'goes','Subjek “she” memakai kata kerja + s/es pada simple present.'],
+ ['They ___ playing football now.',['is','am','are'],'are','“They” dipasangkan dengan “are”.'],
+ ['I have lived here ___ 2020.',['for','since','during'],'since','“Since” digunakan untuk titik awal waktu.'],
+ ['If I had more time, I ___ travel.',['will','would','am'],'would','Conditional type 2 memakai “would” pada hasil.'],
+ ['The report ___ yesterday.',['writes','was written','is writing'],'was written','Kalimat pasif lampau: was/were + past participle.']
+];
+let pi=0,ps=0,answered=false;
+function showPlace(){const q=placement[pi];$('a12-place-status').textContent='Soal '+(pi+1)+' dari '+placement.length;$('a12-place-meter').style.width=(pi/placement.length*100)+'%';$('a12-place-question').textContent=q[0];$('a12-place-feedback').textContent='';$('a12-place-next').textContent='Berikutnya';$('a12-place-answers').innerHTML=q[1].map(x=>'<button class="a12-choice" data-place="'+x+'">'+x+'</button>').join('');answered=false;root.querySelectorAll('[data-place]').forEach(b=>b.onclick=()=>{if(answered)return;answered=true;const ok=b.dataset.place===q[2];if(ok){ps++;state.correct++;} $('a12-place-feedback').textContent=(ok?'Benar! ':'Belum tepat. ')+q[3];$('a12-place-answers').querySelectorAll('button').forEach(x=>x.disabled=true);});}
+$('a12-place-next').onclick=()=>{if(pi===0&&ps===0&&!answered&&$('a12-place-next').textContent==='Mulai tes'){}if(!answered){$('a12-place-feedback').textContent='Pilih jawaban terlebih dahulu.';return;}pi++;if(pi<placement.length){showPlace();}else{const level=ps<=1?'Pemula (A1–A2)':ps<=3?'Menengah (B1–B2)':'Lanjutan (C1–C2)';state.placement=level;addXP(ps*10+10);$('a12-place-status').textContent='Tes selesai · '+ps+'/'+placement.length+' benar';$('a12-place-meter').style.width='100%';$('a12-place-question').textContent='Perkiraan level: '+level;$('a12-place-answers').innerHTML='';$('a12-place-feedback').textContent='Gunakan hasil ini sebagai titik awal. Ulangi tes setelah belajar beberapa minggu.';$('a12-place-next').textContent='Ulangi tes';pi=0;ps=0;answered=false;save();return;}save();};
+$('a12-place-next').addEventListener('click',()=>{if($('a12-place-next').textContent==='Mulai tes'){$('a12-place-next').textContent='Berikutnya';showPlace();}});
+const grammar=[
+ ['He ___ coffee every morning.',['drink','drinks','drinking'],'drinks','He/she/it memakai -s pada simple present.'],
+ ['We ___ dinner when she called.',['had','were having','have'],'were having','Past continuous menjelaskan kegiatan yang sedang berlangsung saat kejadian lain terjadi.'],
+ ['There are ___ apples in the basket.',['much','many','any'],'many','“Apples” adalah kata benda jamak yang dapat dihitung.'],
+ ['She is interested ___ science.',['in','on','at'],'in','Ungkapan yang benar adalah interested in.'],
+ ['This is the ___ book I have read.',['good','better','best'],'best','Superlative dari good adalah best.']
+];let gi=0,ga=false;
+function showGrammar(){const q=grammar[gi%grammar.length];$('a12-grammar-count').textContent='Latihan '+(gi+1);$('a12-grammar-question').textContent=q[0];$('a12-grammar-feedback').textContent='';$('a12-grammar-options').innerHTML=q[1].map(x=>'<button class="a12-choice" data-grammar="'+x+'">'+x+'</button>').join('');ga=false;root.querySelectorAll('[data-grammar]').forEach(b=>b.onclick=()=>{if(ga)return;ga=true;const ok=b.dataset.grammar===q[2];if(ok){state.correct++;addXP(8);}else save();$('a12-grammar-feedback').textContent=(ok?'Benar! ':'Belum tepat. ')+q[3];});}
+$('a12-grammar-next').onclick=()=>{gi++;showGrammar();};showGrammar();
+const listen=[
+ ['Could you help me, please?','Bisakah kamu membantu saya?',['Saya sedang makan.','Di mana stasiun?']],
+ ['I would like a glass of water.','Saya ingin segelas air.',['Saya suka warna biru.','Dia pergi bekerja.']],
+ ['The meeting starts at nine.','Rapat dimulai pukul sembilan.',['Kereta sudah datang.','Cuaca hari ini cerah.']],
+ ['Please speak more slowly.','Tolong bicara lebih pelan.',['Tolong tutup pintu.','Saya kehilangan kunci.']]
+];let li=0,la=false;
+function speak(text){if('speechSynthesis'in window){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=.85;window.speechSynthesis.speak(u);}else $('a12-listen-feedback').textContent='Fitur suara tidak tersedia di browser ini.';}
+function showListen(){const q=listen[li%listen.length];$('a12-listen-count').textContent='Listening '+(li+1);$('a12-listen-line').textContent=q[0];$('a12-listen-feedback').textContent='Dengarkan kalimat, lalu pilih artinya.';$('a12-listen-options').innerHTML=[q[1],...q[2]].sort(()=>Math.random()-.5).map(x=>'<button class="a12-choice" data-listen="'+x+'">'+x+'</button>').join('');la=false;root.querySelectorAll('[data-listen]').forEach(b=>b.onclick=()=>{if(la)return;la=true;const ok=b.dataset.listen===q[1];if(ok){state.correct++;addXP(8);}else save();$('a12-listen-feedback').textContent=ok?'Tepat sekali!':'Jawaban: '+q[1];});}
+$('a12-listen-play').onclick=()=>speak($('a12-listen-line').textContent);$('a12-listen-next').onclick=()=>{li++;showListen();};showListen();
+$('a12-writing-check').onclick=()=>{const v=$('a12-writing').value.trim();let msg;if(!v)msg='Tulis satu kalimat terlebih dahulu.';else if(/i study english every day[.!]?/i.test(v)) {msg='Bagus! Kalimatmu sesuai contoh. Perhatikan kapitalisasi dan tanda baca.';state.correct++;addXP(10);}else{msg='Tulisan tersimpan untuk latihan. Periksa subjek, kata kerja, dan urutan kata. Contoh: I study English every day.';save();} $('a12-writing-result').textContent=msg;};
+const tutor=[
+ ['My name is Rani. Nice to meet you.','Jawaban ramah dan alami untuk memperkenalkan diri.'],
+ ['I am from Indonesia.','Jawaban singkat untuk pertanyaan asal.'],
+ ['Could you repeat that, please?','Ungkapan sopan saat tidak memahami lawan bicara.']
+];let ti=0;
+$('a12-tutor-options').innerHTML=tutor.map((x,i)=>'<button class="a12-choice" data-tutor="'+i+'">'+x[0]+'</button>').join('');
+root.querySelectorAll('[data-tutor]').forEach(b=>b.onclick=()=>{ti=+b.dataset.tutor;$('a12-tutor-feedback').textContent=tutor[ti][1];$('a12-tutor-speak').dataset.line=tutor[ti][0];addXP(2);});
+$('a12-tutor-speak').onclick=()=>speak($('a12-tutor-speak').dataset.line||tutor[0][0]);
+function renderProgress(){if(!$('a12-xp'))return;$('a12-xp').textContent=state.xp+' XP';$('a12-xp-meter').style.width=(state.xp%100)+'%';$('a12-correct').textContent=state.correct;$('a12-reviewed').textContent=state.reviewed;$('a12-lessons').textContent=state.lessons;$('a12-badges').textContent=[state.xp>=20,state.correct>=5,state.reviewed>=5,!!state.placement].filter(Boolean).length;const badges=[['🌱','Langkah Pertama',state.xp>=10],['🎯','Penentu Level',!!state.placement],['🧠','Pembelajar Cermat',state.reviewed>=5],['⭐','Konsisten Berlatih',state.correct>=5],['🏅','100 XP Club',state.xp>=100]];$('a12-badge-list').innerHTML=badges.map(b=>'<span class="a12-pill" style="opacity:'+(b[2]?'1':'.4')+'">'+b[0]+' '+b[1]+'</span>').join('');}
+$('a12-progress-reset').onclick=()=>{if(confirm('Hapus progres ARDYIL 12.0 di perangkat ini?')){state={...defaults};save();renderWord();alert('Progres versi 12.0 direset.');}};
+renderProgress();
+root.querySelectorAll('[data-a12]').forEach(b=>b.onclick=()=>{root.querySelectorAll('[data-a12]').forEach(x=>x.classList.toggle('active',x===b));root.querySelectorAll('.a12-panel').forEach(x=>x.classList.toggle('active',x.id==='a12-'+b.dataset.a12));});
+const oldTabs=document.querySelectorAll('.a79-tab');
+oldTabs.forEach(b=>b.addEventListener('click',()=>{root.querySelectorAll('[data-a12]').forEach(x=>x.classList.remove('active'));root.querySelectorAll('.a12-panel').forEach(x=>x.classList.remove('active'));}));
+$('a79-overlay').addEventListener('click',e=>{if(e.target.closest('#a12-dark-toggle'))return;});
+})();
+</script>
+
 </body>
 </html>
