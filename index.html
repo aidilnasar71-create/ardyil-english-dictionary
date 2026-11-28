@@ -182,6 +182,7 @@ const $=id=>document.getElementById(id);
 const home=$('v20-home'),academy=$('v20-academy'),profile=$('v20-profile'),stage=$('v20-module-stage');
 const legacy=['panel-dictionary','panel-practice','panel-favorites','panel-quiz','panel-patterns'].map($);
 const a12=['placement','vocab','grammar','listen','write','tutor','progress'];
+$('v20-module-stage').appendChild($('ardyil12-universe'));
 function hideAll(){[home,academy,profile,stage,...legacy].forEach(x=>{if(x)x.style.display='none';});document.querySelectorAll('.a12-panel').forEach(x=>x.classList.remove('active'));document.querySelectorAll('[data-v20-nav]').forEach(x=>x.classList.remove('active'));$('ardyil12-universe').style.display='none';}
 function navActive(name){const b=document.querySelector('[data-v20-nav="'+name+'"]');if(b)b.classList.add('active');}
 function show(name){hideAll();if(name==='home'){home.style.display='block';navActive('home');}
@@ -1445,7 +1446,7 @@ function addProfileSettings(){
  $('ardyil79Save').onclick=()=>{const p=prefs();localStorage.setItem('ardyil79Settings',JSON.stringify(p));apply(p);$('ardyil79Saved').textContent='Preferensi tersimpan ✓';};
  $('ardyil79ShareApp').onclick=()=>ardyil79Share('ARDYIL English Dictionary','Belajar English dengan kamus, kuis, misi, cerita, komik dan jalur SD hingga dewasa. Yuk coba ARDYIL!');
 }
-function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 12.0';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 12.0';}
+function init(){addCampus();addProfileSettings();document.title='ARDYIL English Dictionary 12.0';const b=document.querySelector('.brandname');if(b)b.textContent='ARDYIL 20.0';}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
@@ -1483,7 +1484,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .a79-hidden{display:none!important}
 @media(prefers-reduced-motion:reduce){#ardyil79-overlay *,#ardyil79-launch{animation:none!important;transition:none!important}}
 </style>
-<button id="ardyil79-launch" aria-label="Buka ARDYIL Studio">🚀 ARDYIL 12.0</button>
+<button id="ardyil79-launch" aria-label="Buka ARDYIL Studio">🚀 ARDYIL 20.0</button>
 <div id="ardyil79-overlay" role="dialog" aria-modal="true" aria-label="ARDYIL Learning Studio">
  <header class="a79-head"><button id="a79-close">← Kembali</button><strong>ARDYIL · ULTIMATE LEARNING UNIVERSE</strong><span style="margin-left:auto">12.0</span></header>
  <main class="a79-main">
@@ -1522,7 +1523,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 #ardyil79-overlay.a12-dark .a12-muted{color:#d0c9e2}
 </style>
 <section id="ardyil12-universe" style="padding-top:8px">
- <div class="a12-tabs" role="tablist" aria-label="ARDYIL 12 learning modules">
+ <div class="a12-tabs" role="tablist" aria-label="ARDYIL 20 learning modules">
   <button class="active" data-a12="placement">🎯 Tes Level</button>
   <button data-a12="vocab">🧠 Smart Words</button>
   <button data-a12="grammar">✍️ Grammar</button>
@@ -1624,7 +1625,7 @@ $('a12-tutor-options').innerHTML=tutor.map((x,i)=>'<button class="a12-choice" da
 root.querySelectorAll('[data-tutor]').forEach(b=>b.onclick=()=>{ti=+b.dataset.tutor;$('a12-tutor-feedback').textContent=tutor[ti][1];$('a12-tutor-speak').dataset.line=tutor[ti][0];addXP(2);});
 $('a12-tutor-speak').onclick=()=>speak($('a12-tutor-speak').dataset.line||tutor[0][0]);
 function renderProgress(){if(!$('a12-xp'))return;$('a12-xp').textContent=state.xp+' XP';$('a12-xp-meter').style.width=(state.xp%100)+'%';$('a12-correct').textContent=state.correct;$('a12-reviewed').textContent=state.reviewed;$('a12-lessons').textContent=state.lessons;$('a12-badges').textContent=[state.xp>=20,state.correct>=5,state.reviewed>=5,!!state.placement].filter(Boolean).length;const badges=[['🌱','Langkah Pertama',state.xp>=10],['🎯','Penentu Level',!!state.placement],['🧠','Pembelajar Cermat',state.reviewed>=5],['⭐','Konsisten Berlatih',state.correct>=5],['🏅','100 XP Club',state.xp>=100]];$('a12-badge-list').innerHTML=badges.map(b=>'<span class="a12-pill" style="opacity:'+(b[2]?'1':'.4')+'">'+b[0]+' '+b[1]+'</span>').join('');}
-$('a12-progress-reset').onclick=()=>{if(confirm('Hapus progres ARDYIL 12.0 di perangkat ini?')){state={...defaults};save();renderWord();alert('Progres versi 12.0 direset.');}};
+$('a12-progress-reset').onclick=()=>{if(confirm('Hapus progres ARDYIL 20.0 di perangkat ini?')){state={...defaults};save();renderWord();alert('Progres versi 12.0 direset.');}};
 renderProgress();
 root.querySelectorAll('[data-a12]').forEach(b=>b.onclick=()=>{root.querySelectorAll('[data-a12]').forEach(x=>x.classList.toggle('active',x===b));root.querySelectorAll('.a12-panel').forEach(x=>x.classList.toggle('active',x.id==='a12-'+b.dataset.a12));});
 const oldTabs=document.querySelectorAll('.a79-tab');
