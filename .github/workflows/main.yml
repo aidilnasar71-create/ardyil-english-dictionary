@@ -54,6 +54,14 @@ jobs:
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
+      - name: Install native Android microphone and speech bridge
+        run: |
+          ACTIVITY_PATH=$(find "$PROJECT_DIR/app/src/main/java" -name MainActivity.java -print -quit)
+          test -n "$ACTIVITY_PATH"
+          cp native-android/MainActivity.java "$ACTIVITY_PATH"
+          grep -q 'android.permission.RECORD_AUDIO' "$PROJECT_DIR/app/src/main/AndroidManifest.xml"
+          echo "Native Android MediaRecorder and TextToSpeech bridge installed."
+
       - name: Apply latest ARDYIL interface and learning modules
         run: |
           ASSET_HTML="$PROJECT_DIR/app/src/main/assets/index.html"
