@@ -21,6 +21,7 @@ require_text() {
 # Native bridge registration and permission gate.
 require_text "$NATIVE" 'webView.addJavascriptInterface(new ArdyilNativeBridge(), "ArdyilNative");'
 require_text "$NATIVE" 'public final class ArdyilNativeBridge'
+require_text "$NATIVE" '@JavascriptInterface'
 require_text "$NATIVE" 'public void testMic('
 require_text "$NATIVE" 'public void startRecording('
 require_text "$NATIVE" 'public void stopRecording('
@@ -49,6 +50,7 @@ require_text "$HTML" "window.ArdyilNative.speak("
 require_text "$HTML" "window.ArdyilNative.testMic()"
 require_text "$HTML" "window.ArdyilNative.startRecording()"
 require_text "$HTML" "window.ArdyilNative.stopRecording()"
+require_text "$HTML" "window.ardyilNativeMicReady=function"
 require_text "$HTML" "window.ardyilNativeRecordStarted=function"
 require_text "$HTML" "window.ardyilNativeRecordComplete=function"
 require_text "$HTML" "window.ardyilNativeRecordError=function"
