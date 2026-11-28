@@ -64,8 +64,9 @@ print(f'JavaScript syntax OK: {checked} inline scripts + external quest engine.'
 PY
 require_text "$HTML" 'id="ardyil30Mp4Player"'
 require_text "$HTML" 'the-paper-bridge.mp4'
-require_text "$HTML" 'little-music-makers.mp4'
-require_text "$HTML" 'the-cloud-library.mp4'
-require_text "$HTML" 'a-map-of-kindness.mp4'
+require_text "$HTML" 'value="little-music-makers"'
+require_text "$HTML" 'value="the-cloud-library"'
+require_text "$HTML" 'value="a-map-of-kindness"'
+require_text "$HTML" "'./media/'+this.value+'.mp4'"
 require_text "$CSS" '.ardyil30-mp4-panel'
 require_text "$ROOT/scripts/generate-cinema-mp4.py" 'W,H,FPS,DURATION,SR=640,360,12,300,22050'
