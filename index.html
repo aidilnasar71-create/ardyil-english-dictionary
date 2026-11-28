@@ -960,5 +960,262 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 
+
+<!-- ARDYIL 7.9: expanded learning paths, original story library, sharing and account foundation -->
+<style id="ardyil-79-style">
+:root{--a79:#1db58c;--a79dark:#16816b;--a79violet:#7967df;--a79gold:#f3b33d}
+.ardyil79-block{margin:14px 0;padding:16px;border-radius:22px;background:#fff;box-shadow:0 5px 0 #e5e9ef;border:1px solid #edf0f4}
+.ardyil79-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px}
+.ardyil79-heading h3{font-size:17px;line-height:1.2;margin:0;font-weight:950;color:#26243b}
+.ardyil79-heading p{font-size:11px;color:#77758a;margin:5px 0 0}
+.ardyil79-pill{border-radius:99px;padding:6px 10px;background:#eaf8f2;color:#19866e;font-size:9px;font-weight:950;letter-spacing:.08em;white-space:nowrap}
+.ardyil79-age-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.ardyil79-age{border:2px solid #edf0f4;border-radius:17px;background:#fff;padding:12px;text-align:left;min-height:93px;color:#29263d;transition:.18s}
+.ardyil79-age b{display:block;font-size:13px;font-weight:950;margin-top:7px}.ardyil79-age small{display:block;color:#7c788c;font-size:9px;margin-top:3px}.ardyil79-age .emoji{font-size:25px}
+.ardyil79-age.active{border-color:#59c99a;background:#effbf5;box-shadow:0 4px 0 #d7eee2}
+.ardyil79-units{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:13px}
+.ardyil79-unit{border:0;border-radius:17px;background:#f7f8fc;padding:12px;text-align:left;min-height:105px;box-shadow:0 3px 0 #e6e8f0;color:#2c2940}
+.ardyil79-unit .emoji{font-size:24px}.ardyil79-unit b{display:block;font-size:12px;margin-top:7px}.ardyil79-unit small{display:block;font-size:9px;color:#7b778a;margin-top:3px}
+.ardyil79-unit.done{background:#eaf9f1;box-shadow:0 3px 0 #cde9da}.ardyil79-progress{height:8px;border-radius:99px;background:#eceef4;overflow:hidden;margin-top:12px}.ardyil79-progress span{display:block;height:100%;background:linear-gradient(90deg,#1eb58c,#7c70e8);border-radius:99px}
+.ardyil79-lesson{margin-top:14px;padding:16px;border-radius:19px;background:linear-gradient(145deg,#effcf6,#f1efff);border:1px solid #e2e8f2}
+.ardyil79-lesson h4{font-size:18px;margin:5px 0 10px;color:#29263f}.ardyil79-lesson-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.ardyil79-answer{padding:12px;border:2px solid #e6e7ef;border-radius:13px;background:#fff;color:#353149;font-size:12px;font-weight:800;text-align:left}
+.ardyil79-answer.selected{border-color:#7465df;background:#f1efff}.ardyil79-answer.correct{border-color:#49b97f;background:#eaf9f0}.ardyil79-answer.wrong{border-color:#ef8a8a;background:#fff0f0}
+.ardyil79-action{border:0;border-radius:13px;padding:11px 14px;background:#1fb58e;color:#fff;font-weight:900;font-size:11px;box-shadow:0 4px 0 #168a6c}
+.ardyil79-action.alt{background:#f0edff;color:#6654c8;box-shadow:0 4px 0 #dfd9ff}.ardyil79-action:disabled{opacity:.45}
+.ardyil79-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ardyil79-account{border:0;border-radius:22px;padding:17px;background:linear-gradient(130deg,#1f755f,#258d9e 60%,#7666d9);color:#fff;box-shadow:0 6px 0 #d8e7e6;margin:12px 0}
+.ardyil79-account h3{margin:2px 0 5px;font-size:18px}.ardyil79-account p{margin:0 0 12px;color:#e1f5f3;font-size:11px;line-height:1.5}
+.ardyil79-account .ardyil79-action{background:#fff;color:#287f70;box-shadow:0 4px 0 #cfe9e2}
+.ardyil79-account .ardyil79-action.alt{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:none}
+.ardyil79-account-note{margin-top:10px;padding:10px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.12);border-radius:12px;font-size:10px;color:#e7f8f3}
+.ardyil79-video-shell{border-radius:21px;overflow:hidden;background:#111c35;color:#fff;margin-top:12px}
+.ardyil79-video-stage{position:relative;aspect-ratio:16/9;background:#18294a;overflow:hidden}
+.ardyil79-video-stage svg{display:block;width:100%;height:100%}
+.ardyil79-video-stage .a79-sky-object{animation:a79Float 5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.ardyil79-video-stage .a79-wave{animation:a79Wave 4s ease-in-out infinite alternate}
+.ardyil79-video-stage .a79-star{animation:a79Twinkle 1.8s ease-in-out infinite alternate}
+.ardyil79-video-stage .a79-character{animation:a79Character 2.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center bottom}
+@keyframes a79Float{to{transform:translate(10px,-8px)}}@keyframes a79Wave{to{transform:translateX(-15px)}}@keyframes a79Twinkle{to{opacity:.25;transform:scale(.75)}}@keyframes a79Character{to{transform:translateY(-4px)}}
+.ardyil79-video-caption{padding:15px 15px 8px}.ardyil79-video-caption small{color:#a9a8d7;font-size:9px;font-weight:900;letter-spacing:.14em}.ardyil79-video-caption h3{margin:5px 0;font-size:18px}.ardyil79-video-caption p{font-size:12px;line-height:1.5;margin:5px 0;color:#e5e7f1}
+.ardyil79-video-id{color:#b9c8d9!important}.ardyil79-video-controls{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:8px 14px 15px}.ardyil79-video-controls button{border:0;border-radius:11px;background:#2b395c;color:#fff;padding:9px 11px;font-weight:850;font-size:10px}.ardyil79-video-controls button.primary{background:#58cc02;color:#173b22}.ardyil79-video-controls span{font-size:10px;color:#c8cce0;margin-left:auto}
+.ardyil79-timeline{height:6px;background:#34405e;margin:0 14px 12px;border-radius:9px;overflow:hidden}.ardyil79-timeline span{display:block;height:100%;background:#58cc02;width:0}
+.ardyil79-comic-shell{background:#111522;border-radius:21px;padding:10px;color:#fff;margin:10px 0}
+.ardyil79-comic-toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:5px 4px 12px}
+.ardyil79-comic-toolbar select{background:#202941;color:#fff;border:1px solid #3a4762;border-radius:11px;padding:9px;max-width:58%;font-size:10px}
+.ardyil79-comic-toolbar label{font-size:10px;color:#dce3f2}.ardyil79-comic-scroll{max-height:72vh;overflow-y:auto;overscroll-behavior:contain;border-radius:12px}
+.ardyil79-comic-panel{position:relative;background:#f6f1e8;color:#26243a;margin:0 auto 10px;max-width:590px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.24)}
+.ardyil79-comic-panel svg{display:block;width:100%;height:auto;aspect-ratio:360/470}
+.ardyil79-comic-number{position:absolute;top:10px;left:10px;background:rgba(16,22,34,.72);color:#fff;border-radius:99px;padding:5px 9px;font-size:9px;font-weight:950;letter-spacing:.1em}
+.ardyil79-comic-bubble{margin:-1px 12px 0;padding:12px 14px;background:#fff;border:2px solid #282438;border-radius:3px 17px 17px 17px;box-shadow:3px 4px 0 rgba(20,20,35,.14);font-size:13px;font-weight:900;line-height:1.5}
+.ardyil79-comic-translation{background:#fff;padding:10px 15px 17px;color:#625d73;font-size:11px;line-height:1.55}
+.ardyil79-comic-footer{text-align:center;color:#c5c9d7;font-size:10px;padding:15px}
+.ardyil79-library-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+.ardyil79-library-card{border:0;background:#f6f6fb;color:#27243b;border-radius:16px;padding:12px;text-align:left;box-shadow:0 3px 0 #e7e8f0}
+.ardyil79-library-card b{display:block;font-size:11px;margin-top:7px}.ardyil79-library-card small{font-size:9px;color:#77758b}
+.ardyil79-modal{position:fixed;inset:0;z-index:20000;background:rgba(16,14,35,.68);display:none;align-items:center;justify-content:center;padding:20px}
+.ardyil79-modal.show{display:flex}.ardyil79-modal-card{width:min(460px,100%);max-height:85vh;overflow:auto;background:#fff;color:#28253d;border-radius:22px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.ardyil79-modal-card h3{margin:0 0 8px;font-size:19px}.ardyil79-modal-card p,.ardyil79-modal-card li{font-size:12px;line-height:1.6;color:#666276}
+@media(max-width:390px){.ardyil79-age-grid,.ardyil79-units,.ardyil79-lesson-options,.ardyil79-library-grid{grid-template-columns:1fr 1fr}.ardyil79-heading h3{font-size:15px}.ardyil79-comic-bubble{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.ardyil79-video-stage *{animation:none!important;transition:none!important}}
+body.ardyil-dark .ardyil79-block,body.ardyil-dark .ardyil79-unit,body.ardyil-dark .ardyil79-age,body.ardyil-dark .ardyil79-modal-card{background:#242337;color:#f6f3ff;border-color:#44405a}
+body.ardyil-dark .ardyil79-heading h3,body.ardyil-dark .ardyil79-unit b,body.ardyil-dark .ardyil79-age b{color:#f6f3ff}
+</style>
+<script id="ardyil-79-engine">
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var STORE='ardyil_v79_progress';
+var progress={age:'smp',xp:0,done:{},lessons:0};
+try{progress=Object.assign(progress,JSON.parse(localStorage.getItem(STORE)||'{}'));}catch(e){}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(progress));}catch(e){}}
+var tracks={
+sd:{title:'Sekolah Dasar',sub:'Kosakata dasar, warna, keluarga, dan kegiatan sehari-hari.',icon:'🎒',units:[
+['Colors & Shapes','🎨','red|merah;blue|biru;circle|lingkaran;square|persegi'],
+['Animals','🐾','cat|kucing;bird|burung;rabbit|kelinci;elephant|gajah'],
+['My School','🏫','teacher|guru;pencil|pensil;book|buku;classroom|ruang kelas'],
+['Family','👨‍👩‍👧','mother|ibu;father|ayah;sister|saudara perempuan;brother|saudara laki-laki'],
+['Food & Fruit','🍎','apple|apel;banana|pisang;bread|roti;milk|susu'],
+['Numbers & Time','⏰','twelve|dua belas;morning|pagi;today|hari ini;tomorrow|besok'],
+['My Body','🙂','head|kepala;hand|tangan;eyes|mata;shoulder|bahu'],
+['Daily Actions','🏃','eat|makan;read|membaca;write|menulis;play|bermain']]},
+smp:{title:'Sekolah Menengah Pertama',sub:'Percakapan, hobi, lingkungan, dan bahasa sehari-hari.',icon:'📘',units:[
+['Hobbies','🎸','hobby|hobi;drawing|menggambar;cycling|bersepeda;collect|mengoleksi'],
+['Friendship','🤝','support|mendukung;honest|jujur;trust|percaya;respect|menghormati'],
+['Places & Directions','🗺️','intersection|persimpangan;turn left|belok kiri;across from|di seberang;neighborhood|lingkungan'],
+['Feelings','💭','confident|percaya diri;worried|khawatir;proud|bangga;curious|penasaran'],
+['Digital Life','📱','password|kata sandi;download|mengunduh;privacy|privasi;upload|mengunggah'],
+['Weather & Nature','🌦️','forecast|prakiraan;rainfall|curah hujan;storm|badai;humid|lembap'],
+['Travel','🧳','boarding pass|kartu naik pesawat;destination|tujuan;journey|perjalanan;luggage|bagasi'],
+['Daily Conversation','💬','actually|sebenarnya;perhaps|barangkali;usually|biasanya;instead|sebagai gantinya']]},
+sma:{title:'Sekolah Menengah Atas',sub:'Bahasa akademik, argumentasi, sains, dan persiapan ujian.',icon:'🎓',units:[
+['Academic Words','📚','analyze|menganalisis;compare|membandingkan;evaluate|menilai;conclude|menyimpulkan'],
+['Environment','🌱','sustainability|keberlanjutan;pollution|polusi;renewable|terbarukan;conservation|pelestarian'],
+['Science','🔬','experiment|percobaan;hypothesis|hipotesis;observe|mengamati;research|penelitian'],
+['Debate & Opinion','🗣️','argument|argumen;evidence|bukti;perspective|sudut pandang;counterpoint|sanggahan'],
+['Essay Writing','✍️','introduction|pendahuluan;paragraph|paragraf;thesis|tesis;reference|referensi'],
+['Society & Culture','🌍','tradition|tradisi;community|komunitas;inequality|ketimpangan;heritage|warisan'],
+['Health & Lifestyle','🧠','well-being|kesejahteraan;nutrition|nutrisi;prevention|pencegahan;balanced|seimbang'],
+['Exam Skills','🏅','instruction|instruksi;multiple choice|pilihan ganda;passage|bacaan;inference|kesimpulan tersirat']]},
+college:{title:'Kuliah & Universitas',sub:'Presentasi, riset, literatur, teknologi, dan komunikasi profesional.',icon:'🏛️',units:[
+['Research Methods','🧪','methodology|metodologi;sample|sampel;data set|kumpulan data;findings|temuan'],
+['Academic Presentation','🎤','outline|kerangka;slide deck|materi slide;audience|audiens;delivery|penyampaian'],
+['Critical Thinking','🧩','assumption|asumsi;bias|bias;reasoning|penalaran;implication|implikasi'],
+['Campus Life','🏫','scholarship|beasiswa;tuition|biaya kuliah;faculty|fakultas;deadline|tenggat'],
+['Technology','💻','algorithm|algoritma;interface|antarmuka;database|basis data;encryption|enkripsi'],
+['Literature','📖','narrator|narator;symbolism|simbolisme;plot|alur;metaphor|metafora'],
+['Project Management','📌','milestone|tahapan;deliverable|hasil kerja;workload|beban kerja;collaboration|kolaborasi'],
+['Career Preparation','🚀','internship|magang;portfolio|portofolio;resume|daftar riwayat hidup;networking|jejaring']]},
+adult:{title:'Dewasa & Profesional',sub:'Bahasa kerja, bisnis, perjalanan, layanan, dan kebutuhan nyata.',icon:'💼',units:[
+['Workplace English','🧑‍💻','colleague|rekan kerja;assignment|tugas;workflow|alur kerja;supervisor|atasan'],
+['Business','📈','revenue|pendapatan;profit margin|margin laba;proposal|proposal;negotiation|negosiasi'],
+['Meetings','🗓️','agenda|agenda;minutes|notulen;follow-up|tindak lanjut;consensus|kesepakatan'],
+['Customer Service','🎧','inquiry|pertanyaan;refund|pengembalian dana;complaint|keluhan;resolve|menyelesaikan'],
+['Travel & Hospitality','✈️','reservation|reservasi;itinerary|rencana perjalanan;accommodation|akomodasi;check-in|lapor kedatangan'],
+['Finance','💳','budget|anggaran;expense|pengeluaran;savings|tabungan;installment|angsuran'],
+['Professional Writing','✉️','regarding|mengenai;attached|terlampir;available|tersedia;appreciate|menghargai'],
+['Problem Solving','🧭','root cause|akar masalah;solution|solusi;priority|prioritas;trade-off|kompromi']]}}
+;
+function pairs(raw){return raw.split(';').map(function(x){var a=x.split('|');return{en:a[0],id:a[1]};});}
+function renderAcademy(){
+var root=$('ardyil79AcademyRoot');if(!root)return;
+var age=progress.age||'smp',track=tracks[age]||tracks.smp;
+var done=progress.done[age]||[];
+root.innerHTML='<div class="ardyil79-block"><div class="ardyil79-heading"><div><h3>ARDYIL Learning Universe</h3><p>Pilih jenjang dan belajar sesuai tahapmu.</p></div><span class="ardyil79-pill">VERSION 7.9</span></div><div class="ardyil79-age-grid">'+Object.keys(tracks).map(function(k){var t=tracks[k];return '<button class="ardyil79-age '+(age===k?'active':'')+'" data-age79="'+k+'"><span class="emoji">'+t.icon+'</span><b>'+t.title+'</b><small>'+t.sub.split('.')[0]+'</small></button>';}).join('')+'</div><div class="ardyil79-heading" style="margin-top:17px"><div><h3>'+track.title+'</h3><p>'+track.sub+'</p></div><span class="ardyil79-pill">'+done.length+'/'+track.units.length+' SELESAI</span></div><div class="ardyil79-progress"><span style="width:'+(done.length/track.units.length*100)+'%"></span></div><div class="ardyil79-units">'+track.units.map(function(u,i){return '<button class="ardyil79-unit '+(done.indexOf(i)>=0?'done':'')+'" data-unit79="'+i+'"><span class="emoji">'+u[1]+'</span><b>'+(done.indexOf(i)>=0?'✓ ':'')+u[0]+'</b><small>4 kosakata · latihan singkat</small></button>';}).join('')+'</div><div class="ardyil79-lesson" id="ardyil79Lesson" hidden></div><div class="ardyil79-row" style="margin-top:13px"><span class="ardyil79-pill">⭐ '+progress.xp+' XP</span><span class="ardyil79-pill">📖 '+progress.lessons+' pelajaran selesai</span></div></div>';
+root.querySelectorAll('[data-age79]').forEach(function(b){b.addEventListener('click',function(){progress.age=b.dataset.age79;save();renderAcademy();});});
+root.querySelectorAll('[data-unit79]').forEach(function(b){b.addEventListener('click',function(){startLesson(Number(b.dataset.unit79));});});
+}
+var lessonState=null;
+function startLesson(index){
+var track=tracks[progress.age||'smp'];var unit=track.units[index];var wordPairs=pairs(unit[2]);
+lessonState={index:index,words:wordPairs,step:0,selected:-1,checked:false};
+renderLesson();
+}
+function renderLesson(){
+var target=$('ardyil79Lesson');if(!target||!lessonState)return;
+var w=lessonState.words[lessonState.step],all=pairs(tracks[progress.age].units.flatMap(function(u){return pairs(u[2]);}).map(function(x){return x.en+'|'+x.id;}).join(';'));
+var wrong=all.filter(function(x){return x.en!==w.en;});var picks=[w];while(picks.length<4&&wrong.length){var n=Math.floor(Math.random()*wrong.length);var candidate=wrong.splice(n,1)[0];if(!picks.some(function(x){return x.id===candidate.id;}))picks.push(candidate);}
+picks.sort(function(a,b){return a.en.localeCompare(b.en);});
+lessonState.options=picks;lessonState.correct=picks.findIndex(function(x){return x.en===w.en;});lessonState.selected=-1;lessonState.checked=false;
+target.hidden=false;
+target.innerHTML='<div class="ardyil79-heading"><div><span class="ardyil79-pill">LESSON '+(lessonState.step+1)+' / '+lessonState.words.length+'</span><h4>Apa arti kata ini?</h4><p>Pilih jawaban dalam bahasa Indonesia.</p></div><span style="font-size:25px">✨</span></div><h3 style="font-size:27px;text-align:center;color:#4e43a0;margin:10px 0">'+w.en+'</h3><div class="ardyil79-row" style="justify-content:center"><button class="ardyil79-action alt" id="ardyil79Hear">🔊 Dengarkan</button></div><div class="ardyil79-lesson-options">'+picks.map(function(x,i){return '<button class="ardyil79-answer" data-answer79="'+i+'">'+x.id+'</button>';}).join('')+'</div><p id="ardyil79Feedback" style="font-size:11px;color:#6b6780;min-height:20px"></p><div class="ardyil79-row"><button class="ardyil79-action" id="ardyil79Check">Periksa jawaban</button><button class="ardyil79-action alt" id="ardyil79Next" disabled>Berikutnya →</button></div>';
+target.querySelectorAll('[data-answer79]').forEach(function(b){b.addEventListener('click',function(){if(lessonState.checked)return;lessonState.selected=Number(b.dataset.answer79);target.querySelectorAll('[data-answer79]').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');});});
+$('ardyil79Hear').addEventListener('click',function(){if(window.ArdyilNative&&window.ArdyilNative.speak)window.ArdyilNative.speak(w.en,'en-US',.9,1);else if(window.speechSynthesis){var u=new SpeechSynthesisUtterance(w.en);u.lang='en-US';window.speechSynthesis.speak(u);}});
+$('ardyil79Check').addEventListener('click',function(){if(lessonState.checked)return;if(lessonState.selected<0){$('ardyil79Feedback').textContent='Pilih satu jawaban terlebih dahulu.';return;}lessonState.checked=true;var ok=lessonState.selected===lessonState.correct;target.querySelectorAll('[data-answer79]').forEach(function(b,i){if(i===lessonState.correct)b.classList.add('correct');else if(i===lessonState.selected)b.classList.add('wrong');});$('ardyil79Feedback').textContent=ok?'Benar! +10 XP. Teruskan! 🌟':'Belum tepat. Jawaban: '+w.id+'. Tetap semangat!';if(ok){progress.xp+=10;if(window.ardyilPlayEffect)window.ardyilPlayEffect('reward');}save();$('ardyil79Check').disabled=true;$('ardyil79Next').disabled=false;$('ardyil79Next').textContent=lessonState.step===lessonState.words.length-1?'Selesaikan pelajaran':'Soal berikutnya →';});
+$('ardyil79Next').addEventListener('click',function(){if(!lessonState.checked)return;if(lessonState.step<lessonState.words.length-1){lessonState.step++;renderLesson();}else{var done=progress.done[progress.age]||[];if(done.indexOf(lessonState.index)<0)done.push(lessonState.index);progress.done[progress.age]=done;progress.lessons++;progress.xp+=20;save();lessonState=null;renderAcademy();var note=$('ardyil79Lesson');if(note){note.hidden=false;note.innerHTML='<h4>🎉 Pelajaran selesai!</h4><p>Kamu mendapatkan 20 XP bonus. Lanjutkan petualanganmu.</p>';}}});
+}
+var comics79=[
+{title:'The Clocktower Mystery',genre:'Mystery',hero:'Nara',friend:'Rafi',place:'the old clocktower',object:'a silver key',setting:'clocktower',goal:'find the missing clockwork page',episodes:['The Silver Key','A Message at Midnight','The Hidden Workshop','The Clockmaker’s Secret','A New Beginning']},
+{title:'Campus After Class',genre:'Campus life',hero:'Alya',friend:'Dimas',place:'the university library',object:'a forgotten notebook',setting:'campus',goal:'return the notebook to its owner',episodes:['The Notebook','A Strange Schedule','The Empty Studio','The Presentation Day','Friends for Life']},
+{title:'Guardians of Green Valley',genre:'Adventure',hero:'Mika',friend:'Tara',place:'Green Valley',object:'a glowing seed',setting:'forest',goal:'restore the valley’s water garden',episodes:['The Glowing Seed','The River Map','The Rainy Trail','The Mountain Garden','The Valley Festival']},
+{title:'Cafe Little Moments',genre:'Slice of life',hero:'Luna',friend:'Arman',place:'a quiet corner café',object:'a handwritten recipe',setting:'cafe',goal:'prepare a surprise community dinner',episodes:['A Recipe Card','The Missing Ingredient','A Busy Afternoon','A Table for Everyone','The Warmest Evening']},
+{title:'Orbit Academy',genre:'Science fiction',hero:'Zee',friend:'Nova',place:'Orbit Academy',object:'a mysterious star map',setting:'space',goal:'find the source of a curious signal',episodes:['The Star Map','A Signal from Far Away','The Zero Gravity Test','The Blue Planet','A Message to Earth']},
+{title:'The Little Lighthouse Club',genre:'Family adventure',hero:'Milo',friend:'Sera',place:'the seaside village',object:'an old lighthouse journal',setting:'coast',goal:'help every boat return safely',episodes:['The Journal','A Boat in Trouble','Follow the Light','A Stormy Night','The Beacon Club']}
+];
+var epLines=[
+[[['After class, {h} discovered {o} near {p}.','Sepulang kelas, {h} menemukan {o} di dekat {p}.'],['“This must belong to someone,” said {f}.','“Ini pasti milik seseorang,” kata {f}.'],['They noticed a tiny symbol and wrote it in their notebook.','Mereka melihat simbol kecil dan menuliskannya di buku catatan.'],['Their first clue pointed toward a place they had never explored.','Petunjuk pertama mengarah ke tempat yang belum pernah mereka jelajahi.']]],
+[[['The next morning, {h} returned to {p} with a new idea.','Keesokan pagi, {h} kembali ke {p} dengan ide baru.'],['{f} found a short message hidden behind the first clue.','{f} menemukan pesan singkat tersembunyi di balik petunjuk pertama.'],['They compared the message with the map and spotted a pattern.','Mereka membandingkan pesan dengan peta dan menemukan pola.'],['A second route appeared, leading them closer to their goal.','Jalur kedua muncul dan membawa mereka lebih dekat pada tujuan.']]],
+[[['A sudden problem changed their plan at {p}.','Masalah mendadak mengubah rencana mereka di {p}.'],['“We can solve this together,” {f} reminded {h}.','“Kita bisa menyelesaikannya bersama,” {f} mengingatkan {h}.'],['They tested two ideas, learned from a mistake, and tried again.','Mereka menguji dua ide, belajar dari kesalahan, lalu mencoba lagi.'],['At last, a small detail revealed the next important clue.','Akhirnya, sebuah detail kecil menunjukkan petunjuk penting berikutnya.']]],
+[[['Inside the hidden place, {h} discovered the truth about {o}.','Di tempat tersembunyi itu, {h} menemukan kebenaran tentang {o}.'],['The story was not about treasure, but about helping the community.','Kisah itu bukan tentang harta, melainkan tentang membantu masyarakat.'],['{f} gathered everyone and explained the plan clearly.','{f} mengumpulkan semua orang dan menjelaskan rencana dengan jelas.'],['Everyone agreed to take one helpful step.','Semua orang setuju untuk mengambil satu langkah yang bermanfaat.']]],
+[[['The final day arrived, and the friends completed their mission.','Hari terakhir tiba, dan kedua sahabat menyelesaikan misi mereka.'],['Their teamwork made {p} a better place for everyone.','Kerja sama mereka membuat {p} menjadi tempat yang lebih baik bagi semua orang.'],['“The best discovery is what we learn together,” said {h}.','“Penemuan terbaik adalah yang kita pelajari bersama,” kata {h}.'],['They smiled, saved their notes, and prepared for a new adventure.','Mereka tersenyum, menyimpan catatan, dan bersiap untuk petualangan baru.']]]
+;
+var episodeTitles=comics79[0].episodes;
+function comicSVG(story,episode,panel){
+var colors={clocktower:['#27344f','#8795a7','#9d7055'],campus:['#8ac5dc','#e7f0db','#c77e69'],forest:['#163d47','#90be85','#8e6bb8'],cafe:['#dcae92','#f4e3cb','#729c9a'],space:['#171e4e','#736cae','#78cbd0'],coast:['#294d6b','#8bd2d5','#d48e72']};
+var c=colors[story.setting]||colors.clocktower;
+var px=[90,260,145,220][panel%4],objx=[250,115,270,100][panel%4];
+return '<svg viewBox="0 0 360 470" role="img" aria-label="Original illustrated comic panel for '+story.title+'"><defs><linearGradient id="c79'+story.setting+episode+panel+'" x2="0" y2="1"><stop stop-color="'+c[0]+'"/><stop offset="1" stop-color="'+c[1]+'"/></linearGradient></defs><rect width="360" height="470" fill="url(#c79'+story.setting+episode+panel+')"/><circle cx="295" cy="60" r="27" fill="#ffe5a2" opacity=".9"/><g class="webtoon-cloud" fill="#fff" opacity=".7"><ellipse cx="77" cy="117" rx="42" ry="16"/><circle cx="65" cy="106" r="20"/><circle cx="98" cy="108" r="18"/></g><path d="M0 325 Q75 270 150 320 T300 300 T390 320 V470 H0Z" fill="'+c[1]+'" opacity=".75"/><g opacity=".9">'+(story.setting==='space'?'<circle cx="65" cy="200" r="37" fill="#67b9d0"/><path d="M35 195Q70 163 98 204Q68 230 35 195" fill="#408d91"/>':story.setting==='forest'?'<path d="M28 355L70 185L112 355Z" fill="#1b785e"/><path d="M248 370L290 180L340 370Z" fill="#246f59"/>':story.setting==='clocktower'?'<path d="M45 370V165L92 115L140 165V370Z" fill="#89725f"/><rect x="62" y="190" width="63" height="60" rx="4" fill="#2b3b54"/>':story.setting==='campus'?'<rect x="30" y="190" width="120" height="180" rx="8" fill="#e9dfc8"/><path d="M20 195L90 130L160 195Z" fill="#bf826a"/>':story.setting==='cafe'?'<rect x="30" y="210" width="300" height="155" rx="8" fill="#f2d7b8"/><rect x="58" y="242" width="65" height="80" fill="#79a7ab"/><rect x="230" y="242" width="65" height="80" fill="#79a7ab"/>':'<path d="M0 330Q70 250 145 325T280 320T380 322V470H0Z" fill="#347fa0"/>')+'</g><g transform="translate('+px+' 342)"><circle cy="-78" r="21" fill="#b97e5c"/><path d="M-22 -56Q0 -75 22 -56L30 30H-30Z" fill="'+c[2]+'"/><path d="M-12 26L-17 83M12 26L17 83" stroke="#2b3850" stroke-width="13" stroke-linecap="round"/><path d="M-18 -37L-52 -8M18 -37L52 -12" stroke="#b97e5c" stroke-width="10" stroke-linecap="round"/></g><g class="a79-star" fill="#fff3b1"><path d="M'+objx+' 180l7 17 18 7-18 7-7 17-7-17-18-7 18-7Z"/><circle cx="'+(objx+28)+'" cy="240" r="5"/></g><g fill="#fff" opacity=".9"><circle cx="45" cy="64" r="2"/><circle cx="220" cy="92" r="2"/><circle cx="330" cy="140" r="2"/></g><text x="15" y="445" fill="#fff" font-size="9" font-family="sans-serif" letter-spacing="2">'+story.genre.toUpperCase()+' · ARDYIL ORIGINAL</text></svg>';
+}
+var comicIndex=0,episodeIndex=0;
+function renderComic79(){
+var host=$('ardyilComicPanels');if(!host)return;
+var s=comics79[comicIndex],lines=epLines[episodeIndex],pairs=lines[0],show=$('ardyilComicTranslation')?.checked!==false;
+host.innerHTML='<div class="ardyil79-comic-shell"><div class="ardyil79-comic-toolbar"><div><b style="font-size:12px">'+s.title+'</b><div style="font-size:9px;color:#c5c9d7;margin-top:3px">'+s.genre+' · Episode '+(episodeIndex+1)+'/5 · '+s.episodes[episodeIndex]+'</div></div><label><input type="checkbox" id="ardyil79ComicTranslate" '+(show?'checked':'')+'> Terjemahan</label></div><div class="ardyil79-comic-scroll">'+pairs.map(function(pair,i){var en=pair[0].replaceAll('{h}',s.hero).replaceAll('{f}',s.friend).replaceAll('{p}',s.place).replaceAll('{o}',s.object);var id=pair[1].replaceAll('{h}',s.hero).replaceAll('{f}',s.friend).replaceAll('{p}',s.place).replaceAll('{o}',s.object);return '<article class="ardyil79-comic-panel"><span class="ardyil79-comic-number">EP '+String(episodeIndex+1).padStart(2,'0')+' · PANEL '+String(i+1).padStart(2,'0')+'</span>'+comicSVG(s,episodeIndex,i)+'<div class="ardyil79-comic-bubble">'+en+'</div>'+(show?'<div class="ardyil79-comic-translation">'+id+'</div>':'')+'</article>';}).join('')+'<div class="ardyil79-comic-footer">END OF EPISODE · SCROLL BACK TO TOP FOR THE NEXT CHAPTER</div></div></div>';
+$('ardyil79ComicTranslate')?.addEventListener('change',function(){var original=$('ardyilComicTranslation');if(original)original.checked=this.checked;renderComic79();});
+}
+function installComic79(){
+var c=$('ardyilComicSelect'),e=$('ardyilComicEpisode'),prev=$('ardyilComicPrev'),next=$('ardyilComicNext'),host=$('ardyilComicPanels');
+if(!c||!e||!host)return;
+function replace(id){var old=$(id);if(!old)return null;var fresh=old.cloneNode(true);old.parentNode.replaceChild(fresh,old);return fresh;}
+c=replace('ardyilComicSelect');e=replace('ardyilComicEpisode');prev=replace('ardyilComicPrev');next=replace('ardyilComicNext');
+c.innerHTML=comics79.map(function(s,i){return '<option value="'+i+'">'+s.title+'</option>';}).join('');
+e.innerHTML=comics79[0].episodes.map(function(s,i){return '<option value="'+i+'">Episode '+(i+1)+' · '+s+'</option>';}).join('');
+c.addEventListener('change',function(){comicIndex=Number(c.value)||0;episodeIndex=0;e.innerHTML=comics79[comicIndex].episodes.map(function(s,i){return '<option value="'+i+'">Episode '+(i+1)+' · '+s+'</option>';}).join('');renderComic79();});
+e.addEventListener('change',function(){episodeIndex=Number(e.value)||0;renderComic79();});
+if(prev)prev.addEventListener('click',function(){episodeIndex=Math.max(0,episodeIndex-1);e.value=String(episodeIndex);renderComic79();});
+if(next)next.addEventListener('click',function(){episodeIndex=Math.min(4,episodeIndex+1);e.value=String(episodeIndex);renderComic79();});
+if(prev)prev.textContent='← Episode sebelumnya';if(next)next.textContent='Episode berikutnya →';
+renderComic79();
+}
+var cinema=[
+{title:'The Little Lighthouse',duration:180,setting:'coast',scenes:[['A Light in the Fog','Milo sees a lighthouse shining through the mist.','Milo melihat mercusuar bersinar menembus kabut.'],['A Boat in Trouble','A small boat is moving near the rocks. The waves are getting stronger.','Sebuah perahu kecil bergerak dekat bebatuan. Ombak semakin kuat.'],['Follow the Beam','Milo reads the journal and guides the sailor to the quiet bay.','Milo membaca jurnal dan memandu pelaut ke teluk yang tenang.'],['A Safe Return','The boat reaches the shore. The lighthouse becomes a symbol of kindness.','Perahu sampai di pantai. Mercusuar menjadi lambang kebaikan.'],['The Beacon Club','Milo and his friends promise to help every traveler.','Milo dan teman-temannya berjanji menolong setiap pengelana.']]},
+{title:'The Kindness Garden',duration:300,setting:'forest',scenes:[['A Forgotten Garden','Hana discovers an empty garden behind her school.','Hana menemukan taman kosong di belakang sekolah.'],['A Team Begins','Friends bring seeds, tools, and a plan to help the garden grow.','Teman-teman membawa benih, alat, dan rencana agar taman tumbuh.'],['Rainy Surprise','A sudden rain arrives. The team protects the young plants.','Hujan turun tiba-tiba. Tim melindungi tanaman muda.'],['New Visitors','Butterflies and birds return to the garden.','Kupu-kupu dan burung kembali ke taman.'],['Growing Together','The garden becomes a place where everyone learns and shares.','Taman menjadi tempat semua orang belajar dan berbagi.']]},
+{title:'Orbit Academy',duration:300,setting:'space',scenes:[['A New Student','Zee arrives at a school among the stars.','Zee tiba di sekolah di antara bintang-bintang.'],['The Strange Signal','A quiet signal appears on the class navigation screen.','Sinyal misterius muncul di layar navigasi kelas.'],['Team Mission','Zee and Nova work together to study the signal.','Zee dan Nova bekerja sama mempelajari sinyal itu.'],['Blue Planet','They discover a planet full of colors and living oceans.','Mereka menemukan planet penuh warna dan lautan kehidupan.'],['A Message of Hope','The students send a peaceful message across the galaxy.','Para siswa mengirim pesan damai ke seluruh galaksi.']]},
+{title:'City of Small Dreams',duration:180,setting:'city',scenes:[['A Busy Morning','Rana walks through a busy city with a notebook of ideas.','Rana berjalan di kota yang sibuk dengan buku berisi ide.'],['The Community Project','Neighbors plan a small library for the local street.','Para tetangga merencanakan perpustakaan kecil untuk lingkungan.'],['One Helpful Step','Everyone contributes books, time, and creativity.','Semua orang menyumbangkan buku, waktu, dan kreativitas.'],['Opening Day','The little library opens with music and laughter.','Perpustakaan kecil dibuka dengan musik dan tawa.'],['Dreams Grow','Rana learns that small ideas can create meaningful change.','Rana belajar bahwa ide kecil dapat membawa perubahan.']]},
+{title:'Campus Quest',duration:180,setting:'campus',scenes:[['First Presentation','Alya prepares her first English presentation.','Alya menyiapkan presentasi bahasa Inggris pertamanya.'],['A Missing Slide','A file disappears just before the class begins.','Sebuah berkas hilang tepat sebelum kelas dimulai.'],['Think Together','Her friends help rebuild the presentation.','Teman-temannya membantu menyusun ulang presentasi.'],['Speak with Confidence','Alya presents clearly and answers questions.','Alya menyampaikan presentasi dengan jelas dan menjawab pertanyaan.'],['A New Skill','The class celebrates teamwork and confidence.','Kelas merayakan kerja sama dan rasa percaya diri.']]},
+{title:'The Forest Code',duration:300,setting:'forest',scenes:[['A Map in the Tree','Two friends find a map that leads to an old forest station.','Dua sahabat menemukan peta menuju pos hutan tua.'],['Listen to Nature','They learn to read signs from the birds and river.','Mereka belajar membaca tanda dari burung dan sungai.'],['A Broken Bridge','The friends find a safe way to cross a small stream.','Mereka menemukan cara aman menyeberangi sungai kecil.'],['The Secret Garden','They discover a garden cared for by the village.','Mereka menemukan taman yang dirawat warga desa.'],['Protect Our Home','The friends invite everyone to care for nature.','Mereka mengajak semua orang menjaga alam.']] }
+];
+var cinemaState={index:0,scene:0,elapsed:0,timer:null,playing:false};
+function sceneSVG(item,index){
+var palettes={coast:['#203a64','#4c9bb0','#d8c6a0'],forest:['#173b42','#69a66f','#a8c67d'],space:['#111a42','#454e9a','#81d8df'],city:['#34426e','#d28b8c','#f3c477'],campus:['#4f79a5','#d8c8a1','#d88978']};
+var p=palettes[item.setting]||palettes.coast,sky=item.setting==='space';
+return '<svg viewBox="0 0 640 360" role="img" aria-label="Visual scene '+(index+1)+' of '+item.title+'"><defs><linearGradient id="cinemaBg'+index+'" x2="0" y2="1"><stop stop-color="'+p[0]+'"/><stop offset="1" stop-color="'+p[1]+'"/></linearGradient></defs><rect width="640" height="360" fill="url(#cinemaBg'+index+')"/><circle class="a79-sky-object" cx="520" cy="68" r="'+(sky?27:37)+'" fill="'+(sky?'#d7f5ff':'#ffe6a2')+'"/>'+Array.from({length:22},function(_,i){return '<circle class="a79-star" cx="'+((i*79+21)%620)+'" cy="'+((i*37+17)%210)+'" r="'+(i%4===0?3:1.7)+'" fill="#fff6d2"/>';}).join('')+'<g class="a79-wave" fill="'+p[2]+'" opacity=".84"><path d="M0 252 Q95 210 190 253 T380 246 T640 240 V360 H0Z"/><path d="M0 292 Q100 256 200 292 T400 286 T640 278 V360 H0Z" opacity=".45"/></g>'+ (item.setting==='space'?'<circle cx="170" cy="200" r="70" fill="#59b8c7"/><path d="M105 192Q170 125 235 205Q170 275 105 192" fill="#428e8d"/><g class="a79-sky-object" transform="translate(400 205)"><path d="M-55 0L40 -22L65 0L40 22Z" fill="#f4f0d1"/><path d="M-12 -18L6 -78L25 -18Z" fill="#df9b78"/><path d="M-12 18L6 78L25 18Z" fill="#df9b78"/><circle cx="27" cy="0" r="12" fill="#9fdbe3"/></g>' : item.setting==='forest'?'<g><path d="M60 296L115 68L170 296Z" fill="#286b58"/><path d="M430 300L500 75L570 300Z" fill="#2b745d"/><path d="M260 300L316 116L372 300Z" fill="#3b8667"/></g>' : item.setting==='city'?'<g fill="#26365c"><rect x="35" y="150" width="88" height="170"/><rect x="145" y="105" width="105" height="215"/><rect x="470" y="135" width="110" height="185"/></g><g fill="#ffe6a2"><path d="M55 180h15v20H55zm32 0h15v20H87zm-32 40h15v20H55zM168 140h16v20h-16zm35 0h16v20h-16zm-35 40h16v20h-16z"/></g>' : item.setting==='campus'?'<rect x="90" y="120" width="460" height="205" rx="8" fill="#e6dbc2"/><path d="M70 130L320 48L570 130Z" fill="#ba7668"/><rect x="270" y="210" width="100" height="115" fill="#648fa2"/><g fill="#88b9c6"><rect x="130" y="160" width="55" height="52"/><rect x="220" y="160" width="55" height="52"/><rect x="390" y="160" width="55" height="52"/></g>' : '<path d="M0 275Q95 240 185 278T360 275T640 265V360H0Z" fill="#317e9a"/><path d="M0 300Q110 265 210 303T420 297T640 286" fill="none" stroke="#c2ebed" stroke-width="5"/>')+'<g class="a79-character" transform="translate(320 270)"><circle cy="-65" r="24" fill="#c78966"/><path d="M-28 -38Q0 -61 28 -38L38 56H-38Z" fill="#826fca"/><path d="M-16 52L-22 100M16 52L22 100" stroke="#23304b" stroke-width="17" stroke-linecap="round"/><path d="M-24 -20L-68 20M24 -20L68 15" stroke="#c78966" stroke-width="13" stroke-linecap="round"/></g><text x="24" y="337" fill="#fff" font-size="13" font-family="sans-serif" letter-spacing="3" opacity=".8">ARDYIL ORIGINAL ANIMATION</text></svg>';
+}
+function renderCinema(){
+var s=cinema[cinemaState.index],sc=s.scenes[cinemaState.scene],stage=$('ardyil79CinemaVisual');
+if(!stage)return;
+stage.innerHTML=sceneSVG(s,cinemaState.scene);
+$('ardyil79CinemaTitle').textContent=sc[0];$('ardyil79CinemaEnglish').textContent=sc[1];$('ardyil79CinemaIndonesian').textContent=sc[2];
+$('ardyil79CinemaDuration').textContent=format79(Math.max(0,s.duration-cinemaState.elapsed));
+$('ardyil79CinemaProgress').style.width=Math.min(100,cinemaState.elapsed/s.duration*100)+'%';
+$('ardyil79CinemaScene').textContent='ADEGAN '+(cinemaState.scene+1)+' / '+s.scenes.length;
+}
+function format79(n){return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');}
+function stopCinema(){if(cinemaState.timer)clearInterval(cinemaState.timer);cinemaState.timer=null;cinemaState.playing=false;var b=$('ardyil79CinemaPlay');if(b)b.textContent='▶ Putar cerita';}
+function setCinemaScene(delta){var s=cinema[cinemaState.index];cinemaState.scene=Math.max(0,Math.min(s.scenes.length-1,cinemaState.scene+delta));renderCinema();}
+function startCinema(){if(cinemaState.playing){stopCinema();return;}var s=cinema[cinemaState.index];if(cinemaState.elapsed>=s.duration){cinemaState.elapsed=0;cinemaState.scene=0;}cinemaState.playing=true;$('ardyil79CinemaPlay').textContent='Ⅱ Jeda';cinemaState.timer=setInterval(function(){cinemaState.elapsed++;var idx=Math.min(s.scenes.length-1,Math.floor(cinemaState.elapsed/(s.duration/s.scenes.length)));if(idx!==cinemaState.scene)cinemaState.scene=idx;renderCinema();if(cinemaState.elapsed>=s.duration){stopCinema();$('ardyil79CinemaStatus').textContent='Cerita selesai! Kamu mendapat satu pengalaman belajar baru. 💜';if(window.ardyilPlayEffect)window.ardyilPlayEffect('mission');}},1000);}
+function installCinema(){
+var panel=document.querySelector('[data-media-section="animation"] .ardyil-media-card');if(!panel||$('ardyil79Cinema'))return;
+var block=document.createElement('section');block.id='ardyil79Cinema';block.className='ardyil79-block';
+block.innerHTML='<div class="ardyil79-heading"><div><h3>🎬 ARDYIL Animated Cinema</h3><p>Enam cerita visual orisinal dengan adegan bergerak, subtitle, dan narasi.</p></div><span class="ardyil79-pill">3–5 MIN</span></div><select id="ardyil79CinemaSelect" style="width:100%;padding:11px;border-radius:12px;border:1px solid #e4e6ef;margin-bottom:10px;font-size:11px">'+cinema.map(function(s,i){return '<option value="'+i+'">'+s.title+' · '+(s.duration/60)+' menit</option>';}).join('')+'</select><div class="ardyil79-video-shell"><div class="ardyil79-video-stage" id="ardyil79CinemaVisual"></div><div class="ardyil79-video-caption"><small id="ardyil79CinemaScene">ADEGAN 1 / 5</small><h3 id="ardyil79CinemaTitle"></h3><p id="ardyil79CinemaEnglish"></p><p id="ardyil79CinemaIndonesian" class="ardyil79-video-id"></p></div><div class="ardyil79-timeline"><span id="ardyil79CinemaProgress"></span></div><div class="ardyil79-video-controls"><button id="ardyil79CinemaPrev">← Sebelumnya</button><button id="ardyil79CinemaPlay" class="primary">▶ Putar cerita</button><button id="ardyil79CinemaNext">Berikutnya →</button><button id="ardyil79CinemaVoice">🔊 Narasi</button><span id="ardyil79CinemaDuration">03:00</span></div></div><p id="ardyil79CinemaStatus" style="font-size:10px;color:#77758b;margin:10px 0 0">Ilustrasi vektor orisinal dengan gerakan animasi. Bukan video film eksternal.</p>';
+panel.appendChild(block);
+$('ardyil79CinemaSelect').addEventListener('change',function(){stopCinema();cinemaState={index:Number(this.value)||0,scene:0,elapsed:0,timer:null,playing:false};renderCinema();});
+$('ardyil79CinemaPlay').addEventListener('click',startCinema);
+$('ardyil79CinemaPrev').addEventListener('click',function(){setCinemaScene(-1);});
+$('ardyil79CinemaNext').addEventListener('click',function(){setCinemaScene(1);});
+$('ardyil79CinemaVoice').addEventListener('click',function(){var sc=cinema[cinemaState.index].scenes[cinemaState.scene];if(window.ArdyilNative&&window.ArdyilNative.speak)window.ArdyilNative.speak(sc[1],'en-US',.9,1);});
+renderCinema();
+}
+function installAcademy(){
+var panel=$('panel-academy');if(!panel||$('ardyil79AcademyRoot'))return;
+var root=document.createElement('div');root.id='ardyil79AcademyRoot';panel.insertBefore(root,panel.firstChild);renderAcademy();
+}
+function shareText(title,text){
+if(window.ArdyilNative&&window.ArdyilNative.shareText){window.ArdyilNative.shareText(title,text);return;}
+if(navigator.share){navigator.share({title:title,text:text}).catch(function(){});return;}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){alert('Teks berhasil disalin. Silakan tempel ke aplikasi pilihanmu.');}).catch(function(){alert(text);});}
+else alert(text);
+}
+function installAccount(){
+var p=$('panel-profile');if(!p||$('ardyil79Account'))return;
+var card=document.createElement('section');card.id='ardyil79Account';card.className='ardyil79-account';
+card.innerHTML='<h3>💜 Akun & Komunitas ARDYIL</h3><p>Simpan perjalanan belajar, siapkan sinkronisasi lintas perangkat, dan bagikan pencapaianmu.</p><div class="ardyil79-row"><button class="ardyil79-action" id="ardyil79Google">G Masuk dengan Google</button><button class="ardyil79-action alt" id="ardyil79Share">↗ Bagikan progres</button></div><div class="ardyil79-account-note" id="ardyil79AuthNote">Profil lokal aktif di perangkat ini. Login Google belum diaktifkan karena proyek belum memiliki OAuth Client ID dan konfigurasi server yang sah. Tidak ada kata sandi atau token yang dikumpulkan.</div>';
+p.insertBefore(card,p.firstChild);
+$('ardyil79Google').addEventListener('click',function(){showAccountModal();});
+$('ardyil79Share').addEventListener('click',function(){var total=Object.values(progress.done||{}).reduce(function(n,a){return n+(a||[]).length;},0);shareText('Progres belajar ARDYIL','Aku sedang belajar bersama ARDYIL! ⭐ '+progress.xp+' XP · '+total+' unit selesai. Yuk belajar bahasa bersama!');});
+}
+function showAccountModal(){
+var modal=$('ardyil79Modal');if(!modal){modal=document.createElement('div');modal.id='ardyil79Modal';modal.className='ardyil79-modal';modal.innerHTML='<div class="ardyil79-modal-card"><h3>Masuk dengan Google</h3><p>Integrasi login Google memakai Android Credential Manager. Agar benar-benar aktif, pemilik aplikasi perlu membuat Google Cloud OAuth project, mendaftarkan Android package <b>com.ardyil.dictionary</b>, menambahkan SHA-1/SHA-256 sertifikat, dan menyediakan Web Client ID. Token harus diverifikasi melalui backend atau Firebase Authentication.</p><ul><li>Jangan memasukkan password Google langsung ke ARDYIL.</li><li>Mode belajar offline tetap bisa digunakan tanpa login.</li><li>Setelah pembuatan akun diaktifkan, ARDYIL harus menyediakan penghapusan akun dan data.</li></ul><p><b>Status:</b> Menunggu konfigurasi OAuth pemilik aplikasi. Tombol ini belum melakukan autentikasi.</p><button class="ardyil79-action" id="ardyil79CloseModal">Mengerti</button></div>';document.body.appendChild(modal);$('ardyil79CloseModal').addEventListener('click',function(){modal.classList.remove('show');});modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('show');});}
+modal.classList.add('show');
+}
+function addHomeShortcuts(){
+var list=document.querySelector('#panel-home .ardyil-path-list');if(list&&!list.querySelector('[data-open-tab="academy"]')){var b=document.createElement('button');b.className='ardyil-path-row';b.dataset.openTab='academy';b.innerHTML='<span class="ardyil-path-icon">🌈</span><span class="ardyil-path-content"><b>Learning for Every Stage</b><small>SD · SMP · SMA · Kuliah · Profesional</small></span><span class="ardyil-path-arrow">›</span>';list.appendChild(b);}
+var shortcuts=document.querySelector('#panel-home .ardyil-shortcuts');if(shortcuts&&!shortcuts.querySelector('[data-open-tab="media"]')){var b2=document.createElement('button');b2.className='ardyil-shortcut';b2.dataset.openTab='media';b2.innerHTML='<span>🎞️</span><b>Comic & Cinema</b><small>Komik scroll dan cerita animasi</small>';shortcuts.appendChild(b2);}
+}
+function init(){installAcademy();installComic79();installCinema();installAccount();addHomeShortcuts();}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(init,100);});else setTimeout(init,100);
+})();
+</script>
+
 </body>
 </html>
