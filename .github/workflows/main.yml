@@ -54,7 +54,7 @@ jobs:
           PROJECT_DIR=$(find android-project -name settings.gradle -printf '%h\n' | head -n 1)
           echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
-      - name: Prepare Android 16 / ARDYIL version 12.0
+      - name: Prepare Android 16 / ARDYIL version 20.0
         run: bash scripts/prepare-playstore-build.sh "$PROJECT_DIR"
 
       - name: Protect the microphone and speech audio core
@@ -73,7 +73,7 @@ jobs:
           ASSET_HTML="$PROJECT_DIR/app/src/main/assets/index.html"
           test -f "$ASSET_HTML"
           cp index.html "$ASSET_HTML"
-          echo "Applied latest ARDYIL 12.0 learning universe modules to Android assets."
+          echo "Applied latest ARDYIL 20.0 learning universe modules to Android assets."
 
       - name: Build APK
         run: gradle --no-daemon -p "$PROJECT_DIR" assembleDebug
@@ -83,10 +83,10 @@ jobs:
           mkdir -p apk-output
           APK=$(find "$PROJECT_DIR" -path "*/build/outputs/apk/debug/*.apk" -type f | head -n 1)
           test -n "$APK"
-          cp "$APK" apk-output/ARDYIL-English-Dictionary-12.0.apk
+          cp "$APK" apk-output/ARDYIL-English-Dictionary-20.0.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: ARDYIL-12.0-APK
-          path: apk-output/ARDYIL-English-Dictionary-12.0.apk
+          name: ARDYIL-20.0-APK
+          path: apk-output/ARDYIL-English-Dictionary-20.0.apk
