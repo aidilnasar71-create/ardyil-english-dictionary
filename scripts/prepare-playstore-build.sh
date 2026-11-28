@@ -24,17 +24,17 @@ for path in gradle_files:
         continue
     original = text
     # Android 16 requires AGP 8.9.1 or newer; the project starts on AGP 8.7.3.
-    text, n = re.subn(r"(?<![0-9])8\\.7\\.3(?![0-9])", "8.9.1", text)
+    text, n = re.subn(r"(?<![0-9])8\.7\.3(?![0-9])", "8.9.1", text)
     agp_changed = agp_changed or n > 0
     # Move compile and target SDK to API 36 while retaining minSdk for Android 13 and older.
-    text, n = re.subn(r"(?m)(\\bcompileSdk(?:Version)?\\s*(?:=\\s*)?)35\\b", r"\\g<1>36", text)
+    text, n = re.subn(r"(?m)(\bcompileSdk(?:Version)?\s*(?:=\s*)?)35\b", r"\g<1>36", text)
     compile_changed = compile_changed or n > 0
-    text, n = re.subn(r"(?m)(\\btargetSdk(?:Version)?\\s*(?:=\\s*)?)35\\b", r"\\g<1>36", text)
+    text, n = re.subn(r"(?m)(\btargetSdk(?:Version)?\s*(?:=\s*)?)35\b", r"\g<1>36", text)
     target_changed = target_changed or n > 0
-    text, n = re.subn(r"(?m)(\\bbuildToolsVersion\\s*(?:=\\s*)?['\"])35\\.0\\.0(['\"])", r"\\g<1>36.0.0\\2", text)
-    text, n = re.subn(r"(?m)(\\bversionCode\\s*(?:=\\s*)?)\\d+", r"\\g<1>790", text)
+    text, n = re.subn(r"(?m)(\bbuildToolsVersion\s*(?:=\s*)?['\"])35\.0\.0(['\"])", r"\g<1>36.0.0\2", text)
+    text, n = re.subn(r"(?m)(\bversionCode\s*(?:=\s*)?)\d+", r"\g<1>790", text)
     version_code_changed = version_code_changed or n > 0
-    text, n = re.subn(r"(?m)(\\bversionName\\s*(?:=\\s*)?['\"])[^'\"]+(['\"])", r"\\g<1>7.9\\2", text)
+    text, n = re.subn(r"(?m)(\bversionName\s*(?:=\s*)?['\"])[^'\"]+(['\"])", r"\g<1>7.9\2", text)
     version_name_changed = version_name_changed or n > 0
     if text != original:
         path.write_text(text, encoding="utf-8")
@@ -46,8 +46,8 @@ if not version_code_changed: missing.append("versionCode -> 790")
 if not version_name_changed: missing.append("versionName -> 7.9")
 if not agp_changed:
     # Some project templates may already be using a newer AGP. Verify rather than silently downgrading.
-    combined = "\\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in gradle_files)
-    if not re.search(r"8\\.(?:9\\.[1-9]|[1-9][0-9]\\.)", combined):
+    combined = "\n".join(p.read_text(encoding="utf-8", errors="ignore") for p in gradle_files)
+    if not re.search(r"8\.(?:9\.[1-9]|[1-9][0-9]\.)", combined):
         missing.append("Android Gradle Plugin 8.9.1+")
 if missing:
     raise SystemExit("Play Store preparation could not safely patch: " + ", ".join(missing))
