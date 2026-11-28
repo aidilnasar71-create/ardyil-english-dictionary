@@ -1391,7 +1391,7 @@ const scenes=[
 ];
 const questions=[['brave','berani',['takut','malas','lelah']],['curious','penasaran',['marah','lapar','dingin']],['improve','meningkatkan',['menghapus','menunggu','melupakan']],['journey','perjalanan',['jendela','pelajaran','makanan']],['kindness','kebaikan',['kecepatan','kesulitan','kebisingan']]];
 let qi=0,si=0,story=0,episode=0;
-function share(title,text){if(navigator.share){navigator.share({title,text}).catch(()=>{});}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Teks tersalin. Silakan tempel ke aplikasi pilihanmu.')).catch(()=>alert(text));}else alert(text);}
+function share(title,text){if(window.ArdyilNative&&typeof window.ArdyilNative.shareText==='function'){window.ArdyilNative.shareText(title,text);return;}if(navigator.share){navigator.share({title,text}).catch(()=>{});}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Teks tersalin. Silakan tempel ke aplikasi pilihanmu.')).catch(()=>alert(text));}else alert(text);}
 function open(){ $('ardyil79-overlay').classList.add('open');}
 $('ardyil79-launch').onclick=open;$('a79-close').onclick=()=>$('ardyil79-overlay').classList.remove('open');
 document.querySelectorAll('.a79-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.a79-tab').forEach(x=>x.classList.toggle('active',x===b));['learn','comic','story','quiz','settings'].forEach(t=>$('a79-'+t).classList.toggle('a79-hidden',t!==b.dataset.tab));});
